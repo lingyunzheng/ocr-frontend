@@ -1,135 +1,122 @@
+// app/page.tsx
 'use client';
 
-import { useState, ChangeEvent, FormEvent } from 'react';
-import Image from 'next/image';
+import { useState } from 'react';
 
-export default function Home() {
-  const [image, setImage] = useState<File | null>(null);
-  const [preview, setPreview] = useState<string>('');
+export default function OCRPage() {
+  const [file, setFile] = useState<File | null>(null);
+  const [result, setResult] = useState<{ text: string; lines: string[] } | null>(null);
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const [error, setError] = useState('');
 
-  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setImage(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
       setError('');
-      setResult('');
+      setResult(null);
     }
   };
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (!image) {
-      setError('请选择图片');
+  const handleUpload = async () => {
+    if (!file) {
+      setError('请先选择一张图片');
       return;
     }
 
     setLoading(true);
     setError('');
-    setResult('');
 
     try {
       const formData = new FormData();
-      formData.append('file', image);
+      // ⚠️ 关键点：这里的 key 必须是 "file"，对应 Next.js API 和 FastAPI 的接收参数
+      formData.append('file', file);
 
-      const response = await fetch('/api/ocr', {
+      const res = await fetch('/api/ocr', {
         method: 'POST',
         body: formData,
       });
 
-      if (!response.ok) {
-        throw new Error('OCR 识别失败');
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || data.details || '上传失败');
       }
 
-      const data = await response.json();
-      console.log('OCR 响应数据:', data);
-      
-      // 尝试不同的字段名
-      const result = 
-        data.text || 
-        data.result || 
-        data.content || 
-        data.output ||
-        JSON.stringify(data, null, 2);
-      
-      setResult(result);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : '发生错误');
+      setResult(data);
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message || '识别过程发生错误');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-      <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-4xl font-bold text-center mb-2 text-gray-800">
-            OCR 文字识别
-          </h1>
-          <p className="text-center text-gray-600 mb-8">
-            上传图片，自动识别文字内容
-          </p>
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-indigo-400 transition">
-              <label htmlFor="image" className="cursor-pointer">
-                <div className="text-gray-600">
-                  <div className="text-4xl mb-2">📸</div>
-                  <p className="font-medium">点击上传图片或拖拽</p>
-                  <p className="text-sm text-gray-500">支持 JPG, PNG, GIF</p>
-                </div>
-                <input
-                  id="image"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  className="hidden"
-                />
-              </label>
-            </div>
-
-            {preview && (
-              <div className="relative w-full h-64 bg-gray-100 rounded-lg overflow-hidden">
-                <Image
-                  src={preview}
-                  alt="Preview"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            )}
-
-            {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
-                ❌ {error}
-              </div>
-            )}
-
-            {result && (
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <h3 className="font-bold text-green-800 mb-2">✅ 识别结果</h3>
-                <p className="text-gray-700 whitespace-pre-wrap">{result}</p>
-              </div>
-            )}
-
-            <button
-              type="submit"
-              disabled={!image || loading}
-              className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-400 text-white font-bold py-3 rounded-lg transition"
-            >
-              {loading ? '识别中...' : '开始识别'}
-            </button>
-          </form>
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-10 px-4">
+      <div className="max-w-md w-full bg-white rounded-lg shadow-md p-6">
+        <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">OCR 文字识别测试</h1>
+        
+        {/* 上传区域 */}
+        <div className="mb-6">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="block w-full text-sm text-gray-500
+              file:mr-4 file:py-2 file:px-4
+              file:rounded-full file:border-0
+              file:text-sm file:font-semibold
+              file:bg-blue-50 file:text-blue-700
+              hover:file:bg-blue-100"
+          />
         </div>
+
+        {/* 预览区域 (可选) */}
+        {file && (
+          <div className="mb-4">
+            <p className="text-sm text-gray-500 mb-2">已选文件: {file.name}</p>
+          </div>
+        )}
+
+        {/* 按钮 */}
+        <button
+          onClick={handleUpload}
+          disabled={loading || !file}
+          className={`w-full py-2 px-4 rounded-md text-white font-medium transition-colors
+            ${loading || !file 
+              ? 'bg-gray-400 cursor-not-allowed' 
+              : 'bg-blue-600 hover:bg-blue-700'}`}
+        >
+          {loading ? '正在识别...' : '开始识别'}
+        </button>
+
+        {/* 错误提示 */}
+        {error && (
+          <div className="mt-4 p-3 bg-red-50 text-red-700 rounded-md text-sm border border-red-200">
+            ❌ {error}
+          </div>
+        )}
+
+        {/* 结果展示 */}
+        {result && (
+          <div className="mt-6 border-t pt-4">
+            <h3 className="font-semibold text-gray-700 mb-2">识别结果:</h3>
+            <div className="bg-gray-100 p-4 rounded-md text-sm text-gray-800 whitespace-pre-wrap font-mono">
+              {result.text || "未识别到文字"}
+            </div>
+            {result.lines.length > 0 && (
+              <details className="mt-2 text-xs text-gray-500">
+                <summary className="cursor-pointer hover:text-gray-700">查看行详情</summary>
+                <ul className="mt-1 list-disc list-inside">
+                  {result.lines.map((line, idx) => (
+                    <li key={idx}>{line}</li>
+                  ))}
+                </ul>
+              </details>
+            )}
+          </div>
+        )}
       </div>
-    </main>
+    </div>
   );
 }
