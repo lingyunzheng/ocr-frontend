@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // 调用 Hugging Face OCR API（没有 timeout）
+    // 调用 Hugging Face OCR API
     const response = await fetch(`${OCR_API_URL}/api/ocr`, {
       method: 'POST',
       body: formData,
