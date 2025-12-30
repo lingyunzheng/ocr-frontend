@@ -39,7 +39,6 @@ export default function Home() {
       const formData = new FormData();
       formData.append('file', image);
 
-
       const response = await fetch('/api/ocr', {
         method: 'POST',
         body: formData,
@@ -50,7 +49,17 @@ export default function Home() {
       }
 
       const data = await response.json();
-      setResult(data.text || JSON.stringify(data));
+      console.log('OCR 响应数据:', data);
+      
+      // 尝试不同的字段名
+      const result = 
+        data.text || 
+        data.result || 
+        data.content || 
+        data.output ||
+        JSON.stringify(data, null, 2);
+      
+      setResult(result);
     } catch (err) {
       setError(err instanceof Error ? err.message : '发生错误');
     } finally {
