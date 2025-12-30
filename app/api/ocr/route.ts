@@ -4,9 +4,6 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     
-    // 调试：打印环境变量
-    console.log('OCR_API_URL:', process.env.NEXT_PUBLIC_OCR_API_URL);
-    
     const OCR_API_URL = process.env.NEXT_PUBLIC_OCR_API_URL;
     
     if (!OCR_API_URL) {
@@ -16,11 +13,10 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // 调用 Hugging Face OCR API
+    // 调用 Hugging Face OCR API（没有 timeout）
     const response = await fetch(`${OCR_API_URL}/api/ocr`, {
       method: 'POST',
       body: formData,
-      timeout: 30000, // 30秒超时
     });
 
     if (!response.ok) {
