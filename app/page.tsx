@@ -37,7 +37,8 @@ export default function Home() {
 
     try {
       const formData = new FormData();
-      formData.append('image', image);
+      formData.append('file', image);
+
 
       const response = await fetch('/api/ocr', {
         method: 'POST',
