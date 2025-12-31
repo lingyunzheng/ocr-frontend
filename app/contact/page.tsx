@@ -1,9 +1,13 @@
-/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import { useState } from 'react';
 
 export default function ContactPage() {
+  const contactText = {
+    subtitle: "Have a question or feedback? We'd love to hear from you!",
+    successMessage: "Thank you! Your message has been sent successfully. We'll get back to you soon!",
+  };
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,19 +29,16 @@ export default function ContactPage() {
     e.preventDefault();
     setLoading(true);
 
-    // Simulated submission - in real app, send to backend
     setTimeout(() => {
       setSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
       setLoading(false);
-      // Clear message after 5 seconds
       setTimeout(() => setSubmitted(false), 5000);
     }, 1500);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-      {/* Header */}
       <header className="bg-white dark:bg-slate-800 shadow-sm sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-4 py-4">
           <a href="/" className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
@@ -46,15 +47,13 @@ export default function ContactPage() {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">Contact Us</h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-12">
-          Have a question or feedback? We&apos;d love to hear from you!
+          {contactText.subtitle}
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {/* Contact Info Cards */}
           <div className="bg-white dark:bg-slate-700 rounded-xl shadow-lg p-6 text-center">
             <div className="text-3xl mb-3">📧</div>
             <h3 className="font-bold text-gray-900 dark:text-white mb-2">Email</h3>
@@ -80,18 +79,16 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Contact Form */}
         <div className="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a Message</h2>
 
           {submitted && (
             <div className="mb-6 p-4 bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 rounded-lg">
-              <p className="text-green-700 dark:text-green-200">✅ Thank you! Your message has been sent successfully. We&apos;ll get back to you soon!</p>
+              <p className="text-green-700 dark:text-green-200">✅ {contactText.successMessage}</p>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name */}
             <div>
               <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                 Name *
@@ -107,7 +104,6 @@ export default function ContactPage() {
               />
             </div>
 
-            {/* Email */}
             <div>
               <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                 Email *
@@ -123,7 +119,6 @@ export default function ContactPage() {
               />
             </div>
 
-            {/* Subject */}
             <div>
               <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                 Subject *
@@ -144,7 +139,6 @@ export default function ContactPage() {
               </select>
             </div>
 
-            {/* Message */}
             <div>
               <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                 Message *
@@ -160,7 +154,6 @@ export default function ContactPage() {
               />
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={loading}
@@ -179,7 +172,6 @@ export default function ContactPage() {
           </form>
         </div>
 
-        {/* FAQ Section */}
         <div className="mt-12">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Frequently Asked Questions</h2>
           
@@ -214,7 +206,6 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Back Button */}
         <div className="mt-12 text-center">
           <a href="/" className="inline-block px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
             ← Back to Home
@@ -222,7 +213,6 @@ export default function ContactPage() {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 py-8 mt-12">
         <div className="max-w-4xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400 text-sm">
           <p>© 2025 LocalAI OCR. All rights reserved.</p>
