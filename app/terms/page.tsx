@@ -1,8 +1,14 @@
-/* eslint-disable react/no-unescaped-entities */
 export default function TermsPage() {
+  const termsContent = {
+    license: 'Transfer the materials to another person or "mirror" the materials on any other server',
+    disclaimer: 'The materials on LocalAI OCR are provided on an "as is" basis. LocalAI OCR makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.',
+    links: 'LocalAI OCR has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by LocalAI OCR of the site. Use of any such linked website is at the user\'s own risk.',
+    effectiveDate: 'Effective Date: January 1, 2025',
+    lastUpdated: 'Last Updated: December 31, 2025',
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-      {/* Header */}
       <header className="bg-white dark:bg-slate-800 shadow-sm sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-4 py-4">
           <a href="/" className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
@@ -11,12 +17,10 @@ export default function TermsPage() {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Terms of Service</h1>
 
         <div className="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 space-y-8">
-          {/* Agreement */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">1. Agreement to Terms</h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -24,7 +28,6 @@ export default function TermsPage() {
             </p>
           </section>
 
-          {/* Use License */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">2. Use License</h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
@@ -35,20 +38,18 @@ export default function TermsPage() {
               <li>Use the materials for any commercial purpose or for any public display</li>
               <li>Attempt to reverse engineer, disassemble, or decode the software</li>
               <li>Remove any copyright or other proprietary notations from the materials</li>
-              <li>Transfer the materials to another person or &quot;mirror&quot; the materials on any other server</li>
+              <li>{termsContent.license}</li>
               <li>Use automated systems (bots, crawlers) to access our service</li>
             </ul>
           </section>
 
-          {/* Disclaimer */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">3. Disclaimer</h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              The materials on LocalAI OCR are provided on an &quot;as is&quot; basis. LocalAI OCR makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+              {termsContent.disclaimer}
             </p>
           </section>
 
-          {/* Limitations */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">4. Limitations</h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -56,7 +57,6 @@ export default function TermsPage() {
             </p>
           </section>
 
-          {/* Accuracy */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">5. Accuracy of Materials</h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -64,15 +64,13 @@ export default function TermsPage() {
             </p>
           </section>
 
-          {/* Links */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">6. Links</h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              LocalAI OCR has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by LocalAI OCR of the site. Use of any such linked website is at the user&apos;s own risk.
+              {termsContent.links}
             </p>
           </section>
 
-          {/* Modifications */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">7. Modifications</h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -80,7 +78,6 @@ export default function TermsPage() {
             </p>
           </section>
 
-          {/* Governing Law */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">8. Governing Law</h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -88,7 +85,6 @@ export default function TermsPage() {
             </p>
           </section>
 
-          {/* User Content */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">9. User Content</h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -96,7 +92,6 @@ export default function TermsPage() {
             </p>
           </section>
 
-          {/* Contact */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">10. Contact Information</h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -104,14 +99,12 @@ export default function TermsPage() {
             </p>
           </section>
 
-          {/* Footer */}
           <div className="border-t border-gray-200 dark:border-slate-600 pt-8 text-sm text-gray-600 dark:text-gray-400">
-            <p>Effective Date: January 1, 2025</p>
-            <p>Last Updated: December 31, 2025</p>
+            <p>{termsContent.effectiveDate}</p>
+            <p>{termsContent.lastUpdated}</p>
           </div>
         </div>
 
-        {/* Back Button */}
         <div className="mt-8 text-center">
           <a href="/" className="inline-block px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
             ← Back to Home
@@ -119,7 +112,6 @@ export default function TermsPage() {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 py-8 mt-12">
         <div className="max-w-4xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400 text-sm">
           <p>© 2025 LocalAI OCR. All rights reserved.</p>
