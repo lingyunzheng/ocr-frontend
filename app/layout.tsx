@@ -45,7 +45,6 @@ export const metadata: Metadata = {
     },
   },
   viewport: "width=device-width, initial-scale=1, maximum-scale=5",
-  charset: "utf-8",
 };
 
 export default function RootLayout({
