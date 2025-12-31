@@ -6,8 +6,8 @@ type Language = 'en' | 'zh';
 
 const translations = {
   en: {
-    title: 'Free OCR Text Recognition',
-    subtitle: 'Convert images to editable text instantly',
+    title: 'Offline OCR: Math & Text',
+    subtitle: 'Convert images and formulas to editable text instantly',
     dragDrop: 'Drag & drop your image here or',
     browse: 'browse files',
     selectImage: 'Please select an image first',
@@ -20,7 +20,7 @@ const translations = {
     copy: 'Copy to Clipboard',
     download: 'Download as TXT',
     copySuccess: 'Copied to clipboard!',
-    features: 'Why Choose LocalAI OCR?',
+    features: 'Why Choose Offline OCR?',
     feature1: 'Instant Recognition',
     feature1Desc: 'Process images in milliseconds',
     feature2: 'Privacy First',
@@ -34,11 +34,11 @@ const translations = {
     googlePlay: 'Google Play',
     appStore: 'App Store',
     selectedFile: 'Selected file',
-    footer: '© 2025 LocalAI OCR. All rights reserved.',
+    footer: '© 2025 Offline OCR: Math & Text. All rights reserved.',
   },
   zh: {
-    title: '免费OCR文字识别工具',
-    subtitle: '一键将图片转换为可编辑文本',
+    title: 'Offline OCR：数学公式与文字识别',
+    subtitle: '一键将图片和公式转换为可编辑文本',
     dragDrop: '拖拽图片到这里或',
     browse: '选择文件',
     selectImage: '请先选择一张图片',
@@ -51,7 +51,7 @@ const translations = {
     copy: '复制到剪贴板',
     download: '下载为TXT文件',
     copySuccess: '已复制到剪贴板！',
-    features: '为什么选择LocalAI OCR?',
+    features: '为什么选择 Offline OCR?',
     feature1: '极速识别',
     feature1Desc: '毫秒级处理图片',
     feature2: '隐私保护',
@@ -65,7 +65,7 @@ const translations = {
     googlePlay: 'Google Play',
     appStore: 'App Store',
     selectedFile: '已选文件',
-    footer: '© 2025 LocalAI OCR 文字识别。保留所有权利。',
+    footer: '© 2025 Offline OCR 文字识别。保留所有权利。',
   },
 };
 
@@ -131,7 +131,6 @@ export default function OCRPage() {
       const formData = new FormData();
       formData.append('file', file);
 
-      // 注意：确保你有一个 /api/ocr 的后端路由处理这个请求
       const res = await fetch('/api/ocr', {
         method: 'POST',
         body: formData,
@@ -166,7 +165,7 @@ export default function OCRPage() {
       const element = document.createElement('a');
       const file = new Blob([result.text], { type: 'text/plain' });
       element.href = URL.createObjectURL(file);
-      element.download = `ocr-result-${Date.now()}.txt`;
+      element.download = `offline-ocr-result-${Date.now()}.txt`;
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);
@@ -180,9 +179,9 @@ export default function OCRPage() {
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
-              LocalAI OCR
+              Offline OCR
             </h1>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Free Text Recognition</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Math & Text Recognition</p>
           </div>
           <div className="flex gap-2">
             <button
