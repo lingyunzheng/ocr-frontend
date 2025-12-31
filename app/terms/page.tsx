@@ -34,7 +34,7 @@ export default function TermsPage() {
               <li>Use the materials for any commercial purpose or for any public display</li>
               <li>Attempt to reverse engineer, disassemble, or decode the software</li>
               <li>Remove any copyright or other proprietary notations from the materials</li>
-              <li>Transfer the materials to another person or "mirror" the materials on any other server</li>
+              <li>Transfer the materials to another person or &quot;mirror&quot; the materials on any other server</li>
               <li>Use automated systems (bots, crawlers) to access our service</li>
             </ul>
           </section>
@@ -43,7 +43,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">3. Disclaimer</h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              The materials on LocalAI OCR are provided on an 'as is' basis. LocalAI OCR makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+              The materials on LocalAI OCR are provided on an &quot;as is&quot; basis. LocalAI OCR makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
             </p>
           </section>
 
@@ -67,7 +67,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">6. Links</h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              LocalAI OCR has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by LocalAI OCR of the site. Use of any such linked website is at the user's own risk.
+              LocalAI OCR has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by LocalAI OCR of the site. Use of any such linked website is at the user&apos;s own risk.
             </p>
           </section>
 
