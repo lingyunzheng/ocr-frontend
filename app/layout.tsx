@@ -1,10 +1,25 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: "Free OCR Text Recognition | Image to Text Converter | 免费OCR文字识别",
-  description: "Convert images to text instantly with our free OCR tool. Support for multiple languages. 免费图片文字识别工具，一键提取图片中的文字内容。",
-  keywords: "OCR, 文字识别, 图片转文字, OCR tool, image to text, text recognition, 免费OCR",
+  description:
+    "Convert images to text instantly with our free OCR tool. Support for multiple languages. 免费图片文字识别工具，一键提取图片中的文字内容。",
+  keywords: [
+    "OCR",
+    "文字识别",
+    "图片转文字",
+    "OCR tool",
+    "image to text",
+    "text recognition",
+    "免费OCR",
+  ],
   authors: [{ name: "LocalAI OCR" }],
   openGraph: {
     title: "Free OCR Text Recognition | 免费OCR文字识别",
@@ -44,7 +59,6 @@ export const metadata: Metadata = {
       "en-US": "https://your-domain.com/en",
     },
   },
-  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
 };
 
 export default function RootLayout({
@@ -53,13 +67,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <head>
         <meta charSet="utf-8" />
         <meta name="theme-color" content="#8b5cf6" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+
         {/* Structured Data - JSON-LD */}
         <script
           type="application/ld+json"
@@ -83,20 +100,6 @@ export default function RootLayout({
             }),
           }}
         />
-
-        {/* Google Analytics (optional) */}
-        {/* <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'GA_MEASUREMENT_ID');`,
-          }}
-        /> */}
       </head>
       <body className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
         {children}
@@ -104,3 +107,4 @@ export default function RootLayout({
     </html>
   );
 }
+
