@@ -28,7 +28,7 @@ const translations = {
     feature3: 'Free & Open',
     feature3Desc: 'No registration or hidden fees required',
     feature4: 'Multiple Languages',
-    feature4Desc: 'Support for 100+ languages',
+    feature4Desc: 'Support for multiple languages', // ← 修改：去掉100+
     downloadApp: 'Download Mobile App',
     appBenefit: 'Get more features on mobile',
     googlePlay: 'Google Play',
@@ -59,7 +59,7 @@ const translations = {
     feature3: '完全免费',
     feature3Desc: '无需注册，没有隐藏费用',
     feature4: '多语言支持',
-    feature4Desc: '支持100+种语言',
+    feature4Desc: '支持多种语言', // ← 修改：去掉100+
     downloadApp: '下载移动应用',
     appBenefit: '手机端获得更多功能',
     googlePlay: 'Google Play',
@@ -384,6 +384,7 @@ export default function OCRPage() {
           <h3 className="text-3xl font-bold mb-4">📱 {t.downloadApp}</h3>
           <p className="text-lg mb-8 opacity-90">{t.appBenefit}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {/* ← 删除了 App Store 链接，只保留 Google Play */}
             <a
               href="https://play.google.com/store/apps/details?id=com.localai.ocr"
               target="_blank"
@@ -391,14 +392,6 @@ export default function OCRPage() {
               className="px-8 py-4 bg-white text-purple-600 rounded-lg font-bold hover:bg-gray-100 transition-all inline-flex items-center justify-center gap-2"
             >
               🤖 {t.googlePlay}
-            </a>
-            <a
-              href="https://apps.apple.com/app/localai-ocr/id6123456789"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-white text-purple-600 rounded-lg font-bold hover:bg-gray-100 transition-all inline-flex items-center justify-center gap-2"
-            >
-              🍎 {t.appStore}
             </a>
           </div>
         </section>
