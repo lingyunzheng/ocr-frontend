@@ -19,7 +19,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">1. Introduction</h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              LocalAI OCR ("we", "us", "our", or "Company") operates the OCR text recognition service. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.
+              LocalAI OCR (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;, or &quot;Company&quot;) operates the OCR text recognition service. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.
             </p>
           </section>
 
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">2.2 Usage Data</h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  We may collect information about how you interact with our Service ("Usage Data"). This may include:
+                  We may collect information about how you interact with our Service (&quot;Usage Data&quot;). This may include:
                   <br />• Browser type and version<br />
                   • IP address (anonymous)<br />
                   • Pages visited and time spent<br />
@@ -52,7 +52,7 @@ export default function PrivacyPage() {
 
           {/* Data Privacy */}
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">3. Privacy & Security</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">3. Privacy &amp; Security</h2>
             <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
               <p>
                 <strong>Local Processing:</strong> All image recognition happens on your device. Images never leave your computer or phone.
@@ -81,7 +81,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">5. Changes to This Privacy Policy</h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "effective date" at the bottom of this page.
+              We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the &quot;effective date&quot; at the bottom of this page.
             </p>
           </section>
 
