@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import { useState, useRef } from 'react';
@@ -29,7 +28,7 @@ const translations = {
     feature3: 'Free & Open',
     feature3Desc: 'No registration or hidden fees required',
     feature4: 'Multiple Languages',
-    feature4Desc: 'Support for multiple languages', // ← 修改：去掉100+
+    feature4Desc: 'Support for multiple languages',
     downloadApp: 'Download Mobile App',
     appBenefit: 'Get more features on mobile',
     googlePlay: 'Google Play',
@@ -60,7 +59,7 @@ const translations = {
     feature3: '完全免费',
     feature3Desc: '无需注册，没有隐藏费用',
     feature4: '多语言支持',
-    feature4Desc: '支持多种语言', // ← 修改：去掉100+
+    feature4Desc: '支持多种语言',
     downloadApp: '下载移动应用',
     appBenefit: '手机端获得更多功能',
     googlePlay: 'Google Play',
@@ -132,6 +131,7 @@ export default function OCRPage() {
       const formData = new FormData();
       formData.append('file', file);
 
+      // 注意：确保你有一个 /api/ocr 的后端路由处理这个请求
       const res = await fetch('/api/ocr', {
         method: 'POST',
         body: formData,
@@ -385,7 +385,6 @@ export default function OCRPage() {
           <h3 className="text-3xl font-bold mb-4">📱 {t.downloadApp}</h3>
           <p className="text-lg mb-8 opacity-90">{t.appBenefit}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {/* ← 删除了 App Store 链接，只保留 Google Play */}
             <a
               href="https://play.google.com/store/apps/details?id=com.localai.ocr"
               target="_blank"
