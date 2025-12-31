@@ -49,7 +49,7 @@ export default function ContactPage() {
       <main className="max-w-4xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">Contact Us</h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-12">
-          Have a question or feedback? We'd love to hear from you!
+          Have a question or feedback? We&apos;d love to hear from you!
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -74,7 +74,7 @@ export default function ContactPage() {
             <div className="text-3xl mb-3">🌍</div>
             <h3 className="font-bold text-gray-900 dark:text-white mb-2">Language</h3>
             <p className="text-gray-600 dark:text-gray-400">
-              English & 中文
+              English &amp; 中文
             </p>
           </div>
         </div>
@@ -85,7 +85,7 @@ export default function ContactPage() {
 
           {submitted && (
             <div className="mb-6 p-4 bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 rounded-lg">
-              <p className="text-green-700 dark:text-green-200">✅ Thank you! Your message has been sent successfully. We'll get back to you soon!</p>
+              <p className="text-green-700 dark:text-green-200">✅ Thank you! Your message has been sent successfully. We&apos;ll get back to you soon!</p>
             </div>
           )}
 
