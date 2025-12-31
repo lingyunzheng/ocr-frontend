@@ -786,39 +786,32 @@ code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(var(--color-brown-600-rgb), 0.3);
+  background: var(--color-border);
   border-radius: var(--radius-sm);
+  transition: background var(--duration-fast) var(--ease-standard);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(var(--color-brown-600-rgb), 0.4);
+  background: var(--color-text-secondary);
 }
 
 /* Dark mode scrollbar */
 @media (prefers-color-scheme: dark) {
   ::-webkit-scrollbar-thumb {
-    background: rgba(var(--color-gray-400-rgb), 0.3);
+    background: var(--color-border);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(var(--color-gray-400-rgb), 0.4);
+    background: var(--color-text-secondary);
   }
 }
 
 [data-color-scheme="dark"] ::-webkit-scrollbar-thumb {
-  background: rgba(var(--color-gray-400-rgb), 0.3);
+  background: var(--color-border);
 }
 
 [data-color-scheme="dark"] ::-webkit-scrollbar-thumb:hover {
-  background: rgba(var(--color-gray-400-rgb), 0.4);
-}
-
-[data-color-scheme="light"] ::-webkit-scrollbar-thumb {
-  background: rgba(var(--color-brown-600-rgb), 0.3);
-}
-
-[data-color-scheme="light"] ::-webkit-scrollbar-thumb:hover {
-  background: rgba(var(--color-brown-600-rgb), 0.4);
+  background: var(--color-text-secondary);
 }
 
 /* Smooth transitions */
@@ -852,11 +845,126 @@ a:hover {
 img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
-/* Mobile responsive - 480px breakpoint */
+/* Button styles */
+button {
+  font-weight: var(--font-weight-medium);
+  transition: all var(--duration-normal) var(--ease-standard);
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  border-radius: var(--radius-base);
+  border: none;
+  color: var(--color-text);
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+button:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+  box-shadow: var(--focus-ring);
+}
+
+/* Form elements */
+input[type="file"] {
+  display: none;
+}
+
+input,
+textarea,
+select {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  padding: var(--space-8) var(--space-12);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary);
+  outline: var(--focus-outline);
+  box-shadow: var(--focus-ring);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: var(--select-caret-light);
+  background-repeat: no-repeat;
+  background-position: right var(--space-12) center;
+  background-size: 16px;
+  padding-right: var(--space-32);
+}
+
+@media (prefers-color-scheme: dark) {
+  select {
+    background-image: var(--select-caret-dark);
+  }
+}
+
+[data-color-scheme="dark"] select {
+  background-image: var(--select-caret-dark);
+}
+
+[data-color-scheme="light"] select {
+  background-image: var(--select-caret-light);
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+
+  button {
+    display: none;
+  }
+}
+
+/* Mobile optimization - 480px breakpoint for mobile portrait */
 @media (max-width: 480px) {
   html {
+    font-size: var(--font-size-sm);
+  }
+
+  body {
     font-size: var(--font-size-sm);
   }
 
@@ -864,5 +972,58 @@ img {
     width: 6px;
     height: 6px;
   }
-}
 
+  button {
+    padding: var(--space-8) var(--space-12);
+    font-size: var(--font-size-sm);
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: var(--font-size-base);
+    padding: var(--space-10) var(--space-12);
+    min-height: 44px;
+  }
+
+  a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  h3 {
+    font-size: var(--font-size-xl);
+  }
+
+  h4 {
+    font-size: var(--font-size-lg);
+  }
+
+  h5 {
+    font-size: var(--font-size-md);
+  }
+
+  h6 {
+    font-size: var(--font-size-base);
+  }
+
+  code {
+    font-size: calc(var(--font-size-sm) * 0.95);
+  }
+
+  select {
+    background-position: right var(--space-8) center;
+    padding-right: var(--space-24);
+  }
+}
