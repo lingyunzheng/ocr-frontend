@@ -1,14 +1,56 @@
+'use client';
+
 export default function PrivacyPage() {
   const privacyContent = {
-    intro: `Offline OCR ("we", "us", "our", or "Company") operates the OCR text recognition service. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.`,
+    intro: `Offline OCR ("we", "us", "our", or "Company") operates the OCR text recognition service available on both web and mobile platforms. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.`,
+    
+    // 新增：平台说明
+    platformNotice: `Please note: Our service is available on two platforms with different processing methods:
+    • Web Version: Images are uploaded to our servers for processing
+    • Mobile App: Images are processed entirely on your device (offline)
+    
+    This policy applies to both versions. Please review the section below that corresponds to the platform you are using.`,
+
+    // 网页版
+    webVersion: `2.1 Web Version (Website)
+
+When you use our web-based OCR service:
+    • Your images ARE uploaded to our servers for processing
+    • Your images are processed by our backend API
+    • Uploaded images are deleted within 24 hours after processing
+    • The recognized text is not stored unless you explicitly save it
+    • Your IP address and basic usage data may be logged for security and analytics purposes`,
+
+    // App版
+    appVersion: `2.2 Mobile App Version
+
+When you use our mobile app:
+    • Images are processed entirely on your device
+    • Images are NEVER uploaded to our servers
+    • Images are NOT stored after processing
+    • The recognized text remains only on your device
+    • No personal data or images leave your device`,
+
     usageData: `We may collect information about how you interact with our Service ("Usage Data"). This may include:
-    • Browser type and version
-    • IP address (anonymous)
+    • Browser type and version (web only)
+    • IP address (anonymous, web only)
     • Pages visited and time spent
-    • Device type and operating system
-    This data is collected for service improvement and analytics purposes only.`,
+    • App version and device type
+    • Approximate location (optional, with your permission)
+    This data is collected for service improvement, analytics, and security purposes only.`,
+
+    dataRetention: `Data Retention Policy:
+    • Uploaded images (web): Automatically deleted within 24 hours
+    • Processing logs (web): Retained for 7 days for debugging purposes
+    • Usage analytics: Retained for 90 days, then anonymized
+    • User account data: Retained as long as your account is active`,
+
+    security: `For web users: We use industry-standard SSL/TLS encryption for data transmission. However, no method of transmission over the Internet is 100% secure.
+
+For app users: All processing happens locally on your device, providing maximum security.`,
+
     effectiveDate: 'Effective Date: January 1, 2026',
-    lastUpdated: 'Last Updated: December 31, 2026',
+    lastUpdated: 'Last Updated: January 12, 2026',
   };
 
   return (
@@ -39,31 +81,58 @@ export default function PrivacyPage() {
             </p>
           </section>
 
+          {/* 新增：平台说明 */}
+          <section className="bg-blue-50 dark:bg-blue-900 border-l-4 border-blue-500 p-6 rounded">
+            <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">
+              ⚠️ Important Platform Notice
+            </h2>
+            <p className="text-blue-800 dark:text-blue-200 whitespace-pre-line leading-relaxed">
+              {privacyContent.platformNotice}
+            </p>
+          </section>
+
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               2. Information Collection and Use
             </h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                  2.1 Images You Upload
+            <div className="space-y-6">
+              {/* 网页版 */}
+              <div className="border-l-4 border-orange-500 pl-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                  🌐 {privacyContent.webVersion.split('\n')[0]}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  • Images are processed locally on your device
-                  <br />
-                  • We do NOT upload your images to our servers
-                  <br />
-                  • Images are NOT stored or retained after processing
-                  <br />
-                  • All OCR processing happens in-device for maximum privacy
+                <p className="text-gray-700 dark:text-gray-300 whitespace-pre-line">
+                  {privacyContent.webVersion.split('\n').slice(2).join('\n')}
                 </p>
               </div>
+
+              {/* App版 */}
+              <div className="border-l-4 border-green-500 pl-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                  📱 {privacyContent.appVersion.split('\n')[0]}
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 whitespace-pre-line">
+                  {privacyContent.appVersion.split('\n').slice(2).join('\n')}
+                </p>
+              </div>
+
+              {/* 使用数据 */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                  2.2 Usage Data
+                  2.3 Usage Data
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
+                <p className="text-gray-700 dark:text-gray-300 whitespace-pre-line">
                   {privacyContent.usageData}
+                </p>
+              </div>
+
+              {/* 数据保留 */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  2.4 Data Retention
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 whitespace-pre-line">
+                  {privacyContent.dataRetention}
                 </p>
               </div>
             </div>
@@ -75,16 +144,14 @@ export default function PrivacyPage() {
             </h2>
             <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
               <p>
-                <strong>Local Processing:</strong> All image recognition happens on your device.
-                Images never leave your computer or phone.
+                <strong>Web Version Security:</strong> {privacyContent.security.split('\n')[0]}
               </p>
               <p>
-                <strong>No Storage:</strong> Recognized text is not stored on our servers. Only you
-                have access to your results.
+                <strong>Mobile App Security:</strong> {privacyContent.security.split('\n')[1]}
               </p>
               <p>
-                <strong>HTTPS Encryption:</strong> All data transmitted to our website is encrypted
-                using SSL/TLS protocols.
+                <strong>HTTPS Encryption:</strong> All data transmitted to our website is
+                encrypted using SSL/TLS protocols.
               </p>
               <p>
                 <strong>No Third-Party Sharing:</strong> We do not sell, trade, or share your
@@ -98,9 +165,9 @@ export default function PrivacyPage() {
               4. Cookies
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              Our Service uses Cookies to enhance user experience. You can instruct your browser to
-              refuse all Cookies or to indicate when a Cookie is being sent. However, if you do not
-              accept Cookies, you may not be able to use some portions of our Service.
+              Our web service uses Cookies to enhance user experience. You can instruct your browser
+              to refuse all Cookies or to indicate when a Cookie is being sent. The mobile app does
+              not use Cookies.
             </p>
           </section>
 
@@ -152,4 +219,5 @@ export default function PrivacyPage() {
     </div>
   );
 }
+
 
