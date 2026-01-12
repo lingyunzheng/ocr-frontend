@@ -8,34 +8,19 @@ export default function ContactPage() {
     successMessage: "Thank you! Your message has been sent successfully. We'll get back to you soon!",
   };
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // 提交成功后显示消息
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
-
+    // Formspree 会自动处理提交，我们只需要等待响应
     setTimeout(() => {
       setSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
       setLoading(false);
       setTimeout(() => setSubmitted(false), 5000);
+      // 重置表单
+      e.currentTarget.reset();
     }, 1500);
   };
 
@@ -98,7 +83,13 @@ export default function ContactPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Formspree 表单 */}
+          <form
+            action="https://formspree.io/f/mlggejyd"
+            method="POST"
+            onSubmit={handleFormSubmit}
+            className="space-y-6"
+          >
             <div>
               <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                 Name *
@@ -106,8 +97,6 @@ export default function ContactPage() {
               <input
                 type="text"
                 name="name"
-                value={formData.name}
-                onChange={handleChange}
                 required
                 className="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
                 placeholder="Your name"
@@ -121,8 +110,6 @@ export default function ContactPage() {
               <input
                 type="email"
                 name="email"
-                value={formData.email}
-                onChange={handleChange}
                 required
                 className="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
                 placeholder="your.email@example.com"
@@ -135,8 +122,6 @@ export default function ContactPage() {
               </label>
               <select
                 name="subject"
-                value={formData.subject}
-                onChange={handleChange}
                 required
                 className="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
               >
@@ -155,8 +140,6 @@ export default function ContactPage() {
               </label>
               <textarea
                 name="message"
-                value={formData.message}
-                onChange={handleChange}
                 required
                 rows={6}
                 className="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-600 resize-none"
@@ -246,4 +229,5 @@ export default function ContactPage() {
     </div>
   );
 }
+
 
