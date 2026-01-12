@@ -2,7 +2,7 @@
 
 export default function PrivacyPage() {
   const privacyContent = {
-    intro: `Offline OCR ("we", "us", "our", or "Company") operates the OCR text recognition service available on both web and mobile platforms. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.`,
+    intro: `AI Offline Scanner ("we", "us", "our", or "Company") operates the text and formula recognition service available on both web and mobile platforms. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.`,
     
     // 新增：推荐使用 App
     appRecommendation: `⭐ RECOMMENDED: Mobile App Version
@@ -14,7 +14,7 @@ For the best privacy experience, we strongly recommend using our mobile app. The
 
 The web version is a DEMO designed for quick testing and evaluation purposes. It is NOT recommended for regular use or sensitive content.
 
-When you use our web-based OCR demo:
+When you use our web-based scanner demo:
     • Your images ARE uploaded to our servers for processing
     • Your images are processed by our backend API on Hugging Face
     • Uploaded images are deleted after processing (typically within minutes)
@@ -36,7 +36,7 @@ When you use our mobile app:
     • ✅ No personal data, images, or processing information leaves your device
     • ✅ Works completely offline - no internet connection required
     
-This is the recommended way to use Offline OCR for maximum privacy and security.`,
+This is the recommended way to use AI Offline Scanner for maximum privacy and security.`,
 
     usageData: `Usage Data Collection:
     • WEB DEMO ONLY: Basic server metrics (page views, request counts)
@@ -91,7 +91,7 @@ For mobile app users: All processing happens locally on your device with militar
             href="/"
             className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent"
           >
-            Offline OCR
+            AI Offline Scanner
           </a>
         </div>
       </header>
@@ -249,7 +249,9 @@ For mobile app users: All processing happens locally on your device with militar
             Switch to our mobile app for complete offline processing. Your data stays on your device.
           </p>
           <a
-            href="/"
+            href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block px-8 py-3 bg-white text-purple-600 font-bold rounded-lg hover:bg-gray-100 transition-colors"
           >
             📱 Download Mobile App
@@ -268,10 +270,11 @@ For mobile app users: All processing happens locally on your device with militar
 
       <footer className="bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 py-8 mt-12">
         <div className="max-w-4xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400 text-sm">
-          <p>© 2026 Offline OCR. All rights reserved.</p>
+          <p>© 2026 AI Offline Scanner. All rights reserved.</p>
         </div>
       </footer>
     </div>
   );
 }
+
 
