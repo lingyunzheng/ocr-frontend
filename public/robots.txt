@@ -3,17 +3,18 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-# Google Bot specific rules (overrides default)
+# Google Bot - faster crawl
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 0
 
-# Bing Bot specific rules (overrides default)
+# Bing Bot
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# Sitemaps
+# Sitemap location
 Sitemap: https://offline-ocr.vercel.app/sitemap.xml
+
 
 
