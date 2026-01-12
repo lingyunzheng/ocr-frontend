@@ -8,6 +8,8 @@ const translations = {
   en: {
     title: 'Offline OCR: Math & Text',
     subtitle: 'Convert images and formulas to editable text instantly',
+    demoNotice: 'This page is a demo and only recognizes text. For more recognition features, please download the app.',
+    downloadAppCTA: 'Download App Now',
     dragDrop: 'Drag & drop your image here or',
     browse: 'browse files',
     selectImage: 'Please select an image first',
@@ -41,6 +43,8 @@ const translations = {
   zh: {
     title: 'Offline OCR：数学公式与文字识别',
     subtitle: '一键将图片和公式转换为可编辑文本',
+    demoNotice: '此页面只是个 Demo，仅支持文字识别。想要更多识别功能请下载 App。',
+    downloadAppCTA: '立即下载 App',
     dragDrop: '拖拽图片到这里或',
     browse: '选择文件',
     selectImage: '请先选择一张图片',
@@ -311,6 +315,25 @@ export default function OCRPage() {
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
             {t.subtitle}
           </p>
+
+          {/* Demo Notice 提示框（新增）*/}
+          <div className="mx-auto max-w-2xl bg-blue-50 dark:bg-blue-900/30 border-2 border-blue-300 dark:border-blue-700 rounded-2xl px-6 py-5 mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div className="flex-1">
+                <p className="text-blue-900 dark:text-blue-100 font-medium text-sm md:text-base">
+                  ℹ️ {t.demoNotice}
+                </p>
+              </div>
+              <a
+                href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="whitespace-nowrap px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all transform hover:scale-105 active:scale-95"
+              >
+                📱 {t.downloadAppCTA}
+              </a>
+            </div>
+          </div>
         </section>
 
         {/* Upload Section */}
