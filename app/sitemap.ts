@@ -1,29 +1,31 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://ocr-frontend-orcin.vercel.app';  // ← 改这里
+
   return [
     {
-      url: 'https://offline-ocr.vercel.app',
-      lastModified: new Date('2026-01-13'),
-      changeFrequency: 'weekly',
-      priority: 1,
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 1.0,
     },
     {
-      url: 'https://offline-ocr.vercel.app/ocr',
-      lastModified: new Date('2026-01-13'),
-      changeFrequency: 'weekly',
+      url: `${baseUrl}/ocr`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
-      url: 'https://offline-ocr.vercel.app/privacy',
+      url: `${baseUrl}/privacy`,
       lastModified: new Date('2026-01-13'),
-      changeFrequency: 'monthly',
+      changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
     {
-      url: 'https://offline-ocr.vercel.app/terms',
+      url: `${baseUrl}/terms`,
       lastModified: new Date('2026-01-13'),
-      changeFrequency: 'monthly',
+      changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
   ];
