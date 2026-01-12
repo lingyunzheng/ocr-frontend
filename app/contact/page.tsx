@@ -17,7 +17,9 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -41,14 +43,19 @@ export default function ContactPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
       <header className="bg-white dark:bg-slate-800 shadow-sm sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-4 py-4">
-          <a href="/" className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
-            LocalAI OCR
+          <a
+            href="/"
+            className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent"
+          >
+            Offline OCR
           </a>
         </div>
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">Contact Us</h1>
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+          Contact Us
+        </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-12">
           {contactText.subtitle}
         </p>
@@ -57,34 +64,37 @@ export default function ContactPage() {
           <div className="bg-white dark:bg-slate-700 rounded-xl shadow-lg p-6 text-center">
             <div className="text-3xl mb-3">📧</div>
             <h3 className="font-bold text-gray-900 dark:text-white mb-2">Email</h3>
-            <a href="mailto:support@localai.ocr" className="text-purple-600 hover:text-purple-700">
-              support@localai.ocr
+            <a
+              href="mailto:zhenglingyun829@gmail.com"
+              className="text-purple-600 hover:text-purple-700"
+            >
+              zhenglingyun829@gmail.com
             </a>
           </div>
 
           <div className="bg-white dark:bg-slate-700 rounded-xl shadow-lg p-6 text-center">
             <div className="text-3xl mb-3">🕐</div>
             <h3 className="font-bold text-gray-900 dark:text-white mb-2">Response Time</h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Usually within 24 hours
-            </p>
+            <p className="text-gray-600 dark:text-gray-400">Usually within 24 hours</p>
           </div>
 
           <div className="bg-white dark:bg-slate-700 rounded-xl shadow-lg p-6 text-center">
             <div className="text-3xl mb-3">🌍</div>
             <h3 className="font-bold text-gray-900 dark:text-white mb-2">Language</h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              English &amp; 中文
-            </p>
+            <p className="text-gray-600 dark:text-gray-400">English &amp; 中文</p>
           </div>
         </div>
 
         <div className="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a Message</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            Send us a Message
+          </h2>
 
           {submitted && (
             <div className="mb-6 p-4 bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 rounded-lg">
-              <p className="text-green-700 dark:text-green-200">✅ {contactText.successMessage}</p>
+              <p className="text-green-700 dark:text-green-200">
+                ✅ {contactText.successMessage}
+              </p>
             </div>
           )}
 
@@ -173,41 +183,56 @@ export default function ContactPage() {
         </div>
 
         <div className="mt-12">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Frequently Asked Questions</h2>
-          
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            Frequently Asked Questions
+          </h2>
+
           <div className="space-y-4">
             <div className="bg-white dark:bg-slate-700 rounded-xl shadow-lg p-6">
-              <h3 className="font-bold text-gray-900 dark:text-white mb-2">What is LocalAI OCR?</h3>
+              <h3 className="font-bold text-gray-900 dark:text-white mb-2">
+                What is Offline OCR?
+              </h3>
               <p className="text-gray-700 dark:text-gray-300">
-                LocalAI OCR is a free, privacy-first text recognition tool that processes images on your device without uploading them to any server.
+                Offline OCR is a free, privacy-first text recognition tool that processes images
+                on your device without uploading them to any server.
               </p>
             </div>
 
             <div className="bg-white dark:bg-slate-700 rounded-xl shadow-lg p-6">
               <h3 className="font-bold text-gray-900 dark:text-white mb-2">Is my data safe?</h3>
               <p className="text-gray-700 dark:text-gray-300">
-                Yes! All processing happens locally on your device. Your images are never uploaded to our servers and are not stored anywhere.
+                Yes! All processing happens locally on your device. Your images are never uploaded
+                to our servers and are not stored anywhere.
               </p>
             </div>
 
             <div className="bg-white dark:bg-slate-700 rounded-xl shadow-lg p-6">
-              <h3 className="font-bold text-gray-900 dark:text-white mb-2">Do you have a mobile app?</h3>
+              <h3 className="font-bold text-gray-900 dark:text-white mb-2">
+                Do you have a mobile app?
+              </h3>
               <p className="text-gray-700 dark:text-gray-300">
-                Yes! Download our mobile app from Google Play for an enhanced experience with additional features.
+                Yes! Download our mobile app from Google Play for an enhanced experience with
+                additional features.
               </p>
             </div>
 
             <div className="bg-white dark:bg-slate-700 rounded-xl shadow-lg p-6">
-              <h3 className="font-bold text-gray-900 dark:text-white mb-2">Is it really free?</h3>
+              <h3 className="font-bold text-gray-900 dark:text-white mb-2">
+                Is it really free?
+              </h3>
               <p className="text-gray-700 dark:text-gray-300">
-                Yes! LocalAI OCR is completely free to use. There are no hidden fees, registration requirements, or limitations on the number of images you can process.
+                Yes! Offline OCR is completely free to use. There are no hidden fees, registration
+                requirements, or limitations on the number of images you can process.
               </p>
             </div>
           </div>
         </div>
 
         <div className="mt-12 text-center">
-          <a href="/" className="inline-block px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+          <a
+            href="/"
+            className="inline-block px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+          >
             ← Back to Home
           </a>
         </div>
@@ -215,9 +240,10 @@ export default function ContactPage() {
 
       <footer className="bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 py-8 mt-12">
         <div className="max-w-4xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400 text-sm">
-          <p>© 2025 LocalAI OCR. All rights reserved.</p>
+          <p>© 2026 Offline OCR. All rights reserved.</p>
         </div>
       </footer>
     </div>
   );
 }
+
