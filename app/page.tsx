@@ -35,6 +35,8 @@ const translations = {
     appStore: 'App Store',
     selectedFile: 'Selected file',
     footer: '© 2025 Offline OCR: Math & Text. All rights reserved.',
+    compressing: 'Compressing image...',
+    imageSize: 'Image size',
   },
   zh: {
     title: 'Offline OCR：数学公式与文字识别',
@@ -66,26 +68,115 @@ const translations = {
     appStore: 'App Store',
     selectedFile: '已选文件',
     footer: '© 2025 Offline OCR 文字识别。保留所有权利。',
+    compressing: '压缩中...',
+    imageSize: '图片大小',
   },
 };
 
 export default function OCRPage() {
   const [file, setFile] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string>(''); // 预览图片
   const [result, setResult] = useState<{ text: string; lines: string[] } | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [language, setLanguage] = useState<Language>('en');
   const [showDetails, setShowDetails] = useState(false);
+  const [fileSize, setFileSize] = useState(''); // 显示文件大小
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dragRef = useRef<HTMLDivElement>(null);
 
   const t = translations[language];
 
+  // 将图片压缩为 JPG
+  const compressImageToJPG = (inputFile: File): Promise<File> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(inputFile);
+      reader.onload = (e) => {
+        const img = new Image();
+        img.src = e.target?.result as string;
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          let width = img.width;
+          let height = img.height;
+
+          // 如果图片太大，缩小尺寸（最大宽度 2048px）
+          if (width > 2048) {
+            height = (height * 2048) / width;
+            width = 2048;
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext('2d');
+          if (!ctx) {
+            reject(new Error('Failed to get canvas context'));
+            return;
+          }
+
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // 转换为 JPG，质量设置为 0.8（可根据需要调整）
+          canvas.toBlob(
+            (blob) => {
+              if (blob) {
+                // 生成新的 File 对象，保持原始文件名但改为 .jpg
+                const newFile = new File(
+                  [blob],
+                  inputFile.name.replace(/\.[^.]+$/, '.jpg'),
+                  { type: 'image/jpeg' }
+                );
+                resolve(newFile);
+              } else {
+                reject(new Error('Failed to compress image'));
+              }
+            },
+            'image/jpeg',
+            0.8 // JPG 质量（0-1，0.8 是平衡点）
+          );
+        };
+        img.onerror = () => {
+          reject(new Error('Failed to load image'));
+        };
+      };
+      reader.onerror = () => {
+        reject(new Error('Failed to read file'));
+      };
+    });
+  };
+
+  // 格式化文件大小显示
+  const formatFileSize = (bytes: number): string => {
+    if (bytes === 0) return '0 B';
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
+  };
+
+  // 处理文件选择（包括预览和压缩准备）
+  const handleFileSelect = async (selectedFile: File) => {
+    setError('');
+    setResult(null);
+
+    // 显示预览
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setPreview(e.target?.result as string);
+    };
+    reader.readAsDataURL(selectedFile);
+
+    // 显示文件大小
+    setFileSize(formatFileSize(selectedFile.size));
+
+    // 暂时存储原文件，不立即压缩（等用户点击识别时再压缩）
+    setFile(selectedFile);
+  };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
-      setError('');
-      setResult(null);
+      handleFileSelect(e.target.files[0]);
     }
   };
 
@@ -112,12 +203,11 @@ export default function OCRPage() {
       dragRef.current.style.borderColor = '#e5e7eb';
     }
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      setFile(e.dataTransfer.files[0]);
-      setError('');
-      setResult(null);
+      handleFileSelect(e.dataTransfer.files[0]);
     }
   };
 
+  // 处理上传和压缩
   const handleUpload = async () => {
     if (!file) {
       setError(t.selectImage);
@@ -128,8 +218,11 @@ export default function OCRPage() {
     setError('');
 
     try {
+      // 压缩图片为 JPG
+      const compressedFile = await compressImageToJPG(file);
+
       const formData = new FormData();
-      formData.append('file', file);
+      formData.append('file', compressedFile);
 
       const res = await fetch('/api/ocr', {
         method: 'POST',
@@ -247,23 +340,39 @@ export default function OCRPage() {
             />
           </div>
 
+          {/* 图片预览 */}
+          {preview && (
+            <div className="mt-6 rounded-xl overflow-hidden border-2 border-purple-300 dark:border-purple-600 bg-gray-100 dark:bg-slate-600">
+              <img
+                src={preview}
+                alt="Preview"
+                className="w-full h-auto object-contain max-h-96"
+              />
+            </div>
+          )}
+
           {/* File Preview */}
           {file && (
             <div className="mt-6 p-4 bg-purple-50 dark:bg-slate-600 rounded-lg flex items-center justify-between">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 flex-1">
                 <span className="text-2xl">✓</span>
-                <div>
+                <div className="flex-1">
                   <p className="font-medium text-gray-900 dark:text-white">{t.selectedFile}:</p>
                   <p className="text-sm text-gray-600 dark:text-gray-300">{file.name}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    {t.imageSize}: {fileSize}
+                  </p>
                 </div>
               </div>
               <button
                 onClick={() => {
                   setFile(null);
+                  setPreview('');
                   setResult(null);
                   setError('');
+                  setFileSize('');
                 }}
-                className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 ml-4 text-xl"
               >
                 ✕
               </button>
@@ -416,3 +525,4 @@ export default function OCRPage() {
     </div>
   );
 }
+
