@@ -32,7 +32,7 @@ export default function ContactPage() {
             href="/"
             className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent"
           >
-            Offline OCR
+            AI Offline Scanner
           </a>
         </div>
       </header>
@@ -173,10 +173,10 @@ export default function ContactPage() {
           <div className="space-y-4">
             <div className="bg-white dark:bg-slate-700 rounded-xl shadow-lg p-6">
               <h3 className="font-bold text-gray-900 dark:text-white mb-2">
-                What is Offline OCR?
+                What is AI Offline Scanner?
               </h3>
               <p className="text-gray-700 dark:text-gray-300">
-                Offline OCR is a free, privacy-first text recognition tool that processes images
+                AI Offline Scanner is a free, privacy-first text and formula recognition tool that processes images
                 on your device without uploading them to any server.
               </p>
             </div>
@@ -195,7 +195,7 @@ export default function ContactPage() {
               </h3>
               <p className="text-gray-700 dark:text-gray-300">
                 Yes! Download our mobile app from Google Play for an enhanced experience with
-                additional features.
+                additional features and complete offline processing.
               </p>
             </div>
 
@@ -204,7 +204,7 @@ export default function ContactPage() {
                 Is it really free?
               </h3>
               <p className="text-gray-700 dark:text-gray-300">
-                Yes! Offline OCR is completely free to use. There are no hidden fees, registration
+                Yes! AI Offline Scanner is completely free to use. There are no hidden fees, registration
                 requirements, or limitations on the number of images you can process.
               </p>
             </div>
@@ -223,7 +223,7 @@ export default function ContactPage() {
 
       <footer className="bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 py-8 mt-12">
         <div className="max-w-4xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400 text-sm">
-          <p>© 2026 Offline OCR. All rights reserved.</p>
+          <p>© 2026 AI Offline Scanner. All rights reserved.</p>
         </div>
       </footer>
     </div>
