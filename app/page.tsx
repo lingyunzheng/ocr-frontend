@@ -6,7 +6,7 @@ type Language = 'en' | 'zh';
 
 const translations = {
   en: {
-    title: 'Offline OCR: Math & Text',
+    title: 'AI Offline Scanner: Math & Word',
     subtitle: 'Convert images and formulas to editable text instantly',
     demoNotice: 'This page is a demo and only recognizes text. For more recognition features, please download the app.',
     downloadAppCTA: 'Download App Now',
@@ -22,7 +22,7 @@ const translations = {
     copy: 'Copy to Clipboard',
     download: 'Download as TXT',
     copySuccess: 'Copied to clipboard!',
-    features: 'Why Choose Offline OCR?',
+    features: 'Why Choose AI Offline Scanner?',
     feature1: 'Instant Recognition',
     feature1Desc: 'Process images in milliseconds',
     feature2: 'Privacy First',
@@ -36,12 +36,12 @@ const translations = {
     googlePlay: 'Google Play',
     appStore: 'App Store',
     selectedFile: 'Selected file',
-    footer: '© 2026 Offline OCR: Math & Text. All rights reserved.',
+    footer: '© 2026 AI Offline Scanner. All rights reserved.',
     compressing: 'Compressing image...',
     imageSize: 'Image size',
   },
   zh: {
-    title: 'Offline OCR：数学公式与文字识别',
+    title: 'AI 离线扫描仪：数学公式与文字',
     subtitle: '一键将图片和公式转换为可编辑文本',
     demoNotice: '此页面只是个 Demo，仅支持文字识别。想要更多识别功能请下载 App。',
     downloadAppCTA: '立即下载 App',
@@ -57,7 +57,7 @@ const translations = {
     copy: '复制到剪贴板',
     download: '下载为TXT文件',
     copySuccess: '已复制到剪贴板！',
-    features: '为什么选择 Offline OCR?',
+    features: '为什么选择 AI 离线扫描仪?',
     feature1: '极速识别',
     feature1Desc: '毫秒级处理图片',
     feature2: '隐私保护',
@@ -71,7 +71,7 @@ const translations = {
     googlePlay: 'Google Play',
     appStore: 'App Store',
     selectedFile: '已选文件',
-    footer: '© 2026 Offline OCR 文字识别。保留所有权利。',
+    footer: '© 2026 AI 离线扫描仪。保留所有权利。',
     compressing: '压缩中...',
     imageSize: '图片大小',
   },
@@ -276,9 +276,9 @@ export default function OCRPage() {
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
-              Offline OCR
+              AI Offline Scanner
             </h1>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Math & Text Recognition</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Math & Word Recognition</p>
           </div>
           <div className="flex gap-2">
             <button
