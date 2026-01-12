@@ -58,7 +58,9 @@ export default function TermsPage() {
               <li>Resell, redistribute, or provide the service as your own</li>
               <li>Use the service for automated bulk processing or mass extraction</li>
               <li>Attempt to reverse engineer, disassemble, or decode the software</li>
-              <li>Remove any copyright or other proprietary notations from the materials</li>
+            
+  <li>Remove any copyright or other proprietary notations from the materials</li>
+
               <li>{termsContent.license}</li>
               <li>Use automated systems (bots, crawlers, scrapers) to access our service</li>
               <li>Attempt to harm, disrupt, or overload the service infrastructure</li>
