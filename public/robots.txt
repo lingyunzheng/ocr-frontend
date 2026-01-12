@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
-Sitemap: https://offline-ocr.vercel.app/sitemap.xml
 
+Sitemap: https://ocr-frontend-orcin.vercel.app/sitemap.xml
 
 
 
