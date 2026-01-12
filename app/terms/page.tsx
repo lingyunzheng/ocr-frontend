@@ -58,9 +58,7 @@ export default function TermsPage() {
               <li>Resell, redistribute, or provide the service as your own</li>
               <li>Use the service for automated bulk processing or mass extraction</li>
               <li>Attempt to reverse engineer, disassemble, or decode the software</li>
-            
-  <li>Remove any copyright or other proprietary notations from the materials</li>
-
+              <li>Remove any copyright or other proprietary notations from the materials</li>
               <li>{termsContent.license}</li>
               <li>Use automated systems (bots, crawlers, scrapers) to access our service</li>
               <li>Attempt to harm, disrupt, or overload the service infrastructure</li>
@@ -72,10 +70,10 @@ export default function TermsPage() {
                 📌 Platform-Specific Terms
               </p>
               <p className="text-blue-800 dark:text-blue-200 text-sm">
-                The restrictions in this section apply to both our web demo and mobile app. 
-                However, the mobile app operates offline, so many restrictions are 
-                technically unenforceable after download. Please see Section 9 for 
-                data processing differences between platforms.
+                The restrictions in this section apply to both our web demo and mobile app.
+                However, the mobile app operates offline, so many restrictions are technically
+                unenforceable after download. Please see Section 9 for data processing differences
+                between platforms.
               </p>
             </div>
           </section>
@@ -155,8 +153,8 @@ export default function TermsPage() {
               8. Service Availability
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-              <strong>Web Demo:</strong> The web version is provided "as-is" without guarantees of
-              continuous availability. We may:
+              <strong>Web Demo:</strong> The web version is provided &quot;as-is&quot; without
+              guarantees of continuous availability. We may:
             </p>
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-4">
               <li>Perform maintenance that temporarily suspends the service</li>
@@ -181,14 +179,12 @@ export default function TermsPage() {
             </p>
           </section>
 
-          {/* 完全改写第 10 条 */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               10. User Responsibilities and Content
             </h2>
 
             <div className="space-y-6">
-              {/* 用户责任 */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                   10.1 Your Responsibilities
@@ -200,23 +196,16 @@ export default function TermsPage() {
                   <li>
                     Not upload illegal, harmful, or copyrighted content without proper authorization
                   </li>
-                  <li>
-                    Not use the service for illegal, unethical, or harmful purposes
-                  </li>
+                  <li>Not use the service for illegal, unethical, or harmful purposes</li>
                   <li>
                     Comply with all applicable laws, regulations, and third-party intellectual
                     property rights
                   </li>
-                  <li>
-                    Take full responsibility for the content you upload and process
-                  </li>
-                  <li>
-                    Not attempt to abuse, exploit, or harm the service or other users
-                  </li>
+                  <li>Take full responsibility for the content you upload and process</li>
+                  <li>Not attempt to abuse, exploit, or harm the service or other users</li>
                 </ul>
               </div>
 
-              {/* 网页版 */}
               <div className="border-l-4 border-orange-500 pl-6 bg-orange-50 dark:bg-orange-900/20 p-4 rounded">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                   🌐 10.2 Web Demo Version
@@ -233,12 +222,8 @@ export default function TermsPage() {
                     Your images will be processed and automatically deleted after processing
                     (typically within minutes)
                   </li>
-                  <li>
-                    The recognized text is not stored on our servers
-                  </li>
-                  <li>
-                    Server logs may be retained for up to 7 days for security and debugging
-                  </li>
+                  <li>The recognized text is not stored on our servers</li>
+                  <li>Server logs may be retained for up to 7 days for security and debugging</li>
                   <li>
                     You represent and warrant that you own or have proper rights to process the
                     images you submit
@@ -253,7 +238,6 @@ export default function TermsPage() {
                 </div>
               </div>
 
-              {/* App 版 */}
               <div className="border-l-4 border-green-500 pl-6 bg-green-50 dark:bg-green-900/20 p-4 rounded">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                   📱 10.3 Mobile App Version (Recommended)
@@ -262,24 +246,14 @@ export default function TermsPage() {
                   When you use our mobile app:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-4">
-                  <li>
-                    All image processing occurs entirely on your device
-                  </li>
-                  <li>
-                    Images are NEVER transmitted to our servers
-                  </li>
-                  <li>
-                    You retain 100% ownership and control of all your data
-                  </li>
+                  <li>All image processing occurs entirely on your device</li>
+                  <li>Images are NEVER transmitted to our servers</li>
+                  <li>You retain 100% ownership and control of all your data</li>
                   <li>
                     Offline OCR has no access to, visibility into, or use of your images or results
                   </li>
-                  <li>
-                    Nothing is stored on our servers
-                  </li>
-                  <li>
-                    The app works completely offline without internet connection
-                  </li>
+                  <li>Nothing is stored on our servers</li>
+                  <li>The app works completely offline without internet connection</li>
                 </ul>
 
                 <div className="bg-green-100 dark:bg-green-900/40 border border-green-300 dark:border-green-700 p-3 rounded mt-3">
@@ -334,7 +308,8 @@ export default function TermsPage() {
         <div className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-lg p-8 text-white text-center">
           <h2 className="text-3xl font-bold mb-4">📱 Complete Offline Privacy</h2>
           <p className="text-lg mb-6 opacity-90">
-            Use our mobile app for 100% offline OCR processing. No data transmission, no privacy concerns.
+            Use our mobile app for 100% offline OCR processing. No data transmission, no privacy
+            concerns.
           </p>
           <a
             href="/"
