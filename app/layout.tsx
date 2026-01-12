@@ -24,11 +24,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Free OCR Text Recognition | 免费OCR文字识别",
     description: "Instantly convert images to editable text. Free OCR online tool.",
-    url: "https://your-domain.com",
+    url: "https://ocr-frontend-orcin.vercel.app",
     siteName: "LocalAI OCR",
     images: [
       {
-        url: "https://your-domain.com/og-image.png",
+        url: "https://ocr-frontend-orcin.vercel.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "OCR Text Recognition Tool",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Free OCR Text Recognition",
     description: "Convert images to text instantly",
-    images: ["https://your-domain.com/twitter-image.png"],
+    images: ["https://ocr-frontend-orcin.vercel.app/twitter-image.png"],
   },
   robots: {
     index: true,
@@ -54,9 +54,10 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
+    canonical: "https://ocr-frontend-orcin.vercel.app",
     languages: {
-      "zh-CN": "https://your-domain.com/zh",
-      "en-US": "https://your-domain.com/en",
+      "zh-CN": "https://ocr-frontend-orcin.vercel.app/zh",
+      "en-US": "https://ocr-frontend-orcin.vercel.app/en",
     },
   },
 };
@@ -86,7 +87,7 @@ export default function RootLayout({
               "@type": "WebApplication",
               name: "LocalAI OCR",
               description: "Free Online OCR Text Recognition Tool",
-              url: "https://your-domain.com",
+              url: "https://ocr-frontend-orcin.vercel.app",
               applicationCategory: "UtilityApplication",
               offers: {
                 "@type": "Offer",
