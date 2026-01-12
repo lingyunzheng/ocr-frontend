@@ -5,9 +5,9 @@ export default function TermsPage() {
     license:
       'Transfer the materials to another person or "mirror" the materials on any other server',
     disclaimer:
-      'The materials on Offline OCR are provided on an "as is" basis. Offline OCR makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.',
+      'The materials on AI Offline Scanner are provided on an "as is" basis. AI Offline Scanner makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.',
     links:
-      "Offline OCR has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Offline OCR of the site. Use of any such linked website is at the user's own risk.",
+      "AI Offline Scanner has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by AI Offline Scanner of the site. Use of any such linked website is at the user's own risk.",
     effectiveDate: 'Effective Date: January 1, 2026',
     lastUpdated: 'Last Updated: January 13, 2026',
   };
@@ -20,7 +20,7 @@ export default function TermsPage() {
             href="/"
             className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent"
           >
-            Offline OCR
+            AI Offline Scanner
           </a>
         </div>
       </header>
@@ -36,7 +36,7 @@ export default function TermsPage() {
               1. Agreement to Terms
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              By accessing and using the Offline OCR service (available on web and mobile
+              By accessing and using the AI Offline Scanner service (available on web and mobile
               platforms), you accept and agree to be bound by the terms and provision of this
               agreement. If you do not agree to abide by the above, please do not use this
               service. Please note that different terms may apply to the web version and mobile
@@ -49,7 +49,7 @@ export default function TermsPage() {
               2. Use License
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Permission is granted to access and use Offline OCR for personal, educational, and
+              Permission is granted to access and use AI Offline Scanner for personal, educational, and
               professional purposes. This is the grant of a license, not a transfer of title, and
               under this license you may not:
             </p>
@@ -72,7 +72,7 @@ export default function TermsPage() {
               <p className="text-blue-800 dark:text-blue-200 text-sm">
                 The restrictions in this section apply to both our web demo and mobile app.
                 However, the mobile app operates offline, so many restrictions are technically
-                unenforceable after download. Please see Section 9 for data processing differences
+                unenforceable after download. Please see Section 10.3 for data processing differences
                 between platforms.
               </p>
             </div>
@@ -92,10 +92,10 @@ export default function TermsPage() {
               4. Limitation of Liability
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              In no event shall Offline OCR or its suppliers be liable for any damages (including,
+              In no event shall AI Offline Scanner or its suppliers be liable for any damages (including,
               without limitation, damages for loss of data or profit, or due to business
-              interruption) arising out of the use or inability to use the materials on Offline
-              OCR, even if Offline OCR or an authorized representative has been notified orally or
+              interruption) arising out of the use or inability to use the materials on AI
+              Offline Scanner, even if AI Offline Scanner or an authorized representative has been notified orally or
               in writing of the possibility of such damage. This limitation applies to both the web
               demo and mobile app versions.
             </p>
@@ -106,7 +106,7 @@ export default function TermsPage() {
               5. OCR Accuracy Disclaimer
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              The accuracy of OCR recognition results may vary significantly depending on:
+              The accuracy of text and formula recognition results may vary significantly depending on:
             </p>
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mt-3 mb-4">
               <li>Image quality and resolution</li>
@@ -116,9 +116,9 @@ export default function TermsPage() {
               <li>Font types and sizes</li>
             </ul>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              We make <strong>no guarantees</strong> regarding the accuracy of recognized text.
+              We make <strong>no guarantees</strong> regarding the accuracy of recognized text or formulas.
               Users should always verify the results independently before relying on them for
-              important purposes. We are not liable for errors, omissions, or inaccuracies in OCR
+              important purposes. We are not liable for errors, omissions, or inaccuracies in recognition
               results.
             </p>
           </section>
@@ -137,7 +137,7 @@ export default function TermsPage() {
               7. Modifications to Service
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              Offline OCR may revise these terms of service at any time without notice. By using
+              AI Offline Scanner may revise these terms of service at any time without notice. By using
               this website or app, you are agreeing to be bound by the then current version of
               these terms of service.
             </p>
@@ -174,7 +174,7 @@ export default function TermsPage() {
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               These terms and conditions are governed by and construed in accordance with the laws
-              of the jurisdiction in which Offline OCR operates, and you irrevocably submit to the
+              of the jurisdiction in which AI Offline Scanner operates, and you irrevocably submit to the
               exclusive jurisdiction of the courts in that location.
             </p>
           </section>
@@ -190,7 +190,7 @@ export default function TermsPage() {
                   10.1 Your Responsibilities
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-                  When using Offline OCR, you agree to:
+                  When using AI Offline Scanner, you agree to:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
                   <li>
@@ -211,11 +211,11 @@ export default function TermsPage() {
                   🌐 10.2 Web Demo Version
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-                  When you upload images to our web-based OCR demo:
+                  When you upload images to our web-based scanner demo:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-4">
                   <li>
-                    You grant Offline OCR a temporary, non-exclusive license to process and analyze
+                    You grant AI Offline Scanner a temporary, non-exclusive license to process and analyze
                     your images
                   </li>
                   <li>
@@ -250,7 +250,7 @@ export default function TermsPage() {
                   <li>Images are NEVER transmitted to our servers</li>
                   <li>You retain 100% ownership and control of all your data</li>
                   <li>
-                    Offline OCR has no access to, visibility into, or use of your images or results
+                    AI Offline Scanner has no access to, visibility into, or use of your images or results
                   </li>
                   <li>Nothing is stored on our servers</li>
                   <li>The app works completely offline without internet connection</li>
@@ -308,11 +308,13 @@ export default function TermsPage() {
         <div className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-lg p-8 text-white text-center">
           <h2 className="text-3xl font-bold mb-4">📱 Complete Offline Privacy</h2>
           <p className="text-lg mb-6 opacity-90">
-            Use our mobile app for 100% offline OCR processing. No data transmission, no privacy
+            Use our mobile app for 100% offline text and formula recognition. No data transmission, no privacy
             concerns.
           </p>
           <a
-            href="/"
+            href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block px-8 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-100 transition-colors"
           >
             📱 Download Mobile App
@@ -331,7 +333,7 @@ export default function TermsPage() {
 
       <footer className="bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 py-8 mt-12">
         <div className="max-w-4xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400 text-sm">
-          <p>© 2026 Offline OCR. All rights reserved.</p>
+          <p>© 2026 AI Offline Scanner. All rights reserved.</p>
         </div>
       </footer>
     </div>
