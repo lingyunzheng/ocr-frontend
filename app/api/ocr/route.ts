@@ -5,8 +5,10 @@ const GRADIO_TIMEOUT = 30000;
 export async function POST(request: NextRequest) {
   try {
     const OCR_API_URL = process.env.OCR_API_URL;
+    console.log('[DEBUG] OCR_API_URL:', OCR_API_URL);
 
     if (!OCR_API_URL) {
+      console.error('[ERROR] OCR_API_URL not configured');
       return NextResponse.json(
         { error: 'OCR service is not configured' },
         { status: 500 }
@@ -15,6 +17,7 @@ export async function POST(request: NextRequest) {
 
     const formData = await request.formData();
     const file = formData.get('file') as File | null;
+    console.log('[DEBUG] File:', file?.name, file?.size);
 
     if (!file) {
       return NextResponse.json(
@@ -31,7 +34,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 验证文件大小（最多 10MB）
+    // 验证文件大小
     if (file.size > 10 * 1024 * 1024) {
       return NextResponse.json(
         { error: 'File is too large. Maximum size is 10MB.' },
@@ -39,48 +42,44 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // ✅ 直接转发给 Gradio，让 Gradio 处理压缩
     const forwardFormData = new FormData();
-    forwardFormData.append('data', file);
+    forwardFormData.append('file', file);  // FastAPI 用 'file' 字段
 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), GRADIO_TIMEOUT);
 
     try {
-      const response = await fetch(`${OCR_API_URL}/call/predict`, {
+      // ✅ 改成 /api/ocr（FastAPI 端点）
+      const requestUrl = `${OCR_API_URL}/api/ocr`;
+      console.log('[DEBUG] Sending to:', requestUrl);
+
+      const response = await fetch(requestUrl, {
         method: 'POST',
         body: forwardFormData,
         signal: controller.signal,
       });
 
       clearTimeout(timeoutId);
+      console.log('[DEBUG] Response status:', response.status);
 
       if (!response.ok) {
         const errorText = await response.text();
-        console.error(`OCR API Error: ${response.status}`, errorText);
-        throw new Error(`OCR API returned ${response.status}`);
+        console.error(`[ERROR] API returned ${response.status}:`, errorText);
+        throw new Error(`API returned ${response.status}`);
       }
 
       const data = await response.json();
+      console.log('[DEBUG] Response:', data);
 
-      // 处理响应
-      let result = data.data?.[0] || data;
-
-      if (typeof result === 'string') {
+      // 处理 FastAPI 的响应格式
+      if (data.success) {
         return NextResponse.json({
-          text: result,
-          lines: result.split('\n').filter((l) => l.trim()),
+          text: data.text,
+          lines: data.lines,
         });
+      } else {
+        throw new Error(data.error || 'Unknown error');
       }
-
-      if (result.text && Array.isArray(result.lines)) {
-        return NextResponse.json(result);
-      }
-
-      return NextResponse.json({
-        text: JSON.stringify(result),
-        lines: [],
-      });
     } catch (fetchError: any) {
       clearTimeout(timeoutId);
 
@@ -91,16 +90,18 @@ export async function POST(request: NextRequest) {
         );
       }
 
+      console.error('[ERROR] Fetch error:', fetchError);
       throw fetchError;
     }
   } catch (error) {
-    console.error('Error:', error);
+    console.error('[ERROR] API Route Error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+
     return NextResponse.json(
       {
         error: 'Failed to process image',
-        details: process.env.NODE_ENV === 'development' && error instanceof Error
-          ? error.message
-          : undefined,
+        details:
+          process.env.NODE_ENV === 'development' ? errorMessage : undefined,
       },
       { status: 500 }
     );
