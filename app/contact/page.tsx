@@ -32,7 +32,7 @@ export default function ContactPage() {
             href="/"
             className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent"
           >
-            AI Offline Scanner
+            Offline OCR
           </a>
         </div>
       </header>
@@ -173,19 +173,17 @@ export default function ContactPage() {
           <div className="space-y-4">
             <div className="bg-white dark:bg-slate-700 rounded-xl shadow-lg p-6">
               <h3 className="font-bold text-gray-900 dark:text-white mb-2">
-                What is AI Offline Scanner?
+                What is Offline OCR?
               </h3>
               <p className="text-gray-700 dark:text-gray-300">
-                AI Offline Scanner is a free, privacy-first text and formula recognition tool that processes images
-                on your device without uploading them to any server.
+                Offline OCR is a privacy-first text and formula recognition tool. It operates using a dual-engine architecture: a secure, free local offline mode that processes images entirely on your device, and an advanced, opt-in cloud mode for the highest recognition accuracy.
               </p>
             </div>
 
             <div className="bg-white dark:bg-slate-700 rounded-xl shadow-lg p-6">
               <h3 className="font-bold text-gray-900 dark:text-white mb-2">Is my data safe?</h3>
               <p className="text-gray-700 dark:text-gray-300">
-                Yes! All processing happens locally on your device. Your images are never uploaded
-                to our servers and are not stored anywhere.
+                Yes! In the default On-Device AI Mode, all processing happens locally on your device, and your images never leave your phone. If you opt to use the Cloud Assist Mode, your image is temporarily transmitted via a secure, encrypted connection to our servers and is permanently deleted immediately after processing. We never store or sell your data, nor use it to train models.
               </p>
             </div>
 
@@ -194,8 +192,7 @@ export default function ContactPage() {
                 Do you have a mobile app?
               </h3>
               <p className="text-gray-700 dark:text-gray-300">
-                Yes! Download our mobile app from Google Play for an enhanced experience with
-                additional features and complete offline processing.
+                Yes! Download our mobile app from Google Play for the full dual-engine experience, including complex math formula parsing and complete offline processing capabilities.
               </p>
             </div>
 
@@ -204,8 +201,7 @@ export default function ContactPage() {
                 Is it really free?
               </h3>
               <p className="text-gray-700 dark:text-gray-300">
-                Yes! AI Offline Scanner is completely free to use. There are no hidden fees, registration
-                requirements, or limitations on the number of images you can process.
+                The core On-Device AI Mode is completely free to use with no limitations on the number of images you can process. We also offer optional &quot;Pro&quot; or &quot;Plus&quot; subscriptions for access to our advanced Cloud Assist Mode, which provides enhanced recognition capabilities for complex tasks.
               </p>
             </div>
           </div>
@@ -223,7 +219,7 @@ export default function ContactPage() {
 
       <footer className="bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 py-8 mt-12">
         <div className="max-w-4xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400 text-sm">
-          <p>© 2026 AI Offline Scanner. All rights reserved.</p>
+          <p>© 2026 Offline OCR. All rights reserved.</p>
         </div>
       </footer>
     </div>
