@@ -20,15 +20,15 @@ export const metadata: Metadata = {
     "text recognition",
     "免费OCR",
   ],
-  authors: [{ name: "LocalAI OCR" }],
+  authors: [{ name: "Offline OCR" }],
   openGraph: {
     title: "Free OCR Text Recognition | 免费OCR文字识别",
     description: "Instantly convert images to editable text. Free OCR online tool.",
-    url: "https://ocr-frontend-orcin.vercel.app",
-    siteName: "LocalAI OCR",
+    url: "https://web.zhenglingyun.uk",
+    siteName: "Offline OCR",
     images: [
       {
-        url: "https://ocr-frontend-orcin.vercel.app/og-image.png",
+        url: "https://web.zhenglingyun.uk/og-image.png",
         width: 1200,
         height: 630,
         alt: "OCR Text Recognition Tool",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Free OCR Text Recognition",
     description: "Convert images to text instantly",
-    images: ["https://ocr-frontend-orcin.vercel.app/twitter-image.png"],
+    images: ["https://web.zhenglingyun.uk/twitter-image.png"],
   },
   robots: {
     index: true,
@@ -54,10 +54,10 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://ocr-frontend-orcin.vercel.app",
+    canonical: "https://web.zhenglingyun.uk",
     languages: {
-      "zh-CN": "https://ocr-frontend-orcin.vercel.app/zh",
-      "en-US": "https://ocr-frontend-orcin.vercel.app/en",
+      "zh-CN": "https://web.zhenglingyun.uk/zh",
+      "en-US": "https://web.zhenglingyun.uk/en",
     },
   },
 };
@@ -85,9 +85,9 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebApplication",
-              name: "LocalAI OCR",
+              name: "Offline OCR",
               description: "Free Online OCR Text Recognition Tool",
-              url: "https://ocr-frontend-orcin.vercel.app",
+              url: "https://web.zhenglingyun.uk",
               applicationCategory: "UtilityApplication",
               offers: {
                 "@type": "Offer",
@@ -96,7 +96,7 @@ export default function RootLayout({
               },
               creator: {
                 "@type": "Organization",
-                name: "LocalAI",
+                name: "Offline OCR",
               },
             }),
           }}
