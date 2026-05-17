@@ -1,16 +1,7 @@
 'use client';
 
 export default function TermsPage() {
-  const termsContent = {
-    license:
-      'Transfer the materials to another person or "mirror" the materials on any other server',
-    disclaimer:
-      'The materials on AI Offline Scanner are provided on an "as is" basis. AI Offline Scanner makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.',
-    links:
-      "AI Offline Scanner has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by AI Offline Scanner of the site. Use of any such linked website is at the user's own risk.",
-    effectiveDate: 'Effective Date: January 1, 2026',
-    lastUpdated: 'Last Updated: January 13, 2026',
-  };
+  const lastUpdated = 'Last Updated: May 2, 2026';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
@@ -20,7 +11,7 @@ export default function TermsPage() {
             href="/"
             className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent"
           >
-            AI Offline Scanner
+            Offline OCR
           </a>
         </div>
       </header>
@@ -31,294 +22,136 @@ export default function TermsPage() {
         </h1>
 
         <div className="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 space-y-8">
+          
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              1. Agreement to Terms
-            </h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              By accessing and using the AI Offline Scanner service (available on web and mobile
-              platforms), you accept and agree to be bound by the terms and provision of this
-              agreement. If you do not agree to abide by the above, please do not use this
-              service. Please note that different terms may apply to the web version and mobile
-              app version as described in the sections below.
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              Please read these Terms of Service (&quot;Terms&quot;) carefully before using the Offline OCR application (io.github.lingyunzheng.ocr) operated by us (the &quot;Service&quot;).
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              2. Use License
+              1. Acceptance of Terms & Age Requirements
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Permission is granted to access and use AI Offline Scanner for personal, educational, and
-              professional purposes. This is the grant of a license, not a transfer of title, and
-              under this license you may not:
+              By accessing or using the Service, you agree to be bound by these Terms.
             </p>
-            <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-6">
-              <li>Modify or copy the software or materials for redistribution</li>
-              <li>Resell, redistribute, or provide the service as your own</li>
-              <li>Use the service for automated bulk processing or mass extraction</li>
-              <li>Attempt to reverse engineer, disassemble, or decode the software</li>
-              <li>Remove any copyright or other proprietary notations from the materials</li>
-              <li>{termsContent.license}</li>
-              <li>Use automated systems (bots, crawlers, scrapers) to access our service</li>
-              <li>Attempt to harm, disrupt, or overload the service infrastructure</li>
-            </ul>
-
-            {/* 平台说明 */}
-            <div className="bg-blue-50 dark:bg-blue-900 border-l-4 border-blue-500 p-4 rounded-lg">
-              <p className="text-blue-900 dark:text-blue-100 font-semibold mb-2">
-                📌 Platform-Specific Terms
-              </p>
-              <p className="text-blue-800 dark:text-blue-200 text-sm">
-                The restrictions in this section apply to both our web demo and mobile app.
-                However, the mobile app operates offline, so many restrictions are technically
-                unenforceable after download. Please see Section 10.3 for data processing differences
-                between platforms.
-              </p>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              3. Disclaimer of Warranties
-            </h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              <strong>Usage Age:</strong> You must be at least 13 years old to use the basic features of this Service.
+            </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              {termsContent.disclaimer}
+              <strong>Purchase Age:</strong> To purchase a &quot;Pro&quot; or &quot;Plus&quot; subscription, you must be at least 18 years old (or the age of legal majority in your jurisdiction), or have the explicit permission of a parent or legal guardian to make the purchase through your respective Google Play account. If you disagree with any part of the terms or do not meet these age requirements, you may not access the Service.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              4. Limitation of Liability
+              2. Academic Integrity & Appropriate Use
             </h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              The Service is designed as a study aid to assist you in understanding mathematical concepts and extracting text.
+            </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              In no event shall AI Offline Scanner or its suppliers be liable for any damages (including,
-              without limitation, damages for loss of data or profit, or due to business
-              interruption) arising out of the use or inability to use the materials on AI
-              Offline Scanner, even if AI Offline Scanner or an authorized representative has been notified orally or
-              in writing of the possibility of such damage. This limitation applies to both the web
-              demo and mobile app versions.
+              <strong>No Cheating:</strong> You agree NOT to use the Service in a manner that violates any academic integrity policies, anti-cheating rules, or regulations of your educational institution (e.g., using it during closed-book exams). The Service is designed to aid your understanding, not to circumvent the learning process.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              5. OCR Accuracy Disclaimer
+              3. AI Accuracy Disclaimer
             </h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              The accuracy of text and formula recognition results may vary significantly depending on:
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              Our advanced mathematical solving features are powered by Artificial Intelligence (AI).
             </p>
-            <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mt-3 mb-4">
-              <li>Image quality and resolution</li>
-              <li>Language and character sets</li>
-              <li>Text complexity and formatting</li>
-              <li>Background noise and distortions</li>
-              <li>Font types and sizes</li>
-            </ul>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              We make <strong>no guarantees</strong> regarding the accuracy of recognized text or formulas.
-              Users should always verify the results independently before relying on them for
-              important purposes. We are not liable for errors, omissions, or inaccuracies in recognition
-              results.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              6. Third-Party Links
-            </h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              {termsContent.links}
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              7. Modifications to Service
-            </h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              AI Offline Scanner may revise these terms of service at any time without notice. By using
-              this website or app, you are agreeing to be bound by the then current version of
-              these terms of service.
-            </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
-              We may also modify, suspend, or discontinue the web demo service at any time with or
-              without notice. The mobile app is independent and will continue to function offline
-              regardless of our service status.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              8. Service Availability
-            </h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-              <strong>Web Demo:</strong> The web version is provided &quot;as-is&quot; without
-              guarantees of continuous availability. We may:
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              <strong>No Guarantee of Accuracy:</strong> While we strive for high accuracy, we do not guarantee that the solutions, steps, or extracted texts are 100% correct, complete, or error-free.
             </p>
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-4">
-              <li>Perform maintenance that temporarily suspends the service</li>
-              <li>Modify or discontinue features with or without notice</li>
-              <li>Limit service access due to abuse or technical issues</li>
-              <li>Restrict usage if rate limits or resource limits are exceeded</li>
+              <li>You should always use the Service as a reference and manually verify critical results.</li>
             </ul>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              <strong>Mobile App:</strong> The mobile app does not depend on our servers and will
-              continue working offline indefinitely, regardless of any changes to our web service.
+              We shall not be held liable for any direct or indirect consequences (including but not limited to academic penalties, failed exams, or calculation errors) resulting from your reliance on the Service.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              9. Governing Law
+              4. Subscriptions, Auto-Renewal, and Refunds
             </h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              Some parts of the Service are billed on a subscription basis (e.g., &quot;Pro&quot; or &quot;Plus&quot; plans).
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              <strong>Billing & Auto-Renewal:</strong> Subscriptions are handled entirely through your Google Play account. Subscriptions automatically renew unless canceled at least 24 hours before the end of the current billing period.
+            </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              These terms and conditions are governed by and construed in accordance with the laws
-              of the jurisdiction in which AI Offline Scanner operates, and you irrevocably submit to the
-              exclusive jurisdiction of the courts in that location.
+              <strong>Cancellations & Refunds:</strong> You can manage or cancel your subscriptions at any time through your Google Play Store account settings. Because all transactions are processed securely by Google, we do not process direct refunds. Any refund requests must be directed to Google Play Support in accordance with their consumer policies. Please note that no refunds will be issued for accounts terminated due to a violation of our Fair Use or Prohibited Conduct policies (see Section 5).
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              10. User Responsibilities and Content
+              5. Fair Use, Prohibited Conduct & Account Termination
             </h2>
-
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                  10.1 Your Responsibilities
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-                  When using AI Offline Scanner, you agree to:
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>
-                    Not upload illegal, harmful, or copyrighted content without proper authorization
-                  </li>
-                  <li>Not use the service for illegal, unethical, or harmful purposes</li>
-                  <li>
-                    Comply with all applicable laws, regulations, and third-party intellectual
-                    property rights
-                  </li>
-                  <li>Take full responsibility for the content you upload and process</li>
-                  <li>Not attempt to abuse, exploit, or harm the service or other users</li>
-                </ul>
-              </div>
-
-              <div className="border-l-4 border-orange-500 pl-6 bg-orange-50 dark:bg-orange-900/20 p-4 rounded">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                  🌐 10.2 Web Demo Version
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-                  When you upload images to our web-based scanner demo:
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-4">
-                  <li>
-                    You grant AI Offline Scanner a temporary, non-exclusive license to process and analyze
-                    your images
-                  </li>
-                  <li>
-                    Your images will be processed and automatically deleted after processing
-                    (typically within minutes)
-                  </li>
-                  <li>The recognized text is not stored on our servers</li>
-                  <li>Server logs may be retained for up to 7 days for security and debugging</li>
-                  <li>
-                    You represent and warrant that you own or have proper rights to process the
-                    images you submit
-                  </li>
-                </ul>
-
-                <div className="bg-orange-100 dark:bg-orange-900/40 border border-orange-300 dark:border-orange-700 p-3 rounded mt-3">
-                  <p className="text-orange-900 dark:text-orange-100 text-sm">
-                    ⚠️ <strong>Important:</strong> The web demo is for testing only. For sensitive
-                    content, use the offline mobile app where nothing leaves your device.
-                  </p>
-                </div>
-              </div>
-
-              <div className="border-l-4 border-green-500 pl-6 bg-green-50 dark:bg-green-900/20 p-4 rounded">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                  📱 10.3 Mobile App Version (Recommended)
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-                  When you use our mobile app:
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-4">
-                  <li>All image processing occurs entirely on your device</li>
-                  <li>Images are NEVER transmitted to our servers</li>
-                  <li>You retain 100% ownership and control of all your data</li>
-                  <li>
-                    AI Offline Scanner has no access to, visibility into, or use of your images or results
-                  </li>
-                  <li>Nothing is stored on our servers</li>
-                  <li>The app works completely offline without internet connection</li>
-                </ul>
-
-                <div className="bg-green-100 dark:bg-green-900/40 border border-green-300 dark:border-green-700 p-3 rounded mt-3">
-                  <p className="text-green-900 dark:text-green-100 text-sm">
-                    ✅ <strong>Privacy Guarantee:</strong> Your data is 100% private and secure on
-                    the mobile app. Nothing leaves your device.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              11. Violations and Enforcement
-            </h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-              If you violate these terms of service, we may:
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              Our &quot;Cloud Mode&quot; features rely on integrations with third-party AI APIs. We cannot guarantee 100% uninterrupted uptime. Temporary outages or degraded performance of these APIs may affect the App&apos;s functionality and do not constitute a breach of our service obligations.
             </p>
-            <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-4">
-              <li>Suspend or terminate your access to the web demo service</li>
-              <li>Block your IP address from accessing our services</li>
-              <li>Report illegal activity to appropriate authorities</li>
-              <li>Pursue legal remedies as permitted by law</li>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              <strong>Prohibited Conduct:</strong> To ensure high-quality service, all subscriptions and virtual credits (tokens) are subject to a Fair Use Policy. You strictly agree NOT to:
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-4 pl-4">
+              <li>Use automated scripts, bots, or emulators to access the Service.</li>
+              <li>Reverse engineer, bypass, or exploit our APIs.</li>
+              <li>Artificially manipulate the referral/invite system (e.g., creating fake accounts to farm reward tokens).</li>
+              <li>Engage in any fraudulent activity or abuse of the billing system.</li>
             </ul>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm italic">
-              Note: The mobile app is offline and independent. After download, we cannot enforce
-              any restrictions on your local use.
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              <strong>Termination & Forfeiture of Assets:</strong> We reserve the right to immediately suspend or permanently terminate your account without prior notice if we determine, in our sole discretion, that you have violated any of these Terms. In the event of account termination due to a violation, your access to the Service will be revoked immediately. Any remaining subscription duration, unused virtual credits (tokens), and accumulated rewards will be permanently forfeited. You will not be entitled to any form of compensation, transfer, or refund for forfeited assets.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              12. Contact Information
+              6. Limitation of Liability
+            </h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed uppercase">
+              THE SERVICE IS PROVIDED ON AN &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; BASIS. WE EXPRESSLY DISCLAIM ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED. IN NO EVENT SHALL WE BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, OR USE, ARISING OUT OF OR IN ANY WAY CONNECTED WITH YOUR USE OF THE SERVICE.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              7. Governing Law & Dispute Resolution
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              If you have any questions about these Terms of Service, please{' '}
-              <a href="/contact" className="text-purple-600 hover:text-purple-700 underline">
-                contact us
+              These Terms shall be governed and construed in accordance with the laws of the People&apos;s Republic of China, without regard to its conflict of law provisions. Any dispute arising from these Terms shall be subject to the exclusive jurisdiction of the competent courts in the People&apos;s Republic of China.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              8. Changes to These Terms
+            </h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will notify you of any changes by posting the new Terms on this page. By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              9. Contact Us
+            </h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              For any questions, concerns, or reports regarding these Terms, please contact us at:{' '}
+              <a href="mailto:offlineocr.service@outlook.com" className="text-purple-600 hover:text-purple-700 underline">
+                offlineocr.service@outlook.com
               </a>
-              .
             </p>
           </section>
 
           <div className="border-t border-gray-200 dark:border-slate-600 pt-8 text-sm text-gray-600 dark:text-gray-400">
-            <p>{termsContent.effectiveDate}</p>
-            <p>{termsContent.lastUpdated}</p>
+            <p>{lastUpdated}</p>
           </div>
-        </div>
-
-        {/* 推荐使用 App 的 CTA */}
-        <div className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-lg p-8 text-white text-center">
-          <h2 className="text-3xl font-bold mb-4">📱 Complete Offline Privacy</h2>
-          <p className="text-lg mb-6 opacity-90">
-            Use our mobile app for 100% offline text and formula recognition. No data transmission, no privacy
-            concerns.
-          </p>
-          <a
-            href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-8 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            📱 Download Mobile App
-          </a>
         </div>
 
         <div className="mt-8 text-center">
@@ -333,10 +166,9 @@ export default function TermsPage() {
 
       <footer className="bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 py-8 mt-12">
         <div className="max-w-4xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400 text-sm">
-          <p>© 2026 AI Offline Scanner. All rights reserved.</p>
+          <p>© 2026 Offline OCR. All rights reserved.</p>
         </div>
       </footer>
     </div>
   );
 }
-
