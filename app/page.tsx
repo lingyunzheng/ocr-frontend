@@ -40,24 +40,33 @@ const translations = {
     compressing: 'Compressing image...',
     imageSize: 'Image size',
     pricingTitle: 'Simple, Transparent Pricing',
-    pricingSubtitle: 'Get the most out of your OCR experience with our Pro Cloud model.',
+    pricingSubtitle: 'Unlock advanced features, ad-free processing, and high-accuracy cloud models.',
     pricingFreeTitle: 'Basic Mode',
     pricingFreePrice: '$0',
     pricingFreePeriod: 'forever',
-    pricingFreeDesc: 'Ideal for daily basic text recognition',
-    pricingFreeFeature1: '100% Offline Processing',
-    pricingFreeFeature2: 'Unlimited Local Text Scan',
+    pricingFreeDesc: 'Ideal for daily offline text recognition',
+    pricingFreeFeature1: '100% On-Device Local Processing',
+    pricingFreeFeature2: 'Unlimited Text Scanning',
     pricingFreeFeature3: 'High-speed Local AI Model',
-    pricingFreeFeature4: 'No Internet Required',
-    pricingProTitle: 'Cloud Pro',
-    pricingProPrice: '$4.99',
+    pricingFreeFeature4: 'Zero Server Uploads (100% Private)',
+    pricingPlusTitle: 'Plus Plan',
+    pricingPlusPrice: '$3.99',
+    pricingPlusPeriod: 'month',
+    pricingPlusDesc: 'Enhanced processing with an ad-free workflow',
+    pricingPlusFeature1: '100% Ad-Free Experience',
+    pricingPlusFeature2: 'High-Accuracy Formula Recognition',
+    pricingPlusFeature3: 'Generous Credit Quota for Daily Use',
+    pricingPlusFeature4: 'Enhanced Cloud Processing Speed',
+    pricingPlusFeature5: 'Priority Customer Support',
+    pricingProTitle: 'Pro Plan',
+    pricingProPrice: '$5.99',
     pricingProPeriod: 'month',
-    pricingProDesc: 'Advanced capabilities powered by cloud AI',
-    pricingProFeature1: 'Dual-Engine Cloud Parsing',
-    pricingProFeature2: 'Complex Math Formula Recognition',
+    pricingProDesc: 'Elite AI capabilities for ultimate productivity',
+    pricingProFeature1: 'Everything in Plus Plan',
+    pricingProFeature2: 'Advanced AI Solver & Math Explainer',
     pricingProFeature3: 'Native Word (.docx) Document Export',
-    pricingProFeature4: 'Highest-Accuracy Layout Analysis',
-    pricingProFeature5: 'Unlimited Daily Recognition',
+    pricingProFeature4: 'Elite Credit Quota & Batch Processing',
+    pricingProFeature5: 'Maximum Cloud Priority & Speed',
   },
   zh: {
     title: 'Offline OCR：数学公式与文字识别',
@@ -94,24 +103,33 @@ const translations = {
     compressing: '压缩中...',
     imageSize: '图片大小',
     pricingTitle: '简单透明的定价',
-    pricingSubtitle: '通过我们的专业云端模式，释放 OCR 的最大潜能。',
+    pricingSubtitle: '解锁高级功能、无广告体验以及高精度云端模型。',
     pricingFreeTitle: '基础模式',
     pricingFreePrice: '$0',
     pricingFreePeriod: '永久',
     pricingFreeDesc: '适合日常基础文字识别',
     pricingFreeFeature1: '100% 本地离线处理',
-    pricingFreeFeature2: '无限次本地文字扫描',
+    pricingFreeFeature2: '无限次本地文字扫描识别',
     pricingFreeFeature3: '极速本地 AI 模型',
-    pricingFreeFeature4: '无需互联网连接',
-    pricingProTitle: '云端专业版',
-    pricingProPrice: '$4.99',
+    pricingFreeFeature4: '零数据上传（完全保护隐私）',
+    pricingPlusTitle: 'Plus 会员',
+    pricingPlusPrice: '$3.99',
+    pricingPlusPeriod: '月',
+    pricingPlusDesc: '享受无广告和更流畅的高级识别体验',
+    pricingPlusFeature1: '100% 纯净无广告体验',
+    pricingPlusFeature2: '高精度数学公式与符号识别',
+    pricingPlusFeature3: '每日宽裕的云端点数配额',
+    pricingPlusFeature4: '更快的云端加速解析速度',
+    pricingPlusFeature5: '专属客户技术支持',
+    pricingProTitle: 'Pro 专业版',
+    pricingProPrice: '$5.99',
     pricingProPeriod: '月',
-    pricingProDesc: '由云端 AI 驱动的强劲高级功能',
-    pricingProFeature1: '双引擎云端智能解析',
-    pricingProFeature2: '复杂数学公式与符号识别',
+    pricingProDesc: '专为高频专业需求打造的终极 AI 体验',
+    pricingProFeature1: '包含 Plus 会员的全部权益',
+    pricingProFeature2: '强大的 AI 解题与数学公式详解',
     pricingProFeature3: '原生 Word (.docx) 文档导出',
-    pricingProFeature4: '最高精度排版与表格分析',
-    pricingProFeature5: '每日无限次云端识别',
+    pricingProFeature4: '顶级云端点数配额与批量处理',
+    pricingProFeature5: '最高优先级云端响应与极速体验',
   },
 };
 
@@ -560,7 +578,7 @@ export default function OCRPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
             {/* Free Tier */}
             <div className="bg-white dark:bg-slate-700 rounded-2xl border-2 border-slate-100 dark:border-slate-600 p-8 shadow-sm hover:shadow-md transition flex flex-col justify-between">
               <div>
@@ -583,6 +601,36 @@ export default function OCRPage() {
               <button className="w-full py-3 px-6 rounded-xl font-semibold bg-gray-100 dark:bg-slate-600 text-gray-700 dark:text-gray-300 cursor-not-allowed">
                 {language === 'zh' ? '当前已拥有' : 'Included by Default'}
               </button>
+            </div>
+
+            {/* Plus Tier */}
+            <div className="bg-white dark:bg-slate-700 rounded-2xl border-2 border-slate-200 dark:border-slate-500 p-8 shadow-sm hover:shadow-md transition flex flex-col justify-between relative transform hover:scale-[1.01]">
+              <div>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t.pricingPlusTitle}</h4>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">{t.pricingPlusDesc}</p>
+                <div className="flex items-baseline mb-6">
+                  <span className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">{t.pricingPlusPrice}</span>
+                  <span className="text-gray-500 dark:text-gray-400 ml-2">/ {t.pricingPlusPeriod}</span>
+                </div>
+                
+                <ul className="space-y-4 mb-8">
+                  {[t.pricingPlusFeature1, t.pricingPlusFeature2, t.pricingPlusFeature3, t.pricingPlusFeature4, t.pricingPlusFeature5].map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
+                      <span className="text-blue-500 font-bold font-mono">✦</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <a
+                href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center py-3 px-6 rounded-xl font-semibold bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:shadow-lg transition-all active:scale-[0.98]"
+              >
+                {language === 'zh' ? '在 App 中订阅 Plus' : 'Subscribe Plus in App'}
+              </a>
             </div>
 
             {/* Pro Tier */}

@@ -79,13 +79,28 @@ export default function TermsPage() {
               4. Subscriptions, Auto-Renewal, and Refunds
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Some parts of the Service are billed on a subscription basis (e.g., &quot;Pro&quot; or &quot;Plus&quot; plans).
+              Some parts of the Service are billed on a subscription or pay-as-you-go basis (e.g., &quot;Plus&quot; or &quot;Pro&quot; plans). We offer two billing channels depending on where you make your purchase:
             </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              <strong>Billing & Auto-Renewal:</strong> Subscriptions are handled entirely through your Google Play account. Subscriptions automatically renew unless canceled at least 24 hours before the end of the current billing period.
-            </p>
+            <div className="space-y-4 mb-6">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  4.1 Web Subscriptions (Paddle.com)
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Purchases made through our official website are conducted and processed by our online reseller Paddle.com, who is the Merchant of Record for all web transactions. Paddle handles billing, automatic renewals, sales tax compliance, and web-related refund requests. Web subscriptions automatically renew unless canceled before the end of the current billing cycle.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  4.2 Mobile App Subscriptions (Google Play)
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Subscriptions initiated inside the Android application are handled entirely through your Google Play account. Mobile subscriptions automatically renew unless canceled at least 24 hours before the end of the current period.
+                </p>
+              </div>
+            </div>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              <strong>Cancellations & Refunds:</strong> You can manage or cancel your subscriptions at any time through your Google Play Store account settings. Because all transactions are processed securely by Google, we do not process direct refunds. Any refund requests must be directed to Google Play Support in accordance with their consumer policies. Please note that no refunds will be issued for accounts terminated due to a violation of our Fair Use or Prohibited Conduct policies (see Section 5).
+              <strong>Cancellations & Refunds:</strong> You can manage or cancel your subscriptions at any time through your respective account dashboards (Paddle customer portal for web orders, or Google Play Store settings for mobile orders). Refunds are handled by the respective merchant of record (Paddle or Google) in accordance with our Refund Policy. No refunds or compensations will be issued for accounts terminated due to a violation of our Fair Use or Prohibited Conduct policies (see Section 5).
             </p>
           </section>
 

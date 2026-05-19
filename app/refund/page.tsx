@@ -45,7 +45,7 @@ export default function RefundPolicyPage() {
               2. Web Subscriptions (Paddle.com)
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              We offer digital subscription services for our optional &quot;Cloud Pro&quot; mode. By purchasing our Cloud Pro web subscription, you acknowledge that because digital services are provisioned instantly, refunds are generally not provided for partially used or unused billing cycles.
+              We offer digital subscription services for our optional &quot;Plus&quot; and &quot;Pro&quot; plans. By purchasing our Plus or Pro web subscriptions, you acknowledge that because digital services are provisioned instantly, refunds are generally not provided for partially used or unused billing cycles.
             </p>
             <div className="space-y-4">
               <div>
@@ -53,7 +53,7 @@ export default function RefundPolicyPage() {
                   UK & European Union Consumer Rights
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  If you reside in the United Kingdom or European Union, you are entitled to a 14-day statutory cooling-off period to cancel your digital subscription purchase and receive a full refund, provided you have not actively initiated cloud-mode text or formula recognition tasks during those 14 days. Once you use the Cloud Pro credit or initiate a cloud request, you explicitly agree that you waive your right of withdrawal.
+                  If you reside in the United Kingdom or European Union, you are entitled to a 14-day statutory cooling-off period to cancel your digital subscription purchase and receive a full refund, provided you have not actively initiated cloud-mode text or formula recognition tasks during those 14 days. Once you use the premium credit or initiate a cloud request, you explicitly agree that you waive your right of withdrawal.
                 </p>
               </div>
 
@@ -62,7 +62,7 @@ export default function RefundPolicyPage() {
                   Quality & Performance Issues
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  If you encounter technical issues or poor recognition quality with our Cloud Pro service, please contact us at <a href="mailto:offlineocr.service@outlook.com" className="text-purple-600 dark:text-purple-400 hover:underline">offlineocr.service@outlook.com</a> within 7 days of the transaction. If we cannot resolve the issue or provide adequate technical support, we will instruct Paddle to issue a full or prorated refund for your subscription.
+                  If you encounter technical issues or poor recognition quality with our Plus or Pro service, please contact us at <a href="mailto:offlineocr.service@outlook.com" className="text-purple-600 dark:text-purple-400 hover:underline">offlineocr.service@outlook.com</a> within 7 days of the transaction. If we cannot resolve the issue or provide adequate technical support, we will instruct Paddle to issue a full or prorated refund for your subscription.
                 </p>
               </div>
             </div>
@@ -89,7 +89,7 @@ export default function RefundPolicyPage() {
               4. Subscription Cancelation & Account Termination
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              You may cancel your subscription at any time. Upon cancelation, you will continue to have access to the Cloud Pro features until the end of your current billing cycle, after which your account will revert to the free &quot;Basic Mode.&quot;
+              You may cancel your subscription at any time. Upon cancelation, you will continue to have access to the Plus or Pro premium features until the end of your current billing cycle, after which your account will revert to the free &quot;Basic Mode.&quot;
             </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               <strong>Account Violations:</strong> No refunds will be issued for accounts terminated due to a violation of our Fair Use, Prohibited Conduct, API abuse, or malicious manipulation of referral schemes as detailed in our Terms of Service.
