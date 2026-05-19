@@ -49,6 +49,7 @@ const translations = {
     pricingFreeFeature2: 'Unlimited Text Scanning',
     pricingFreeFeature3: 'High-speed Local AI Model',
     pricingFreeFeature4: 'Zero Server Uploads (100% Private)',
+    pricingFreeFeature5: 'Native Word (.docx) & PDF Export',
     pricingPlusTitle: 'Plus Plan',
     pricingPlusPrice: '$3.99',
     pricingPlusPeriod: 'month',
@@ -64,7 +65,7 @@ const translations = {
     pricingProDesc: 'Elite AI capabilities for ultimate productivity',
     pricingProFeature1: 'Everything in Plus Plan',
     pricingProFeature2: 'Advanced AI Solver & Math Explainer',
-    pricingProFeature3: 'Native Word (.docx) Document Export',
+    pricingProFeature3: 'Layout-Aware Structural Analysis',
     pricingProFeature4: 'Elite Credit Quota & Batch Processing',
     pricingProFeature5: 'Maximum Cloud Priority & Speed',
   },
@@ -112,6 +113,7 @@ const translations = {
     pricingFreeFeature2: '无限次本地文字扫描识别',
     pricingFreeFeature3: '极速本地 AI 模型',
     pricingFreeFeature4: '零数据上传（完全保护隐私）',
+    pricingFreeFeature5: '原生 Word (.docx) 与 PDF 导出',
     pricingPlusTitle: 'Plus 会员',
     pricingPlusPrice: '$3.99',
     pricingPlusPeriod: '月',
@@ -127,7 +129,7 @@ const translations = {
     pricingProDesc: '专为高频专业需求打造的终极 AI 体验',
     pricingProFeature1: '包含 Plus 会员的全部权益',
     pricingProFeature2: '强大的 AI 解题与数学公式详解',
-    pricingProFeature3: '原生 Word (.docx) 文档导出',
+    pricingProFeature3: '智能版面还原与复杂表格分析',
     pricingProFeature4: '顶级云端点数配额与批量处理',
     pricingProFeature5: '最高优先级云端响应与极速体验',
   },
@@ -590,7 +592,7 @@ export default function OCRPage() {
                 </div>
                 
                 <ul className="space-y-4 mb-8">
-                  {[t.pricingFreeFeature1, t.pricingFreeFeature2, t.pricingFreeFeature3, t.pricingFreeFeature4].map((feature, idx) => (
+                  {[t.pricingFreeFeature1, t.pricingFreeFeature2, t.pricingFreeFeature3, t.pricingFreeFeature4, t.pricingFreeFeature5].map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
                       <span className="text-green-500 font-bold">✓</span>
                       {feature}
