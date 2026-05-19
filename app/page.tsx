@@ -39,6 +39,25 @@ const translations = {
     footer: '© 2026 Offline OCR. All rights reserved.',
     compressing: 'Compressing image...',
     imageSize: 'Image size',
+    pricingTitle: 'Simple, Transparent Pricing',
+    pricingSubtitle: 'Get the most out of your OCR experience with our Pro Cloud model.',
+    pricingFreeTitle: 'Basic Mode',
+    pricingFreePrice: '$0',
+    pricingFreePeriod: 'forever',
+    pricingFreeDesc: 'Ideal for daily basic text recognition',
+    pricingFreeFeature1: '100% Offline Processing',
+    pricingFreeFeature2: 'Unlimited Local Text Scan',
+    pricingFreeFeature3: 'High-speed Local AI Model',
+    pricingFreeFeature4: 'No Internet Required',
+    pricingProTitle: 'Cloud Pro',
+    pricingProPrice: '$4.99',
+    pricingProPeriod: 'month',
+    pricingProDesc: 'Advanced capabilities powered by cloud AI',
+    pricingProFeature1: 'Dual-Engine Cloud Parsing',
+    pricingProFeature2: 'Complex Math Formula Recognition',
+    pricingProFeature3: 'Native Word (.docx) Document Export',
+    pricingProFeature4: 'Highest-Accuracy Layout Analysis',
+    pricingProFeature5: 'Unlimited Daily Recognition',
   },
   zh: {
     title: 'Offline OCR：数学公式与文字识别',
@@ -74,6 +93,25 @@ const translations = {
     footer: '© 2026 Offline OCR。保留所有权利。',
     compressing: '压缩中...',
     imageSize: '图片大小',
+    pricingTitle: '简单透明的定价',
+    pricingSubtitle: '通过我们的专业云端模式，释放 OCR 的最大潜能。',
+    pricingFreeTitle: '基础模式',
+    pricingFreePrice: '$0',
+    pricingFreePeriod: '永久',
+    pricingFreeDesc: '适合日常基础文字识别',
+    pricingFreeFeature1: '100% 本地离线处理',
+    pricingFreeFeature2: '无限次本地文字扫描',
+    pricingFreeFeature3: '极速本地 AI 模型',
+    pricingFreeFeature4: '无需互联网连接',
+    pricingProTitle: '云端专业版',
+    pricingProPrice: '$4.99',
+    pricingProPeriod: '月',
+    pricingProDesc: '由云端 AI 驱动的强劲高级功能',
+    pricingProFeature1: '双引擎云端智能解析',
+    pricingProFeature2: '复杂数学公式与符号识别',
+    pricingProFeature3: '原生 Word (.docx) 文档导出',
+    pricingProFeature4: '最高精度排版与表格分析',
+    pricingProFeature5: '每日无限次云端识别',
   },
 };
 
@@ -511,6 +549,78 @@ export default function OCRPage() {
           </div>
         </section>
 
+        {/* Pricing Section */}
+        <section className="mb-16">
+          <div className="text-center mb-10">
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
+              🏷️ {t.pricingTitle}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
+              {t.pricingSubtitle}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {/* Free Tier */}
+            <div className="bg-white dark:bg-slate-700 rounded-2xl border-2 border-slate-100 dark:border-slate-600 p-8 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+              <div>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t.pricingFreeTitle}</h4>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">{t.pricingFreeDesc}</p>
+                <div className="flex items-baseline mb-6">
+                  <span className="text-4xl font-extrabold text-gray-900 dark:text-white">{t.pricingFreePrice}</span>
+                  <span className="text-gray-500 dark:text-gray-400 ml-2">/ {t.pricingFreePeriod}</span>
+                </div>
+                
+                <ul className="space-y-4 mb-8">
+                  {[t.pricingFreeFeature1, t.pricingFreeFeature2, t.pricingFreeFeature3, t.pricingFreeFeature4].map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
+                      <span className="text-green-500 font-bold">✓</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <button className="w-full py-3 px-6 rounded-xl font-semibold bg-gray-100 dark:bg-slate-600 text-gray-700 dark:text-gray-300 cursor-not-allowed">
+                {language === 'zh' ? '当前已拥有' : 'Included by Default'}
+              </button>
+            </div>
+
+            {/* Pro Tier */}
+            <div className="bg-white dark:bg-slate-700 rounded-2xl border-2 border-purple-500 dark:border-purple-400 p-8 shadow-md relative flex flex-col justify-between transform hover:scale-[1.02] transition-all">
+              <div className="absolute top-0 right-6 transform -translate-y-1/2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                {language === 'zh' ? '推荐' : 'Popular'}
+              </div>
+              
+              <div>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t.pricingProTitle}</h4>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">{t.pricingProDesc}</p>
+                <div className="flex items-baseline mb-6">
+                  <span className="text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400 bg-clip-text text-transparent">{t.pricingProPrice}</span>
+                  <span className="text-gray-500 dark:text-gray-400 ml-2">/ {t.pricingProPeriod}</span>
+                </div>
+                
+                <ul className="space-y-4 mb-8">
+                  {[t.pricingProFeature1, t.pricingProFeature2, t.pricingProFeature3, t.pricingProFeature4, t.pricingProFeature5].map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
+                      <span className="text-purple-600 dark:text-purple-400 font-bold font-mono">★</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <a
+                href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center py-3 px-6 rounded-xl font-semibold bg-gradient-to-r from-purple-600 to-purple-800 text-white hover:shadow-lg transition-all active:scale-[0.98]"
+              >
+                {language === 'zh' ? '在 App 中订阅 Pro' : 'Subscribe Pro in App'}
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* App Promotion Section */}
         <section className="bg-gradient-to-r from-purple-600 to-purple-800 rounded-2xl shadow-xl p-12 text-white text-center mb-12">
           <h3 className="text-3xl font-bold mb-4">📱 {t.downloadApp}</h3>
@@ -539,10 +649,18 @@ export default function OCRPage() {
             <a href="/terms" className="hover:text-purple-600 transition">
               Terms of Service
             </a>
+            <a href="/refund" className="hover:text-purple-600 transition">
+              Refund Policy
+            </a>
             <a href="/contact" className="hover:text-purple-600 transition">
               Contact
             </a>
           </div>
+          
+          {/* Paddle MoR Disclaimer */}
+          <p className="mt-6 text-xs text-gray-400 dark:text-gray-500 max-w-2xl mx-auto leading-relaxed border-t border-gray-100 dark:border-slate-700/50 pt-4">
+            Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns.
+          </p>
         </div>
       </footer>
     </div>
