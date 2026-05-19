@@ -68,6 +68,9 @@ const translations = {
     pricingProFeature3: 'Layout-Aware Structural Analysis',
     pricingProFeature4: 'Elite Credit Quota & Batch Processing',
     pricingProFeature5: 'Maximum Cloud Priority & Speed',
+    payWebPaddle: 'Subscribe via Web (Paddle)',
+    payAppGooglePlay: 'Android App Subscription',
+    paddleAlertMsg: 'Paddle payment integration is currently undergoing compliance verification. Please download the Android App to subscribe via Google Play, or check back soon!',
   },
   zh: {
     title: 'Offline OCR：数学公式与文字识别',
@@ -132,6 +135,9 @@ const translations = {
     pricingProFeature3: '智能版面还原与复杂表格分析',
     pricingProFeature4: '顶级云端点数配额与批量处理',
     pricingProFeature5: '最高优先级云端响应与极速体验',
+    payWebPaddle: '网页端订阅 (Paddle)',
+    payAppGooglePlay: '安卓 App 内订阅',
+    paddleAlertMsg: '网页端 Paddle 支付通道正在进行合规审核与上线调试。请下载 Android App 在应用内订阅，或稍后重试！',
   },
 };
 
@@ -144,10 +150,18 @@ export default function OCRPage() {
   const [language, setLanguage] = useState<Language>('en');
   const [showDetails, setShowDetails] = useState(false);
   const [fileSize, setFileSize] = useState(''); // 显示文件大小
+  const [paddleAlert, setPaddleAlert] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dragRef = useRef<HTMLDivElement>(null);
 
   const t = translations[language];
+
+  const triggerPaddleAlert = () => {
+    setPaddleAlert(true);
+    setTimeout(() => {
+      setPaddleAlert(false);
+    }, 5000);
+  };
 
   // 将图片压缩为 JPG
   const compressImageToJPG = (inputFile: File): Promise<File> => {
@@ -625,14 +639,22 @@ export default function OCRPage() {
                 </ul>
               </div>
               
-              <a
-                href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center py-3 px-6 rounded-xl font-semibold bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:shadow-lg transition-all active:scale-[0.98]"
-              >
-                {language === 'zh' ? '在 App 中订阅 Plus' : 'Subscribe Plus in App'}
-              </a>
+              <div className="flex flex-col gap-3">
+                <button
+                  onClick={triggerPaddleAlert}
+                  className="w-full text-center py-3 px-6 rounded-xl font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg transition-all active:scale-[0.98] cursor-pointer"
+                >
+                  {t.payWebPaddle}
+                </button>
+                <a
+                  href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center py-2 px-6 rounded-xl font-medium border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all active:scale-[0.98] text-sm"
+                >
+                  {t.payAppGooglePlay}
+                </a>
+              </div>
             </div>
 
             {/* Pro Tier */}
@@ -659,14 +681,22 @@ export default function OCRPage() {
                 </ul>
               </div>
               
-              <a
-                href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center py-3 px-6 rounded-xl font-semibold bg-gradient-to-r from-purple-600 to-purple-800 text-white hover:shadow-lg transition-all active:scale-[0.98]"
-              >
-                {language === 'zh' ? '在 App 中订阅 Pro' : 'Subscribe Pro in App'}
-              </a>
+              <div className="flex flex-col gap-3">
+                <button
+                  onClick={triggerPaddleAlert}
+                  className="w-full text-center py-3 px-6 rounded-xl font-semibold bg-gradient-to-r from-purple-600 to-purple-800 text-white hover:shadow-lg transition-all active:scale-[0.98] cursor-pointer"
+                >
+                  {t.payWebPaddle}
+                </button>
+                <a
+                  href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center py-2 px-6 rounded-xl font-medium border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all active:scale-[0.98] text-sm"
+                >
+                  {t.payAppGooglePlay}
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -713,6 +743,27 @@ export default function OCRPage() {
           </p>
         </div>
       </footer>
+
+      {/* Toast Alert for Sandbox/Compliance Testing */}
+      {paddleAlert && (
+        <div className="fixed top-6 right-6 z-[9999] max-w-md bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-purple-200 dark:border-purple-800/50 p-5 rounded-2xl shadow-xl animate-fade-in flex items-start gap-4 transition-all duration-300">
+          <div className="text-2xl mt-0.5">ℹ️</div>
+          <div>
+            <h5 className="font-bold text-gray-900 dark:text-white text-sm mb-1">
+              {language === 'zh' ? '网页端通道测试中' : 'Web Store Channel Testing'}
+            </h5>
+            <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+              {t.paddleAlertMsg}
+            </p>
+          </div>
+          <button 
+            onClick={() => setPaddleAlert(false)}
+            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-xs font-bold font-mono ml-auto"
+          >
+            ✕
+          </button>
+        </div>
+      )}
     </div>
   );
 }
