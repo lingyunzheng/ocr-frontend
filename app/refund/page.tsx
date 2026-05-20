@@ -24,7 +24,7 @@ export default function RefundPolicyPage() {
         <div className="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 space-y-8">
           <section>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Thank you for choosing Offline OCR. We want to ensure you have a satisfying experience with our products. This Refund Policy describes the terms and conditions for cancelations and refunds for purchases made through our Google Play application and our online merchant of record, Paddle.com.
+              Thank you for choosing Offline OCR. We want to ensure you have a satisfying experience with our products. This Refund Policy describes the terms and conditions for cancelations and refunds for purchases made through our Google Play application and our authorized online merchant of record.
             </p>
           </section>
 
@@ -33,16 +33,16 @@ export default function RefundPolicyPage() {
               1. Merchant of Record Disclaimer
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Our web order process is conducted by our online reseller Paddle.com. <strong>Paddle.com is the Merchant of Record</strong> for all our web orders.
+              Our web order process is conducted by our authorized online reseller. <strong>The reseller is the Merchant of Record</strong> for all our web orders.
             </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              Paddle provides all customer service inquiries and handles returns. If you have any billing or transaction-related concerns for web orders, please contact Paddle directly via their buyer support portals.
+              The reseller provides customer service inquiries and handles returns. If you have any billing or transaction-related concerns for web orders, please contact the reseller directly via their support portals.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              2. Web Subscriptions (Paddle.com)
+              2. Web Subscriptions (Authorized Reseller)
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
               We offer digital subscription services for our optional &quot;Plus&quot; and &quot;Pro&quot; plans. By purchasing our Plus or Pro web subscriptions, you acknowledge that because digital services are provisioned instantly, refunds are generally not provided for partially used or unused billing cycles.
@@ -62,7 +62,7 @@ export default function RefundPolicyPage() {
                   Quality & Performance Issues
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  If you encounter technical issues or poor recognition quality with our Plus or Pro service, please contact us at <a href="mailto:offlineocr.service@outlook.com" className="text-purple-600 dark:text-purple-400 hover:underline">offlineocr.service@outlook.com</a> within 7 days of the transaction. If we cannot resolve the issue or provide adequate technical support, we will instruct Paddle to issue a full or prorated refund for your subscription.
+                  If you encounter technical issues or poor recognition quality with our Plus or Pro service, please contact us at <a href="mailto:offlineocr.service@outlook.com" className="text-purple-600 dark:text-purple-400 hover:underline">offlineocr.service@outlook.com</a> within 7 days of the transaction. If we cannot resolve the issue or provide adequate technical support, we will instruct the reseller to issue a full or prorated refund for your subscription.
                 </p>
               </div>
             </div>

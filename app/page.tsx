@@ -68,9 +68,9 @@ const translations = {
     pricingProFeature3: 'Layout-Aware Structural Analysis',
     pricingProFeature4: 'Elite Credit Quota & Batch Processing',
     pricingProFeature5: 'Maximum Cloud Priority & Speed',
-    payWebPaddle: 'Subscribe via Web (Paddle)',
+    payWebPaddle: 'Subscribe via Web',
     payAppGooglePlay: 'Android App Subscription',
-    paddleAlertMsg: 'Paddle payment integration is currently undergoing compliance verification. Please download the Android App to subscribe via Google Play, or check back soon!',
+    paddleAlertMsg: 'Payment system is currently upgrading. Please try again later.',
   },
   zh: {
     title: 'Offline OCR：数学公式与文字识别',
@@ -135,9 +135,9 @@ const translations = {
     pricingProFeature3: '智能版面还原与复杂表格分析',
     pricingProFeature4: '顶级云端点数配额与批量处理',
     pricingProFeature5: '最高优先级云端响应与极速体验',
-    payWebPaddle: '网页端订阅 (Paddle)',
+    payWebPaddle: '网页端订阅',
     payAppGooglePlay: '安卓 App 内订阅',
-    paddleAlertMsg: '网页端 Paddle 支付通道正在进行合规审核与上线调试。请下载 Android App 在应用内订阅，或稍后重试！',
+    paddleAlertMsg: '支付系统维护升级中，请稍后再试！',
   },
 };
 
@@ -737,9 +737,9 @@ export default function OCRPage() {
             </a>
           </div>
           
-          {/* Paddle MoR Disclaimer */}
+          {/* Web Store MoR Disclaimer */}
           <p className="mt-6 text-xs text-gray-400 dark:text-gray-500 max-w-2xl mx-auto leading-relaxed border-t border-gray-100 dark:border-slate-700/50 pt-4">
-            Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns.
+            Our order process is conducted by our authorized online reseller. The reseller is the Merchant of Record for all our orders and provides customer service and handles returns.
           </p>
         </div>
       </footer>
@@ -750,7 +750,7 @@ export default function OCRPage() {
           <div className="text-2xl mt-0.5">ℹ️</div>
           <div>
             <h5 className="font-bold text-gray-900 dark:text-white text-sm mb-1">
-              {language === 'zh' ? '网页端通道测试中' : 'Web Store Channel Testing'}
+              {language === 'zh' ? '支付系统维护升级中' : 'Payment System Update'}
             </h5>
             <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
               {t.paddleAlertMsg}
