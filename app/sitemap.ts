@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://ocr-frontend-orcin.vercel.app';  // ← 改这里
+  const baseUrl = 'https://web.zhenglingyun.uk';
 
   return [
     {
