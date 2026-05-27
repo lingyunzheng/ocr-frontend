@@ -439,7 +439,7 @@ export default function OCRPage() {
           <div className="flex items-center gap-4">
             {/* Auth Section */}
             {userProfile ? (
-              <div className="flex items-center gap-3 bg-white dark:bg-slate-700 px-3 py-1.5 rounded-full shadow-sm border border-gray-100 dark:border-slate-600 hidden sm:flex">
+              <div className="flex items-center gap-3 bg-white dark:bg-slate-700 px-3 py-1.5 rounded-full shadow-sm border border-gray-100 dark:border-slate-600">
                 {userProfile.picture ? (
                   <img src={userProfile.picture} alt="Avatar" className="w-6 h-6 rounded-full" />
                 ) : (
