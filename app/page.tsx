@@ -494,6 +494,7 @@ export default function OCRPage() {
             >
               中文
             </button>
+            </div>
           </div>
         </div>
       </header>
