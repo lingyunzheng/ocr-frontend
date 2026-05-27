@@ -62,6 +62,8 @@ export const metadata: Metadata = {
   },
 };
 
+import GoogleAuthProviderWrapper from "./components/GoogleAuthProviderWrapper";
+
 export default function RootLayout({
   children,
 }: {
@@ -103,7 +105,9 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-        {children}
+        <GoogleAuthProviderWrapper>
+          {children}
+        </GoogleAuthProviderWrapper>
       </body>
     </html>
   );

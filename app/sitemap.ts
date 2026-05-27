@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://web.zhenglingyun.uk';
+  const baseUrl = 'https://ocr.zhenglingyun.uk';
 
   return [
     {
@@ -25,6 +25,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/terms`,
       lastModified: new Date('2026-01-13'),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/refund`,
+      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
