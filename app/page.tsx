@@ -77,7 +77,7 @@ const translations = {
     pricingProFeature4: 'Elite Credit Quota & Batch Processing',
     pricingProFeature5: 'Maximum Cloud Priority & Speed',
     payWebPaddle: 'Subscribe via Web',
-    payAppGooglePlay: 'Android App Subscription',
+    payAppGooglePlay: 'Subscribe via Android',
     paddleAlertMsg: 'Payment system is currently upgrading. Please try again later.',
   },
   zh: {
