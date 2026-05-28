@@ -76,9 +76,16 @@ const translations = {
     pricingProFeature3: 'Layout-Aware Structural Analysis',
     pricingProFeature4: 'Elite Credit Quota & Batch Processing',
     pricingProFeature5: 'Maximum Cloud Priority & Speed',
-    payWebPaddle: 'Subscribe via Web',
+    pricingToggleMonthly: 'Monthly',
+    pricingToggleYearly: 'Yearly',
+    pricingYearlySave: 'Save ~17%',
+    pricingPlusYearlyPrice: '$39.99',
+    pricingPlusYearlyPeriod: 'year',
+    pricingProYearlyPrice: '$59.99',
+    pricingProYearlyPeriod: 'year',
+    payWebSubscribe: 'Subscribe via Web',
     payAppGooglePlay: 'Subscribe via Android',
-    paddleAlertMsg: 'Payment system is currently upgrading. Please try again later.',
+    checkoutErrorMsg: 'Failed to create checkout. Please try again later.',
   },
   zh: {
     title: 'Offline OCR：数学公式与文字识别',
@@ -143,9 +150,16 @@ const translations = {
     pricingProFeature3: '智能版面还原与复杂表格分析',
     pricingProFeature4: '顶级云端点数配额与批量处理',
     pricingProFeature5: '最高优先级云端响应与极速体验',
-    payWebPaddle: '网页端订阅',
+    pricingToggleMonthly: '月付',
+    pricingToggleYearly: '年付',
+    pricingYearlySave: '省 ~17%',
+    pricingPlusYearlyPrice: '$39.99',
+    pricingPlusYearlyPeriod: '年',
+    pricingProYearlyPrice: '$59.99',
+    pricingProYearlyPeriod: '年',
+    payWebSubscribe: '网页端订阅',
     payAppGooglePlay: '安卓 App 内订阅',
-    paddleAlertMsg: '支付系统维护升级中，请稍后再试！',
+    checkoutErrorMsg: '创建支付链接失败，请稍后再试！',
   },
 };
 
@@ -158,7 +172,9 @@ export default function OCRPage() {
   const [language, setLanguage] = useState<Language>('en');
   const [showDetails, setShowDetails] = useState(false);
   const [fileSize, setFileSize] = useState(''); // 显示文件大小
-  const [paddleAlert, setPaddleAlert] = useState(false);
+  const [checkoutError, setCheckoutError] = useState(false);
+  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly');
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
   
   // Auth state
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
@@ -239,11 +255,36 @@ export default function OCRPage() {
 
   const t = translations[language];
 
-  const triggerPaddleAlert = () => {
-    setPaddleAlert(true);
-    setTimeout(() => {
-      setPaddleAlert(false);
-    }, 5000);
+  const handleWebSubscribe = async (plan: string) => {
+    const token = localStorage.getItem('cloud_auth_token');
+    if (!token) {
+      loginWithGoogle();
+      return;
+    }
+    setCheckoutLoading(true);
+    try {
+      const res = await fetch('https://subscription.zhenglingyun.uk/api/create-checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({ plan }),
+      });
+      const data = await res.json();
+      if (data.checkoutUrl) {
+        window.location.href = data.checkoutUrl;
+      } else {
+        setCheckoutError(true);
+        setTimeout(() => setCheckoutError(false), 5000);
+      }
+    } catch (err) {
+      console.error('Checkout failed:', err);
+      setCheckoutError(true);
+      setTimeout(() => setCheckoutError(false), 5000);
+    } finally {
+      setCheckoutLoading(false);
+    }
   };
 
   // 将图片压缩为 JPG
@@ -714,6 +755,29 @@ export default function OCRPage() {
             <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
               {t.pricingSubtitle}
             </p>
+            <div className="flex items-center justify-center gap-3 mt-6">
+              <button
+                onClick={() => setBillingPeriod('monthly')}
+                className={`px-5 py-2 rounded-full font-medium text-sm transition-all ${
+                  billingPeriod === 'monthly'
+                    ? 'bg-purple-600 text-white shadow-md'
+                    : 'bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-600'
+                }`}
+              >
+                {t.pricingToggleMonthly}
+              </button>
+              <button
+                onClick={() => setBillingPeriod('yearly')}
+                className={`px-5 py-2 rounded-full font-medium text-sm transition-all flex items-center gap-2 ${
+                  billingPeriod === 'yearly'
+                    ? 'bg-purple-600 text-white shadow-md'
+                    : 'bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-600'
+                }`}
+              >
+                {t.pricingToggleYearly}
+                <span className="text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">{t.pricingYearlySave}</span>
+              </button>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
@@ -747,8 +811,8 @@ export default function OCRPage() {
                 <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t.pricingPlusTitle}</h4>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">{t.pricingPlusDesc}</p>
                 <div className="flex items-baseline mb-6">
-                  <span className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">{t.pricingPlusPrice}</span>
-                  <span className="text-gray-500 dark:text-gray-400 ml-2">/ {t.pricingPlusPeriod}</span>
+                  <span className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">{billingPeriod === 'yearly' ? t.pricingPlusYearlyPrice : t.pricingPlusPrice}</span>
+                  <span className="text-gray-500 dark:text-gray-400 ml-2">/ {billingPeriod === 'yearly' ? t.pricingPlusYearlyPeriod : t.pricingPlusPeriod}</span>
                 </div>
                 
                 <ul className="space-y-4 mb-8">
@@ -763,10 +827,11 @@ export default function OCRPage() {
               
               <div className="flex flex-col gap-3">
                 <button
-                  onClick={triggerPaddleAlert}
-                  className="w-full text-center py-3 px-6 rounded-xl font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg transition-all active:scale-[0.98] cursor-pointer"
+                  onClick={() => handleWebSubscribe(billingPeriod === 'yearly' ? 'plus-yearly' : 'plus-monthly')}
+                  disabled={checkoutLoading}
+                  className={`w-full text-center py-3 px-6 rounded-xl font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg transition-all active:scale-[0.98] ${checkoutLoading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}`}
                 >
-                  {t.payWebPaddle}
+                  {checkoutLoading ? '⏳...' : t.payWebSubscribe}
                 </button>
                 <a
                   href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
@@ -789,8 +854,8 @@ export default function OCRPage() {
                 <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t.pricingProTitle}</h4>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">{t.pricingProDesc}</p>
                 <div className="flex items-baseline mb-6">
-                  <span className="text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400 bg-clip-text text-transparent">{t.pricingProPrice}</span>
-                  <span className="text-gray-500 dark:text-gray-400 ml-2">/ {t.pricingProPeriod}</span>
+                  <span className="text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400 bg-clip-text text-transparent">{billingPeriod === 'yearly' ? t.pricingProYearlyPrice : t.pricingProPrice}</span>
+                  <span className="text-gray-500 dark:text-gray-400 ml-2">/ {billingPeriod === 'yearly' ? t.pricingProYearlyPeriod : t.pricingProPeriod}</span>
                 </div>
                 
                 <ul className="space-y-4 mb-8">
@@ -805,10 +870,11 @@ export default function OCRPage() {
               
               <div className="flex flex-col gap-3">
                 <button
-                  onClick={triggerPaddleAlert}
-                  className="w-full text-center py-3 px-6 rounded-xl font-semibold bg-gradient-to-r from-purple-600 to-purple-800 text-white hover:shadow-lg transition-all active:scale-[0.98] cursor-pointer"
+                  onClick={() => handleWebSubscribe(billingPeriod === 'yearly' ? 'pro-yearly' : 'pro-monthly')}
+                  disabled={checkoutLoading}
+                  className={`w-full text-center py-3 px-6 rounded-xl font-semibold bg-gradient-to-r from-purple-600 to-purple-800 text-white hover:shadow-lg transition-all active:scale-[0.98] ${checkoutLoading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}`}
                 >
-                  {t.payWebPaddle}
+                  {checkoutLoading ? '⏳...' : t.payWebSubscribe}
                 </button>
                 <a
                   href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
@@ -861,25 +927,27 @@ export default function OCRPage() {
           
           {/* Web Store MoR Disclaimer */}
           <p className="mt-6 text-xs text-gray-400 dark:text-gray-500 max-w-2xl mx-auto leading-relaxed border-t border-gray-100 dark:border-slate-700/50 pt-4">
-            Our order process is conducted by our authorized online reseller. The reseller is the Merchant of Record for all our orders and provides customer service and handles returns.
+            Our order process is conducted by our online reseller{' '}
+            <a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600 dark:hover:text-gray-300">Lemon Squeezy</a>.
+            Lemon Squeezy is the Merchant of Record for all our orders and handles customer service inquiries and returns.
           </p>
         </div>
       </footer>
 
       {/* Toast Alert for Sandbox/Compliance Testing */}
-      {paddleAlert && (
-        <div className="fixed top-6 right-6 z-[9999] max-w-md bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-purple-200 dark:border-purple-800/50 p-5 rounded-2xl shadow-xl animate-fade-in flex items-start gap-4 transition-all duration-300">
-          <div className="text-2xl mt-0.5">ℹ️</div>
+      {checkoutError && (
+        <div className="fixed top-6 right-6 z-[9999] max-w-md bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-red-200 dark:border-red-800/50 p-5 rounded-2xl shadow-xl animate-fade-in flex items-start gap-4 transition-all duration-300">
+          <div className="text-2xl mt-0.5">⚠️</div>
           <div>
             <h5 className="font-bold text-gray-900 dark:text-white text-sm mb-1">
-              {language === 'zh' ? '支付系统维护升级中' : 'Payment System Update'}
+              {language === 'zh' ? '创建支付链接失败' : 'Checkout Error'}
             </h5>
             <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
-              {t.paddleAlertMsg}
+              {t.checkoutErrorMsg}
             </p>
           </div>
           <button 
-            onClick={() => setPaddleAlert(false)}
+            onClick={() => setCheckoutError(false)}
             className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-xs font-bold font-mono ml-auto"
           >
             ✕

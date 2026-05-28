@@ -33,10 +33,10 @@ export default function RefundPolicyPage() {
               1. Merchant of Record Disclaimer
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Our web order process is conducted by our authorized online reseller. <strong>The reseller is the Merchant of Record</strong> for all our web orders.
+              Our web order process is conducted by our online reseller, <strong><a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-purple-400 hover:underline">Lemon Squeezy</a></strong>. <strong>Lemon Squeezy is the Merchant of Record</strong> for all our web orders.
             </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              The reseller provides customer service inquiries and handles returns. If you have any billing or transaction-related concerns for web orders, please contact the reseller directly via their support portals.
+              Lemon Squeezy provides customer service inquiries and handles returns. If you have any billing or transaction-related concerns for web orders, please contact Lemon Squeezy directly via their support portals.
             </p>
           </section>
 

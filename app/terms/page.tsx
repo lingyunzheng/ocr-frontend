@@ -87,7 +87,7 @@ export default function TermsPage() {
                   4.1 Web Subscriptions (Authorized Reseller)
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Purchases made through our official website are conducted and processed by our authorized online reseller, who is the Merchant of Record for all web transactions. The reseller handles billing, automatic renewals, sales tax compliance, and web-related refund requests. Web subscriptions automatically renew unless canceled before the end of the current billing cycle.
+                  Purchases made through our official website are conducted and processed by our online reseller, <a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-purple-400 hover:underline">Lemon Squeezy</a>, who is the Merchant of Record for all web transactions. Lemon Squeezy handles billing, automatic renewals, sales tax compliance, and web-related refund requests. Web subscriptions automatically renew unless canceled before the end of the current billing cycle.
                 </p>
               </div>
               <div>
@@ -100,7 +100,7 @@ export default function TermsPage() {
               </div>
             </div>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              <strong>Cancellations & Refunds:</strong> You can manage or cancel your subscriptions at any time through your respective account dashboards (the authorized reseller&apos;s customer portal for web orders, or Google Play Store settings for mobile orders). Refunds are handled by the respective merchant of record (our authorized reseller or Google) in accordance with our Refund Policy. No refunds or compensations will be issued for accounts terminated due to a violation of our Fair Use or Prohibited Conduct policies (see Section 5).
+              <strong>Cancellations &amp; Refunds:</strong> You can manage or cancel your subscriptions at any time through your respective account dashboards (Lemon Squeezy&apos;s customer portal for web orders, or Google Play Store settings for mobile orders). Refunds are handled by the respective merchant of record (Lemon Squeezy or Google) in accordance with our Refund Policy. No refunds or compensations will be issued for accounts terminated due to a violation of our Fair Use or Prohibited Conduct policies (see Section 5).
             </p>
           </section>
 
