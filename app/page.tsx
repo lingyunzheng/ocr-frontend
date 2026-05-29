@@ -928,8 +928,8 @@ export default function OCRPage() {
           {/* Web Store MoR Disclaimer */}
           <p className="mt-6 text-xs text-gray-400 dark:text-gray-500 max-w-2xl mx-auto leading-relaxed border-t border-gray-100 dark:border-slate-700/50 pt-4">
             Our order process is conducted by our online reseller{' '}
-            <a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600 dark:hover:text-gray-300">Lemon Squeezy</a>.
-            Lemon Squeezy is the Merchant of Record for all our orders and handles customer service inquiries and returns.
+            <a href="https://creem.io" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600 dark:hover:text-gray-300">Creem</a>.
+            Creem is the Merchant of Record for all our orders and handles customer service inquiries and returns.
           </p>
         </div>
       </footer>

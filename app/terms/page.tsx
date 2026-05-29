@@ -87,7 +87,7 @@ export default function TermsPage() {
                   4.1 Web Subscriptions (Authorized Reseller)
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Purchases made through our official website are conducted and processed by our online reseller, <a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-purple-400 hover:underline">Lemon Squeezy</a>, who is the Merchant of Record for all web transactions. Lemon Squeezy handles billing, automatic renewals, sales tax compliance, and web-related refund requests. Web subscriptions automatically renew unless canceled before the end of the current billing cycle.
+                  Purchases made through our official website are conducted and processed by our online reseller, <a href="https://creem.io" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-purple-400 hover:underline">Creem</a>, who acts as the Merchant of Record for web transactions. Creem handles billing, automatic renewals, sales tax compliance, and web-related refund requests. Web subscriptions automatically renew unless canceled before the end of the current billing cycle.
                 </p>
               </div>
               <div>
