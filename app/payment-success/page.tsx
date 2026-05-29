@@ -12,26 +12,13 @@ export const metadata: Metadata = {
 
 type PaymentSuccessPageProps = {
   searchParams?: {
-    checkout_id?: string;
-    order_id?: string;
     subscription_id?: string;
     product_id?: string;
     request_id?: string;
   };
 };
 
-function shortId(value?: string) {
-  if (!value) return "Pending";
-  if (value.length <= 16) return value;
-  return `${value.slice(0, 8)}...${value.slice(-6)}`;
-}
-
-export default function PaymentSuccessPage({
-  searchParams,
-}: PaymentSuccessPageProps) {
-  const orderId = searchParams?.order_id;
-  const checkoutId = searchParams?.checkout_id;
-
+export default function PaymentSuccessPage(_: PaymentSuccessPageProps) {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-white">
       <div className="mx-auto flex min-h-screen w-full max-w-3xl flex-col justify-center px-6 py-16">
@@ -44,27 +31,13 @@ export default function PaymentSuccessPage({
             Payment successful
           </h1>
           <p className="mb-8 text-base leading-7 text-slate-600 dark:text-slate-300">
-            Thanks for subscribing. Your account is being updated by the payment
-            webhook and the premium status should appear shortly.
+            Thanks for subscribing. Your premium access is ready and may take a
+            few seconds to appear across all devices.
           </p>
 
-          <div className="mb-8 grid gap-3 rounded-xl bg-slate-50 p-4 text-sm dark:bg-slate-900/70">
-            <div className="flex items-center justify-between gap-4">
-              <span className="text-slate-500 dark:text-slate-400">
-                Order
-              </span>
-              <span className="font-mono text-slate-800 dark:text-slate-100">
-                {shortId(orderId)}
-              </span>
-            </div>
-            <div className="flex items-center justify-between gap-4">
-              <span className="text-slate-500 dark:text-slate-400">
-                Checkout
-              </span>
-              <span className="font-mono text-slate-800 dark:text-slate-100">
-                {shortId(checkoutId)}
-              </span>
-            </div>
+          <div className="mb-8 rounded-xl bg-slate-50 p-4 text-sm leading-6 text-slate-600 dark:bg-slate-900/70 dark:text-slate-300">
+            You can return to the web app now. If you are using the Android app,
+            reopen it to refresh your subscription status.
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row">

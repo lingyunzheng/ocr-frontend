@@ -14,6 +14,32 @@ type Language = 'en' | 'zh';
 
 const AUTH_TOKEN_KEY = 'cloud_auth_token';
 const AUTH_PROFILE_KEY = 'cloud_auth_profile';
+const SESSION_MAX_AGE_SECONDS = 30 * 24 * 60 * 60;
+const SUBSCRIPTION_API_URL = 'https://subscription.zhenglingyun.uk';
+
+function setCookie(name: string, value: string, maxAgeSeconds: number) {
+  document.cookie = `${name}=${encodeURIComponent(value)}; Max-Age=${maxAgeSeconds}; Path=/; SameSite=Lax; Secure`;
+}
+
+function getCookie(name: string) {
+  const cookie = document.cookie
+    .split('; ')
+    .find((row) => row.startsWith(`${name}=`));
+  return cookie ? decodeURIComponent(cookie.split('=').slice(1).join('=')) : null;
+}
+
+function deleteCookie(name: string) {
+  document.cookie = `${name}=; Max-Age=0; Path=/; SameSite=Lax; Secure`;
+}
+
+function saveAuthToken(token: string) {
+  localStorage.setItem(AUTH_TOKEN_KEY, token);
+  setCookie(AUTH_TOKEN_KEY, token, SESSION_MAX_AGE_SECONDS);
+}
+
+function loadAuthToken() {
+  return localStorage.getItem(AUTH_TOKEN_KEY) || getCookie(AUTH_TOKEN_KEY);
+}
 
 function saveAuthProfile(profile: UserProfile) {
   localStorage.setItem(AUTH_PROFILE_KEY, JSON.stringify(profile));
@@ -35,6 +61,39 @@ function loadAuthProfile(): UserProfile | null {
 function clearAuthStorage() {
   localStorage.removeItem(AUTH_TOKEN_KEY);
   localStorage.removeItem(AUTH_PROFILE_KEY);
+  deleteCookie(AUTH_TOKEN_KEY);
+}
+
+function isExpiredJwt(decoded: any) {
+  return typeof decoded?.exp === 'number' && decoded.exp * 1000 <= Date.now();
+}
+
+async function exchangeGoogleTokenForSession(accessToken: string) {
+  const res = await fetch(`${SUBSCRIPTION_API_URL}/api/login`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to create web session');
+  }
+
+  const data = await res.json();
+  if (!data.token || !data.email) {
+    throw new Error('Invalid web session response');
+  }
+
+  const profile: UserProfile = {
+    email: data.email,
+    name: data.name || data.email.split('@')[0],
+    picture: data.picture || undefined,
+  };
+
+  saveAuthToken(data.token);
+  saveAuthProfile(profile);
+  return profile;
 }
 
 const translations = {
@@ -220,7 +279,7 @@ export default function OCRPage() {
             picture: decoded.picture
           };
           setUserProfile(profile);
-          localStorage.setItem(AUTH_TOKEN_KEY, ssoToken);
+          saveAuthToken(ssoToken);
           saveAuthProfile(profile);
           
           // Remove token from URL for security and clean look
@@ -230,14 +289,23 @@ export default function OCRPage() {
         }
       } else {
         // 2. Check local storage
-        const savedToken = localStorage.getItem(AUTH_TOKEN_KEY);
+        const savedToken = loadAuthToken();
         if (savedToken) {
           try {
             const decoded = jwtDecode<any>(savedToken);
+            if (isExpiredJwt(decoded)) {
+              clearAuthStorage();
+              return;
+            }
+
+            const savedProfile = loadAuthProfile();
+            const email = decoded.email || savedProfile?.email;
+            if (!email) return;
+
             const profile: UserProfile = {
-              email: decoded.email,
-              name: decoded.name,
-              picture: decoded.picture
+              email,
+              name: savedProfile?.name || decoded.name || email.split('@')[0],
+              picture: savedProfile?.picture || decoded.picture
             };
             setUserProfile(profile);
             saveAuthProfile(profile);
@@ -254,23 +322,12 @@ export default function OCRPage() {
 
   const loginWithGoogle = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
-      // Here we only get an access_token by default, we need to fetch user info
       try {
-        const userInfo = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-        }).then(res => res.json());
-        
-        const profile: UserProfile = {
-          email: userInfo.email,
-          name: userInfo.name,
-          picture: userInfo.picture
-        };
+        const profile = await exchangeGoogleTokenForSession(tokenResponse.access_token);
         setUserProfile(profile);
-        
-        localStorage.setItem(AUTH_TOKEN_KEY, tokenResponse.access_token);
-        saveAuthProfile(profile);
       } catch (e) {
-        console.error("Failed to fetch user info", e);
+        console.error("Failed to sign in", e);
+        clearAuthStorage();
       }
     },
     onError: errorResponse => console.error(errorResponse),
@@ -287,7 +344,7 @@ export default function OCRPage() {
   const t = translations[language];
 
   const handleWebSubscribe = async (plan: string) => {
-    const token = localStorage.getItem(AUTH_TOKEN_KEY);
+    const token = loadAuthToken();
     if (!token) {
       loginWithGoogle();
       return;
@@ -302,6 +359,12 @@ export default function OCRPage() {
         },
         body: JSON.stringify({ plan }),
       });
+      if (res.status === 401) {
+        clearAuthStorage();
+        setUserProfile(null);
+        loginWithGoogle();
+        return;
+      }
       const data = await res.json();
       if (data.checkoutUrl) {
         window.location.href = data.checkoutUrl;
