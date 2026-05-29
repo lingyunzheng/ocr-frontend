@@ -12,6 +12,31 @@ interface UserProfile {
 
 type Language = 'en' | 'zh';
 
+const AUTH_TOKEN_KEY = 'cloud_auth_token';
+const AUTH_PROFILE_KEY = 'cloud_auth_profile';
+
+function saveAuthProfile(profile: UserProfile) {
+  localStorage.setItem(AUTH_PROFILE_KEY, JSON.stringify(profile));
+}
+
+function loadAuthProfile(): UserProfile | null {
+  try {
+    const rawProfile = localStorage.getItem(AUTH_PROFILE_KEY);
+    if (!rawProfile) return null;
+    const profile = JSON.parse(rawProfile) as UserProfile;
+    if (!profile.email) return null;
+    return profile;
+  } catch {
+    localStorage.removeItem(AUTH_PROFILE_KEY);
+    return null;
+  }
+}
+
+function clearAuthStorage() {
+  localStorage.removeItem(AUTH_TOKEN_KEY);
+  localStorage.removeItem(AUTH_PROFILE_KEY);
+}
+
 const translations = {
   en: {
     title: 'Offline OCR: Math & Word',
@@ -195,7 +220,8 @@ export default function OCRPage() {
             picture: decoded.picture
           };
           setUserProfile(profile);
-          localStorage.setItem('cloud_auth_token', ssoToken);
+          localStorage.setItem(AUTH_TOKEN_KEY, ssoToken);
+          saveAuthProfile(profile);
           
           // Remove token from URL for security and clean look
           window.history.replaceState({}, document.title, window.location.pathname);
@@ -204,17 +230,22 @@ export default function OCRPage() {
         }
       } else {
         // 2. Check local storage
-        const savedToken = localStorage.getItem('cloud_auth_token');
+        const savedToken = localStorage.getItem(AUTH_TOKEN_KEY);
         if (savedToken) {
           try {
             const decoded = jwtDecode<any>(savedToken);
-            setUserProfile({
+            const profile: UserProfile = {
               email: decoded.email,
               name: decoded.name,
               picture: decoded.picture
-            });
+            };
+            setUserProfile(profile);
+            saveAuthProfile(profile);
           } catch (e) {
-            localStorage.removeItem('cloud_auth_token');
+            const savedProfile = loadAuthProfile();
+            if (savedProfile) {
+              setUserProfile(savedProfile);
+            }
           }
         }
       }
@@ -229,15 +260,15 @@ export default function OCRPage() {
           headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
         }).then(res => res.json());
         
-        setUserProfile({
+        const profile: UserProfile = {
           email: userInfo.email,
           name: userInfo.name,
           picture: userInfo.picture
-        });
+        };
+        setUserProfile(profile);
         
-        // For MoR later, you would send tokenResponse.access_token to your backend to get a JWT
-        // For now, we just save a mock flag or the access_token
-        localStorage.setItem('cloud_auth_token', tokenResponse.access_token);
+        localStorage.setItem(AUTH_TOKEN_KEY, tokenResponse.access_token);
+        saveAuthProfile(profile);
       } catch (e) {
         console.error("Failed to fetch user info", e);
       }
@@ -247,7 +278,7 @@ export default function OCRPage() {
 
   const handleLogout = () => {
     setUserProfile(null);
-    localStorage.removeItem('cloud_auth_token');
+    clearAuthStorage();
   };
 
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -256,7 +287,7 @@ export default function OCRPage() {
   const t = translations[language];
 
   const handleWebSubscribe = async (plan: string) => {
-    const token = localStorage.getItem('cloud_auth_token');
+    const token = localStorage.getItem(AUTH_TOKEN_KEY);
     if (!token) {
       loginWithGoogle();
       return;
