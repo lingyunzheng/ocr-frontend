@@ -130,6 +130,7 @@ const translations = {
     appStore: 'App Store',
     selectedFile: 'Selected file',
     footer: '© 2026 Offline OCR. All rights reserved.',
+    affiliate: 'Partner with Us (Earn 30%)',
     compressing: 'Compressing image...',
     imageSize: 'Image size',
     pricingTitle: 'Simple, Transparent Pricing',
@@ -205,6 +206,7 @@ const translations = {
     appStore: 'App Store',
     selectedFile: '已选文件',
     footer: '© 2026 Offline OCR。保留所有权利。',
+    affiliate: '加入分销计划 (赚取 30% 佣金)',
     compressing: '压缩中...',
     imageSize: '图片大小',
     pricingTitle: '简单透明的定价',
@@ -1027,7 +1029,7 @@ export default function OCRPage() {
       <footer className="bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 py-8">
         <div className="max-w-4xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
           <p>{t.footer}</p>
-          <div className="mt-4 flex justify-center gap-6 text-sm">
+          <div className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm items-center">
             <a href="/privacy" className="hover:text-purple-600 transition">
               Privacy Policy
             </a>
@@ -1038,9 +1040,12 @@ export default function OCRPage() {
               Refund Policy
             </a>
             <a href="/contact" className="hover:text-purple-600 transition">
-              Contact
-            </a>
-          </div>
+                Contact
+              </a>
+              <a href="https://affiliates.creem.io/join/offline-ocr" target="_blank" rel="noopener noreferrer" className="hover:text-purple-700 transition font-bold text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30 px-3 py-1 rounded-full border border-purple-200 dark:border-purple-800">
+                🤝 {t.affiliate}
+              </a>
+            </div>
           
           {/* Web Store MoR Disclaimer */}
           <p className="mt-6 text-xs text-gray-400 dark:text-gray-500 max-w-2xl mx-auto leading-relaxed border-t border-gray-100 dark:border-slate-700/50 pt-4">
