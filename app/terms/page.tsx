@@ -100,7 +100,7 @@ export default function TermsPage() {
               </div>
             </div>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              <strong>Cancellations &amp; Refunds:</strong> You can manage or cancel your subscriptions at any time through your respective account dashboards (Lemon Squeezy&apos;s customer portal for web orders, or Google Play Store settings for mobile orders). Refunds are handled by the respective merchant of record (Lemon Squeezy or Google) in accordance with our Refund Policy. No refunds or compensations will be issued for accounts terminated due to a violation of our Fair Use or Prohibited Conduct policies (see Section 5).
+              <strong>Cancellations &amp; Refunds:</strong> You can manage or cancel your subscriptions at any time through your respective account dashboards (Creem&apos;s customer portal for web orders, or Google Play Store settings for mobile orders). Refunds are handled by the respective merchant of record (Creem or Google) in accordance with our Refund Policy. No refunds or compensations will be issued for accounts terminated due to a violation of our Fair Use or Prohibited Conduct policies (see Section 5).
             </p>
           </section>
 
