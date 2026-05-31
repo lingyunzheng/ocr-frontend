@@ -124,8 +124,8 @@ const translations = {
     feature3Desc: 'Free local AI models for daily use, or opt-in Pro cloud mode for highest accuracy',
     feature4: 'Multiple Languages',
     feature4Desc: 'Support for multiple languages',
-    downloadApp: 'Download Mobile App',
-    appBenefit: 'Get full features and math formula support on mobile',
+    downloadApp: 'Download Apps',
+    appBenefit: 'Get full features and math formula support on your devices',
     googlePlay: 'Google Play',
     appStore: 'App Store',
     selectedFile: 'Selected file',
@@ -199,8 +199,8 @@ const translations = {
     feature3Desc: '日常使用完全免费的本地AI模型，也可选专业云端模式获取最高精度',
     feature4: '多语言支持',
     feature4Desc: '支持多种语言与复杂排版',
-    downloadApp: '下载移动应用',
-    appBenefit: '手机端获得完整离线处理与公式解析功能',
+    downloadApp: '下载客户端',
+    appBenefit: '在您的设备上获得完整离线处理与公式解析功能',
     googlePlay: 'Google Play',
     appStore: 'App Store',
     selectedFile: '已选文件',
@@ -648,25 +648,23 @@ export default function OCRPage() {
           </p>
 
           {/* Demo Notice 提示框（新增）*/}
-          <div className="mx-auto max-w-2xl bg-blue-50 dark:bg-blue-900/30 border-2 border-blue-300 dark:border-blue-700 rounded-2xl px-6 py-5 mb-8">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <div className="flex-1">
-                <p className="text-blue-900 dark:text-blue-100 font-medium text-sm md:text-base">
-                  ℹ️ {t.demoNotice}
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-2 mt-2 sm:mt-0">
+          <div className="mx-auto max-w-3xl bg-blue-50 dark:bg-blue-900/30 border-2 border-blue-300 dark:border-blue-700 rounded-2xl px-6 py-6 mb-8 shadow-sm">
+            <div className="flex flex-col items-center justify-center text-center">
+              <p className="text-blue-900 dark:text-blue-100 font-medium text-sm md:text-base mb-4 max-w-2xl">
+                ℹ️ {t.demoNotice}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
                 <a
                   href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="whitespace-nowrap px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all transform hover:scale-105 active:scale-95 text-center"
+                  className="whitespace-nowrap px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-sm"
                 >
                   📱 {t.downloadAppCTA}
                 </a>
                 <a
                   href="https://github.com/lingyunzheng/offline-ocr/releases/download/v0.1.0/offline-ocr_0.1.0_x64_en-US.msi"
-                  className="whitespace-nowrap px-5 py-2 bg-slate-700 hover:bg-slate-800 text-white font-semibold rounded-lg transition-all transform hover:scale-105 active:scale-95 text-center flex items-center justify-center gap-2"
+                  className="whitespace-nowrap px-6 py-2.5 bg-slate-800 dark:bg-slate-700 hover:bg-slate-900 dark:hover:bg-slate-600 text-white font-semibold rounded-xl transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-sm"
                 >
                   💻 {t.downloadWindowsCTA}
                 </a>
@@ -994,25 +992,34 @@ export default function OCRPage() {
         </section>
 
         {/* App Promotion Section */}
-        <section className="bg-gradient-to-r from-purple-600 to-purple-800 rounded-2xl shadow-xl p-12 text-white text-center mb-12">
-          <h3 className="text-3xl font-bold mb-4">📱 {t.downloadApp}</h3>
-          <p className="text-lg mb-8 opacity-90">{t.appBenefit}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-white text-purple-600 rounded-lg font-bold hover:bg-gray-100 transition-all inline-flex items-center justify-center gap-2"
-            >
-              🤖 {t.googlePlay}
-            </a>
-            <a
-              href="https://github.com/lingyunzheng/offline-ocr/releases/download/v0.1.0/offline-ocr_0.1.0_x64_en-US.msi"
-              className="px-8 py-4 bg-white text-purple-600 rounded-lg font-bold hover:bg-gray-100 transition-all inline-flex items-center justify-center gap-2"
-            >
-              💻 {t.downloadWindowsCTA}
-            </a>
+        <section className="bg-gradient-to-br from-purple-600 to-indigo-800 rounded-3xl shadow-2xl p-10 md:p-14 text-white text-center mb-12 relative overflow-hidden">
+          <div className="relative z-10">
+            <h3 className="text-3xl font-bold mb-4 flex items-center justify-center gap-3">
+              ✨ {t.downloadApp}
+            </h3>
+            <p className="text-lg mb-8 text-purple-100 max-w-xl mx-auto leading-relaxed">
+              {t.appBenefit}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+              <a
+                href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-8 py-4 bg-white text-purple-700 rounded-xl font-bold hover:bg-gray-50 transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
+                📱 {t.googlePlay}
+              </a>
+              <a
+                href="https://github.com/lingyunzheng/offline-ocr/releases/download/v0.1.0/offline-ocr_0.1.0_x64_en-US.msi"
+                className="w-full sm:w-auto px-8 py-4 bg-gray-900 text-white border border-gray-700 rounded-xl font-bold hover:bg-black transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
+                💻 {t.downloadWindowsCTA}
+              </a>
+            </div>
           </div>
+          {/* Decorative background blobs */}
+          <div className="absolute top-0 left-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
         </section>
       </main>
 
