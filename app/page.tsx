@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import { useGoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
 
@@ -99,9 +100,24 @@ async function exchangeGoogleTokenForSession(accessToken: string) {
 const translations = {
   en: {
     title: 'Offline OCR: Math & Word',
-    subtitle: 'Convert images and formulas to editable text instantly',
-    demoNotice: 'This web page is an online demo for basic text recognition. For full dual-engine capabilities (free local mode & advanced cloud math formula parsing), please download our mobile app.',
-    downloadAppCTA: 'Download App Now',
+    subtitle: 'Convert images, formulas, and complex documents into editable text.',
+    heroKicker: 'Private OCR workspace for serious documents',
+    heroBody:
+      'Keep the subscription path front and center while showing the real product: phone, tablet, Windows editor, formula recognition, and export workflows in one polished landing experience.',
+    heroPrimaryCTA: 'Subscribe on Web',
+    heroSecondaryCTA: 'Try OCR Demo',
+    navShowcase: 'Showcase',
+    navDemo: 'Demo',
+    navPricing: 'Pricing',
+    navDownload: 'Download',
+    statLocal: 'Local mode',
+    statFormula: 'Formula OCR',
+    statExport: 'Word/PDF export',
+    visualTitle: 'Live recognition workflow',
+    visualSubtitle: 'From capture to editable output',
+    demoNotice:
+      'This web page is an online demo for basic text recognition. For full dual-engine capabilities, subscribe on web or download the app.',
+    downloadAppCTA: 'Download App',
     downloadWindowsCTA: 'Windows Desktop',
     dragDrop: 'Drag & drop your image here or',
     browse: 'browse files',
@@ -115,24 +131,29 @@ const translations = {
     copy: 'Copy to Clipboard',
     download: 'Download as TXT',
     copySuccess: 'Copied to clipboard!',
-    features: 'Why Choose Offline OCR?',
+    features: 'Built for documents that need precision',
     feature1: 'Instant Recognition',
-    feature1Desc: 'Process images in milliseconds',
+    feature1Desc: 'Process images quickly with a clean capture-to-text flow.',
     feature2: 'Privacy First',
-    feature2Desc: 'On-device mode processes files 100% locally with zero server upload',
+    feature2Desc: 'On-device mode processes files locally with zero server upload.',
     feature3: 'Dual-Engine Architecture',
-    feature3Desc: 'Free local AI models for daily use, or opt-in Pro cloud mode for highest accuracy',
+    feature3Desc: 'Use free local AI models, or opt into cloud mode for higher accuracy.',
     feature4: 'Multiple Languages',
-    feature4Desc: 'Support for multiple languages',
-    downloadApp: 'Download Apps',
-    appBenefit: 'Get full features and math formula support on your devices',
-    googlePlay: 'Google Play',
-    appStore: 'App Store',
-    selectedFile: 'Selected file',
-    footer: '© 2026 Offline OCR. All rights reserved.',
-    affiliate: 'Partner with Us (Earn 30%)',
-    compressing: 'Compressing image...',
-    imageSize: 'Image size',
+    feature4Desc: 'Support for multiple languages, formulas, and structured layouts.',
+    showcaseTitle: 'More proof, less clutter',
+    showcaseSubtitle:
+      'The page now uses your strongest assets as a compact gallery instead of heavy stacked sections.',
+    showcasePhone: 'Mobile formula capture',
+    showcasePhoneDesc: 'A premium first impression for students and researchers.',
+    showcaseWindows: 'Windows editor',
+    showcaseWindowsDesc: 'Desktop document editing and math-heavy recognition.',
+    showcaseExport: 'Word-ready output',
+    showcaseExportDesc: 'Show the result users can immediately copy, export, or edit.',
+    demoTitle: 'Online OCR demo',
+    demoSubtitle:
+      'Keep the web demo available for trust, but let subscription remain the primary conversion path.',
+    uploadTitle: 'Upload an image',
+    uploadHint: 'PNG, JPG, GIF up to 50MB',
     pricingTitle: 'Simple, Transparent Pricing',
     pricingSubtitle: 'Unlock advanced features, ad-free processing, and high-accuracy cloud models.',
     pricingFreeTitle: 'Basic Mode',
@@ -171,13 +192,38 @@ const translations = {
     pricingProYearlyPeriod: 'year',
     payWebSubscribe: 'Subscribe via Web',
     payAppGooglePlay: 'Subscribe via Android',
+    included: 'Included by Default',
+    popular: 'Popular',
     checkoutErrorMsg: 'Failed to create checkout. Please try again later.',
+    downloadApp: 'Download Apps',
+    appBenefit: 'Get full offline processing, formula parsing, and export workflows on your devices.',
+    googlePlay: 'Google Play',
+    appStore: 'App Store',
+    selectedFile: 'Selected file',
+    imageSize: 'Image size',
+    footer: '© 2026 Offline OCR. All rights reserved.',
+    affiliate: 'Partner with Us (Earn 30%)',
   },
   zh: {
     title: 'Offline OCR：数学公式与文字识别',
-    subtitle: '一键将图片和公式转换为可编辑文本',
-    demoNotice: '此网页仅为在线演示版本，支持基础文字识别。想要体验完整的双引擎功能（免费本地离线识别 & 高级云端数学公式解析），请下载我们的手机 App。',
-    downloadAppCTA: '立即下载 App',
+    subtitle: '把图片、公式和复杂文档一键转换为可编辑文本。',
+    heroKicker: '为严肃文档打造的私密 OCR 工作台',
+    heroBody:
+      '首页继续突出网页订阅，同时把真实产品能力展示出来：手机、平板、Windows 编辑器、公式识别和导出流程，都放在一个更克制高级的视觉里。',
+    heroPrimaryCTA: '网页端订阅',
+    heroSecondaryCTA: '体验 OCR 演示',
+    navShowcase: '展示',
+    navDemo: '演示',
+    navPricing: '订阅',
+    navDownload: '下载',
+    statLocal: '本地模式',
+    statFormula: '公式识别',
+    statExport: 'Word/PDF 导出',
+    visualTitle: '实时识别流程',
+    visualSubtitle: '从拍照到可编辑输出',
+    demoNotice:
+      '此网页为基础文字识别在线演示。完整双引擎能力、高精度公式解析和无广告体验，可通过网页订阅或下载 App 获得。',
+    downloadAppCTA: '下载 App',
     downloadWindowsCTA: 'Windows 桌面版',
     dragDrop: '拖拽图片到这里或',
     browse: '选择文件',
@@ -191,24 +237,28 @@ const translations = {
     copy: '复制到剪贴板',
     download: '下载为TXT文件',
     copySuccess: '已复制到剪贴板！',
-    features: '为什么选择 Offline OCR?',
+    features: '为高精度文档而设计',
     feature1: '极速识别',
-    feature1Desc: '毫秒级高效处理图片',
+    feature1Desc: '从图片到文本的流程更快、更清爽。',
     feature2: '隐私保护',
-    feature2Desc: '默认本地模式下所有数据处理在设备端完成，零上传',
+    feature2Desc: '默认本地模式下所有数据在设备端完成处理，零上传。',
     feature3: '双引擎架构',
-    feature3Desc: '日常使用完全免费的本地AI模型，也可选专业云端模式获取最高精度',
+    feature3Desc: '日常可用免费本地 AI，也可选择云端模式获得更高精度。',
     feature4: '多语言支持',
-    feature4Desc: '支持多种语言与复杂排版',
-    downloadApp: '下载客户端',
-    appBenefit: '在您的设备上获得完整离线处理与公式解析功能',
-    googlePlay: 'Google Play',
-    appStore: 'App Store',
-    selectedFile: '已选文件',
-    footer: '© 2026 Offline OCR。保留所有权利。',
-    affiliate: '加入分销计划 (赚取 30% 佣金)',
-    compressing: '压缩中...',
-    imageSize: '图片大小',
+    feature4Desc: '支持多语言、数学公式和复杂版面。',
+    showcaseTitle: '更多展示，但不臃肿',
+    showcaseSubtitle:
+      '我把素材整理成紧凑画廊，用真实界面证明能力，而不是堆很多大段卡片。',
+    showcasePhone: '移动端公式捕捉',
+    showcasePhoneDesc: '适合学生、研究者第一眼感知产品价值。',
+    showcaseWindows: 'Windows 编辑器',
+    showcaseWindowsDesc: '展示桌面端文档编辑和数学识别能力。',
+    showcaseExport: 'Word 输出结果',
+    showcaseExportDesc: '突出用户最终能复制、导出和继续编辑。',
+    demoTitle: '在线 OCR 演示',
+    demoSubtitle: '保留网页演示建立信任，同时让订阅仍然是主要转化路径。',
+    uploadTitle: '上传图片',
+    uploadHint: 'PNG、JPG、GIF，最大 50MB',
     pricingTitle: '简单透明的定价',
     pricingSubtitle: '解锁高级功能、无广告体验以及高精度云端模型。',
     pricingFreeTitle: '基础模式',
@@ -247,52 +297,55 @@ const translations = {
     pricingProYearlyPeriod: '年',
     payWebSubscribe: '网页端订阅',
     payAppGooglePlay: '安卓 App 内订阅',
+    included: '当前已拥有',
+    popular: '推荐',
     checkoutErrorMsg: '创建支付链接失败，请稍后再试！',
+    downloadApp: '下载客户端',
+    appBenefit: '在设备上获得完整离线处理、公式解析和导出流程。',
+    googlePlay: 'Google Play',
+    appStore: 'App Store',
+    selectedFile: '已选文件',
+    imageSize: '图片大小',
+    footer: '© 2026 Offline OCR。保留所有权利。',
+    affiliate: '加入分销计划 (赚取 30% 佣金)',
   },
 };
 
 export default function OCRPage() {
   const [file, setFile] = useState<File | null>(null);
-  const [preview, setPreview] = useState<string>(''); // 预览图片
+  const [preview, setPreview] = useState<string>('');
   const [result, setResult] = useState<{ text: string; lines: string[] } | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [language, setLanguage] = useState<Language>('en');
   const [showDetails, setShowDetails] = useState(false);
-  const [fileSize, setFileSize] = useState(''); // 显示文件大小
+  const [fileSize, setFileSize] = useState('');
   const [checkoutError, setCheckoutError] = useState(false);
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly');
   const [checkoutLoading, setCheckoutLoading] = useState(false);
-  
-  // Auth state
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
 
-  // Check for SSO Token in URL on mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // 1. Check URL for sso_token
       const urlParams = new URLSearchParams(window.location.search);
       const ssoToken = urlParams.get('sso_token');
-      
+
       if (ssoToken) {
         try {
           const decoded = jwtDecode<any>(ssoToken);
           const profile: UserProfile = {
             email: decoded.email,
             name: decoded.name,
-            picture: decoded.picture
+            picture: decoded.picture,
           };
           setUserProfile(profile);
           saveAuthToken(ssoToken);
           saveAuthProfile(profile);
-          
-          // Remove token from URL for security and clean look
           window.history.replaceState({}, document.title, window.location.pathname);
         } catch (e) {
-          console.error("Invalid SSO token:", e);
+          console.error('Invalid SSO token:', e);
         }
       } else {
-        // 2. Check local storage
         const savedToken = loadAuthToken();
         if (savedToken) {
           try {
@@ -309,7 +362,7 @@ export default function OCRPage() {
             const profile: UserProfile = {
               email,
               name: savedProfile?.name || decoded.name || email.split('@')[0],
-              picture: savedProfile?.picture || decoded.picture
+              picture: savedProfile?.picture || decoded.picture,
             };
             setUserProfile(profile);
             saveAuthProfile(profile);
@@ -330,11 +383,11 @@ export default function OCRPage() {
         const profile = await exchangeGoogleTokenForSession(tokenResponse.access_token);
         setUserProfile(profile);
       } catch (e) {
-        console.error("Failed to sign in", e);
+        console.error('Failed to sign in', e);
         clearAuthStorage();
       }
     },
-    onError: errorResponse => console.error(errorResponse),
+    onError: (errorResponse) => console.error(errorResponse),
   });
 
   const handleLogout = () => {
@@ -344,8 +397,85 @@ export default function OCRPage() {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dragRef = useRef<HTMLDivElement>(null);
-
   const t = translations[language];
+
+  const showcaseCards = [
+    {
+      title: t.showcasePhone,
+      desc: t.showcasePhoneDesc,
+      src: '/showcase/phone-formula.png',
+      alt: 'Phone formula recognition screen',
+    },
+    {
+      title: t.showcaseWindows,
+      desc: t.showcaseWindowsDesc,
+      src: '/showcase/windows-editor.png',
+      alt: 'Windows OCR editor screen',
+    },
+    {
+      title: t.showcaseExport,
+      desc: t.showcaseExportDesc,
+      src: '/showcase/word-output.png',
+      alt: 'Word output from OCR',
+    },
+  ];
+
+  const featureCards = [
+    { title: t.feature1, desc: t.feature1Desc, accent: 'bg-cyan-500' },
+    { title: t.feature2, desc: t.feature2Desc, accent: 'bg-emerald-500' },
+    { title: t.feature3, desc: t.feature3Desc, accent: 'bg-violet-500' },
+    { title: t.feature4, desc: t.feature4Desc, accent: 'bg-amber-500' },
+  ];
+
+  const pricingPlans = [
+    {
+      id: 'free',
+      name: t.pricingFreeTitle,
+      price: t.pricingFreePrice,
+      period: t.pricingFreePeriod,
+      desc: t.pricingFreeDesc,
+      features: [
+        t.pricingFreeFeature1,
+        t.pricingFreeFeature2,
+        t.pricingFreeFeature3,
+        t.pricingFreeFeature4,
+        t.pricingFreeFeature5,
+      ],
+      tone: 'neutral',
+    },
+    {
+      id: 'plus',
+      name: t.pricingPlusTitle,
+      price: billingPeriod === 'yearly' ? t.pricingPlusYearlyPrice : t.pricingPlusPrice,
+      period: billingPeriod === 'yearly' ? t.pricingPlusYearlyPeriod : t.pricingPlusPeriod,
+      desc: t.pricingPlusDesc,
+      features: [
+        t.pricingPlusFeature1,
+        t.pricingPlusFeature2,
+        t.pricingPlusFeature3,
+        t.pricingPlusFeature4,
+        t.pricingPlusFeature5,
+      ],
+      checkoutPlan: billingPeriod === 'yearly' ? 'plus-yearly' : 'plus-monthly',
+      tone: 'plus',
+    },
+    {
+      id: 'pro',
+      name: t.pricingProTitle,
+      price: billingPeriod === 'yearly' ? t.pricingProYearlyPrice : t.pricingProPrice,
+      period: billingPeriod === 'yearly' ? t.pricingProYearlyPeriod : t.pricingProPeriod,
+      desc: t.pricingProDesc,
+      features: [
+        t.pricingProFeature1,
+        t.pricingProFeature2,
+        t.pricingProFeature3,
+        t.pricingProFeature4,
+        t.pricingProFeature5,
+      ],
+      checkoutPlan: billingPeriod === 'yearly' ? 'pro-yearly' : 'pro-monthly',
+      tone: 'pro',
+    },
+  ];
 
   const handleWebSubscribe = async (plan: string) => {
     const token = loadAuthToken();
@@ -359,7 +489,7 @@ export default function OCRPage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ plan }),
       });
@@ -385,20 +515,18 @@ export default function OCRPage() {
     }
   };
 
-  // 将图片压缩为 JPG
   const compressImageToJPG = (inputFile: File): Promise<File> => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(inputFile);
       reader.onload = (e) => {
-        const img = new Image();
+        const img = new window.Image();
         img.src = e.target?.result as string;
         img.onload = () => {
           const canvas = document.createElement('canvas');
           let width = img.width;
           let height = img.height;
 
-          // 如果图片太大，缩小尺寸（最大宽度 2048px）
           if (width > 2048) {
             height = (height * 2048) / width;
             width = 2048;
@@ -415,11 +543,9 @@ export default function OCRPage() {
 
           ctx.drawImage(img, 0, 0, width, height);
 
-          // 转换为 JPG，质量设置为 0.8（可根据需要调整）
           canvas.toBlob(
             (blob) => {
               if (blob) {
-                // 生成新的 File 对象，保持原始文件名但改为 .jpg
                 const newFile = new File(
                   [blob],
                   inputFile.name.replace(/\.[^.]+$/, '.jpg'),
@@ -431,20 +557,15 @@ export default function OCRPage() {
               }
             },
             'image/jpeg',
-            0.8 // JPG 质量（0-1，0.8 是平衡点）
+            0.8
           );
         };
-        img.onerror = () => {
-          reject(new Error('Failed to load image'));
-        };
+        img.onerror = () => reject(new Error('Failed to load image'));
       };
-      reader.onerror = () => {
-        reject(new Error('Failed to read file'));
-      };
+      reader.onerror = () => reject(new Error('Failed to read file'));
     });
   };
 
-  // 格式化文件大小显示
   const formatFileSize = (bytes: number): string => {
     if (bytes === 0) return '0 B';
     const k = 1024;
@@ -453,22 +574,17 @@ export default function OCRPage() {
     return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
   };
 
-  // 处理文件选择（包括预览和压缩准备）
   const handleFileSelect = async (selectedFile: File) => {
     setError('');
     setResult(null);
 
-    // 显示预览
     const reader = new FileReader();
     reader.onload = (e) => {
       setPreview(e.target?.result as string);
     };
     reader.readAsDataURL(selectedFile);
 
-    // 显示文件大小
     setFileSize(formatFileSize(selectedFile.size));
-
-    // 暂时存储原文件，不立即压缩（等用户点击识别时再压缩）
     setFile(selectedFile);
   };
 
@@ -481,8 +597,8 @@ export default function OCRPage() {
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
     if (dragRef.current) {
-      dragRef.current.style.backgroundColor = 'rgba(139, 92, 246, 0.1)';
-      dragRef.current.style.borderColor = '#8b5cf6';
+      dragRef.current.style.backgroundColor = 'rgba(8, 145, 178, 0.08)';
+      dragRef.current.style.borderColor = '#0891b2';
     }
   };
 
@@ -490,7 +606,7 @@ export default function OCRPage() {
     e.preventDefault();
     if (dragRef.current) {
       dragRef.current.style.backgroundColor = 'transparent';
-      dragRef.current.style.borderColor = '#e5e7eb';
+      dragRef.current.style.borderColor = '#cbd5e1';
     }
   };
 
@@ -498,14 +614,13 @@ export default function OCRPage() {
     e.preventDefault();
     if (dragRef.current) {
       dragRef.current.style.backgroundColor = 'transparent';
-      dragRef.current.style.borderColor = '#e5e7eb';
+      dragRef.current.style.borderColor = '#cbd5e1';
     }
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       handleFileSelect(e.dataTransfer.files[0]);
     }
   };
 
-  // 处理上传和压缩
   const handleUpload = async () => {
     if (!file) {
       setError(t.selectImage);
@@ -516,7 +631,6 @@ export default function OCRPage() {
     setError('');
 
     try {
-      // 压缩图片为 JPG
       const compressedFile = await compressImageToJPG(file);
 
       const formData = new FormData();
@@ -554,8 +668,8 @@ export default function OCRPage() {
   const downloadAsText = () => {
     if (result) {
       const element = document.createElement('a');
-      const file = new Blob([result.text], { type: 'text/plain' });
-      element.href = URL.createObjectURL(file);
+      const textFile = new Blob([result.text], { type: 'text/plain' });
+      element.href = URL.createObjectURL(textFile);
       element.download = `offline-ocr-result-${Date.now()}.txt`;
       document.body.appendChild(element);
       element.click();
@@ -564,520 +678,647 @@ export default function OCRPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-      {/* Header */}
-      <header className="bg-white dark:bg-slate-800 shadow-sm sticky top-0 z-50">
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
-              Offline OCR
-            </h1>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Math & Word Recognition</p>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            {/* Auth Section */}
+    <div className="min-h-screen overflow-x-hidden bg-[#f7f8f4] text-slate-950 dark:bg-[#0f1115] dark:text-slate-100">
+      <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl dark:border-white/10 dark:bg-[#11141a]/85">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+          <a href="#" className="flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-950 text-sm font-black text-white shadow-sm dark:bg-white dark:text-slate-950">
+              OCR
+            </span>
+            <span>
+              <span className="block text-base font-bold">Offline OCR</span>
+              <span className="block text-xs text-slate-500 dark:text-slate-400">
+                Math & Word Recognition
+              </span>
+            </span>
+          </a>
+
+          <nav className="hidden items-center gap-1 rounded-lg border border-slate-200 bg-white p-1 text-sm font-medium text-slate-600 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-300 lg:flex">
+            <a href="#showcase" className="rounded-md px-3 py-2 transition hover:bg-slate-100 hover:text-slate-950 dark:hover:bg-white/10 dark:hover:text-white">
+              {t.navShowcase}
+            </a>
+            <a href="#demo" className="rounded-md px-3 py-2 transition hover:bg-slate-100 hover:text-slate-950 dark:hover:bg-white/10 dark:hover:text-white">
+              {t.navDemo}
+            </a>
+            <a href="#pricing" className="rounded-md px-3 py-2 transition hover:bg-slate-100 hover:text-slate-950 dark:hover:bg-white/10 dark:hover:text-white">
+              {t.navPricing}
+            </a>
+            <a href="#download" className="rounded-md px-3 py-2 transition hover:bg-slate-100 hover:text-slate-950 dark:hover:bg-white/10 dark:hover:text-white">
+              {t.navDownload}
+            </a>
+          </nav>
+
+          <div className="flex flex-wrap items-center justify-end gap-2">
             {userProfile ? (
-              <div className="flex items-center gap-3 bg-white dark:bg-slate-700 px-3 py-1.5 rounded-full shadow-sm border border-gray-100 dark:border-slate-600">
+              <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm shadow-sm dark:border-white/10 dark:bg-white/5">
                 {userProfile.picture ? (
-                  <img src={userProfile.picture} alt="Avatar" className="w-6 h-6 rounded-full" />
+                  <img src={userProfile.picture} alt="Avatar" className="h-7 w-7 rounded-full" />
                 ) : (
-                  <div className="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-xs">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-cyan-100 text-xs font-bold text-cyan-700">
                     {userProfile.name?.charAt(0) || userProfile.email?.charAt(0)}
                   </div>
                 )}
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-200 max-w-[100px] truncate">
+                <span className="max-w-[120px] truncate font-medium">
                   {userProfile.name || userProfile.email.split('@')[0]}
                 </span>
-                <button 
+                <button
                   onClick={handleLogout}
-                  className="text-xs text-red-500 hover:text-red-700 ml-1 font-medium"
+                  className="rounded-md px-2 py-1 text-xs font-semibold text-rose-600 transition hover:bg-rose-50 dark:hover:bg-rose-500/10"
                   title="Sign Out"
                 >
-                  ✕
+                  X
                 </button>
               </div>
             ) : (
               <button
                 onClick={() => loginWithGoogle()}
-                className="flex items-center gap-2 bg-white dark:bg-slate-700 px-4 py-2 border border-gray-200 dark:border-slate-600 rounded-lg shadow-sm hover:bg-gray-50 dark:hover:bg-slate-600 transition-all font-medium text-sm text-gray-700 dark:text-gray-200"
+                className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-cyan-300 hover:text-cyan-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200"
               >
-                <svg className="w-4 h-4" viewBox="0 0 24 24">
-                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
-                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-                </svg>
                 {language === 'zh' ? '登录' : 'Sign In'}
               </button>
             )}
 
-            <div className="flex gap-2">
-            <button
-              onClick={() => setLanguage('en')}
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                language === 'en'
-                  ? 'bg-purple-600 text-white'
-                  : 'bg-gray-200 dark:bg-slate-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300'
-              }`}
-            >
-              English
-            </button>
-            <button
-              onClick={() => setLanguage('zh')}
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                language === 'zh'
-                  ? 'bg-purple-600 text-white'
-                  : 'bg-gray-200 dark:bg-slate-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300'
-              }`}
-            >
-              中文
-            </button>
+            <div className="flex rounded-lg border border-slate-200 bg-white p-1 text-sm font-semibold shadow-sm dark:border-white/10 dark:bg-white/5">
+              <button
+                onClick={() => setLanguage('en')}
+                className={`rounded-md px-3 py-1.5 transition ${
+                  language === 'en'
+                    ? 'bg-slate-950 text-white dark:bg-white dark:text-slate-950'
+                    : 'text-slate-500 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('zh')}
+                className={`rounded-md px-3 py-1.5 transition ${
+                  language === 'zh'
+                    ? 'bg-slate-950 text-white dark:bg-white dark:text-slate-950'
+                    : 'text-slate-500 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white'
+                }`}
+              >
+                中
+              </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 py-12">
-        {/* Hero Section */}
-        <section className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            {t.title}
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-            {t.subtitle}
-          </p>
-
-          {/* Demo Notice 提示框（新增）*/}
-          <div className="mx-auto max-w-3xl bg-blue-50 dark:bg-blue-900/30 border-2 border-blue-300 dark:border-blue-700 rounded-2xl px-6 py-6 mb-8 shadow-sm">
-            <div className="flex flex-col items-center justify-center text-center">
-              <p className="text-blue-900 dark:text-blue-100 font-medium text-sm md:text-base mb-4 max-w-2xl">
-                ℹ️ {t.demoNotice}
+      <main>
+        <section className="premium-grid border-b border-slate-200/80 dark:border-white/10">
+          <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-10 sm:px-6 md:py-20 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12 lg:px-8">
+            <div className="animate-reveal-up">
+              <p className="mb-4 inline-flex rounded-lg border border-cyan-200 bg-cyan-50 px-3 py-1 text-sm font-semibold text-cyan-800 dark:border-cyan-400/30 dark:bg-cyan-400/10 dark:text-cyan-200">
+                {t.heroKicker}
               </p>
-              <div className="flex flex-col sm:flex-row gap-3">
+              <h1 className="max-w-3xl text-4xl font-black leading-tight text-slate-950 dark:text-white md:text-6xl">
+                {t.title}
+              </h1>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
+                {t.subtitle}
+              </p>
+              <p className="mt-4 hidden max-w-2xl text-sm leading-7 text-slate-500 dark:text-slate-400 sm:block">
+                {t.heroBody}
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="#pricing"
+                  className="inline-flex min-h-12 items-center justify-center rounded-lg bg-slate-950 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-slate-900/20 transition hover:-translate-y-0.5 hover:bg-slate-800 active:translate-y-0 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+                >
+                  {t.heroPrimaryCTA}
+                </a>
+                <a
+                  href="#demo"
+                  className="inline-flex min-h-12 items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:border-cyan-400 hover:text-cyan-700 active:translate-y-0 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:border-cyan-300"
+                >
+                  {t.heroSecondaryCTA}
+                </a>
+              </div>
+
+              <div className="mt-10 hidden max-w-2xl grid-cols-3 gap-3 sm:grid">
+                {[t.statLocal, t.statFormula, t.statExport].map((item, idx) => (
+                  <div
+                    key={item}
+                    className="rounded-lg border border-slate-200 bg-white/75 p-4 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5"
+                  >
+                    <div className="text-2xl font-black text-slate-950 dark:text-white">
+                      {idx === 0 ? '100%' : idx === 1 ? 'AI' : '.docx'}
+                    </div>
+                    <div className="mt-1 text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">
+                      {item}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative min-h-[395px] animate-reveal-up-delay md:min-h-[560px]">
+              <div className="media-sheen absolute left-1/2 top-0 w-[94%] -translate-x-1/2 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-2xl shadow-slate-900/20 dark:border-white/10 dark:bg-[#171b22] md:top-5">
+                <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-white/10">
+                  <div>
+                    <p className="text-sm font-bold">{t.visualTitle}</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">{t.visualSubtitle}</p>
+                  </div>
+                  <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-200">
+                    Live
+                  </span>
+                </div>
+                <video
+                  className="aspect-video w-full bg-slate-900 object-cover"
+                  src="/showcase/ocr-workflow.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  poster="/showcase/recognizing.png"
+                />
+                <div className="grid grid-cols-3 border-t border-slate-200 text-center text-xs font-semibold text-slate-500 dark:border-white/10 dark:text-slate-400">
+                  <span className="px-3 py-3">Capture</span>
+                  <span className="border-x border-slate-200 px-3 py-3 dark:border-white/10">Recognize</span>
+                  <span className="px-3 py-3">Export</span>
+                </div>
+              </div>
+
+              <div className="absolute bottom-8 left-0 hidden w-56 animate-float-slow overflow-hidden rounded-lg border border-white bg-white shadow-xl shadow-slate-900/15 md:block">
+                <Image
+                  src="/showcase/phone-formula.png"
+                  alt="Mobile formula OCR"
+                  width={1920}
+                  height={1080}
+                  className="h-36 w-full object-cover"
+                  priority
+                />
+                <div className="px-4 py-3 text-sm font-bold text-slate-900">
+                  {t.statFormula}
+                </div>
+              </div>
+
+              <div className="absolute bottom-0 right-2 hidden w-64 animate-float-slower overflow-hidden rounded-lg border border-white bg-white shadow-xl shadow-slate-900/15 md:block">
+                <Image
+                  src="/showcase/windows-editor.png"
+                  alt="Windows OCR editor"
+                  width={3840}
+                  height={2037}
+                  className="h-32 w-full object-cover"
+                  priority
+                />
+                <div className="px-4 py-3 text-sm font-bold text-slate-900">
+                  Windows + Export
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="pricing" className="border-b border-slate-200 bg-[#eef2ed] px-4 py-16 dark:border-white/10 dark:bg-[#12161d] sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-sm font-bold uppercase text-cyan-700 dark:text-cyan-300">
+                {t.navPricing}
+              </p>
+              <h2 className="mt-3 text-3xl font-black text-slate-950 dark:text-white md:text-4xl">
+                {t.pricingTitle}
+              </h2>
+              <p className="mt-4 text-slate-600 dark:text-slate-300">
+                {t.pricingSubtitle}
+              </p>
+              <div className="mt-7 inline-flex rounded-lg border border-slate-200 bg-white p-1 shadow-sm dark:border-white/10 dark:bg-white/5">
+                <button
+                  onClick={() => setBillingPeriod('monthly')}
+                  className={`rounded-md px-5 py-2 text-sm font-bold transition ${
+                    billingPeriod === 'monthly'
+                      ? 'bg-slate-950 text-white dark:bg-white dark:text-slate-950'
+                      : 'text-slate-500 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white'
+                  }`}
+                >
+                  {t.pricingToggleMonthly}
+                </button>
+                <button
+                  onClick={() => setBillingPeriod('yearly')}
+                  className={`rounded-md px-5 py-2 text-sm font-bold transition ${
+                    billingPeriod === 'yearly'
+                      ? 'bg-slate-950 text-white dark:bg-white dark:text-slate-950'
+                      : 'text-slate-500 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white'
+                  }`}
+                >
+                  {t.pricingToggleYearly} · {t.pricingYearlySave}
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-10 grid gap-5 lg:grid-cols-3">
+              {pricingPlans.map((plan) => {
+                const isPro = plan.id === 'pro';
+                const isPlus = plan.id === 'plus';
+                return (
+                  <div
+                    key={plan.id}
+                    className={`relative flex min-h-[560px] flex-col rounded-lg border bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:bg-white/[0.04] ${
+                      isPro
+                        ? 'border-slate-950 ring-2 ring-slate-950/10 dark:border-cyan-300 dark:ring-cyan-300/20'
+                        : 'border-slate-200 dark:border-white/10'
+                    }`}
+                  >
+                    {isPro && (
+                      <span className="absolute right-5 top-5 rounded-full bg-amber-100 px-3 py-1 text-xs font-black uppercase text-amber-800 dark:bg-amber-300/15 dark:text-amber-200">
+                        {t.popular}
+                      </span>
+                    )}
+                    <div>
+                      <h3 className="pr-20 text-xl font-black text-slate-950 dark:text-white">
+                        {plan.name}
+                      </h3>
+                      <p className="mt-2 min-h-12 text-sm leading-6 text-slate-500 dark:text-slate-400">
+                        {plan.desc}
+                      </p>
+                      <div className="mt-6 flex items-end gap-2">
+                        <span className={`text-4xl font-black ${isPlus ? 'text-cyan-700 dark:text-cyan-300' : isPro ? 'text-violet-700 dark:text-violet-300' : 'text-slate-950 dark:text-white'}`}>
+                          {plan.price}
+                        </span>
+                        <span className="pb-1 text-sm font-semibold text-slate-500 dark:text-slate-400">
+                          / {plan.period}
+                        </span>
+                      </div>
+                      <ul className="mt-7 space-y-3">
+                        {plan.features.map((feature) => (
+                          <li key={feature} className="flex gap-3 text-sm leading-6 text-slate-700 dark:text-slate-300">
+                            <span className={`mt-1.5 h-2 w-2 rounded-full ${isPro ? 'bg-violet-500' : isPlus ? 'bg-cyan-500' : 'bg-emerald-500'}`} />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="mt-auto pt-8">
+                      {plan.id === 'free' ? (
+                        <button className="w-full rounded-lg bg-slate-100 px-5 py-3 text-sm font-bold text-slate-500 dark:bg-white/10 dark:text-slate-300" disabled>
+                          {t.included}
+                        </button>
+                      ) : (
+                        <div className="space-y-3">
+                          <button
+                            onClick={() => handleWebSubscribe(plan.checkoutPlan || '')}
+                            disabled={checkoutLoading}
+                            className={`w-full rounded-lg px-5 py-3 text-sm font-black text-white shadow-lg transition hover:-translate-y-0.5 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 ${
+                              isPro
+                                ? 'bg-slate-950 shadow-slate-900/20 hover:bg-slate-800 dark:bg-cyan-500 dark:text-slate-950 dark:hover:bg-cyan-300'
+                                : 'bg-cyan-700 shadow-cyan-900/20 hover:bg-cyan-600'
+                            }`}
+                          >
+                            {checkoutLoading ? '...' : t.payWebSubscribe}
+                          </button>
+                          <a
+                            href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block w-full rounded-lg border border-slate-200 px-5 py-2.5 text-center text-sm font-bold text-slate-600 transition hover:border-slate-400 hover:text-slate-950 dark:border-white/10 dark:text-slate-300 dark:hover:border-white/30 dark:hover:text-white"
+                          >
+                            {t.payAppGooglePlay}
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section id="showcase" className="border-b border-slate-200 bg-white px-4 py-16 dark:border-white/10 dark:bg-[#0f1115] sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
+              <div>
+                <p className="text-sm font-bold uppercase text-cyan-700 dark:text-cyan-300">
+                  {t.navShowcase}
+                </p>
+                <h2 className="mt-3 text-3xl font-black text-slate-950 dark:text-white md:text-4xl">
+                  {t.showcaseTitle}
+                </h2>
+                <p className="mt-4 text-slate-600 dark:text-slate-300">
+                  {t.showcaseSubtitle}
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {featureCards.map((feature) => (
+                  <div key={feature.title} className="rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/[0.04]">
+                    <span className={`mb-4 block h-1 w-10 rounded-full ${feature.accent}`} />
+                    <h3 className="text-sm font-black text-slate-950 dark:text-white">{feature.title}</h3>
+                    <p className="mt-2 text-xs leading-5 text-slate-500 dark:text-slate-400">{feature.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-10 grid gap-4 lg:grid-cols-3">
+              {showcaseCards.map((card, idx) => (
+                <article
+                  key={card.title}
+                  className="group overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.04]"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden bg-slate-100 dark:bg-slate-900">
+                    <Image
+                      src={card.src}
+                      alt={card.alt}
+                      width={idx === 1 ? 3840 : 1920}
+                      height={idx === 1 ? 2037 : 1080}
+                      className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-base font-black text-slate-950 dark:text-white">{card.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">{card.desc}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="demo" className="border-b border-slate-200 bg-[#f7f8f4] px-4 py-16 dark:border-white/10 dark:bg-[#11141a] sm:px-6 lg:px-8">
+          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <p className="text-sm font-bold uppercase text-cyan-700 dark:text-cyan-300">
+                {t.navDemo}
+              </p>
+              <h2 className="mt-3 text-3xl font-black text-slate-950 dark:text-white md:text-4xl">
+                {t.demoTitle}
+              </h2>
+              <p className="mt-4 text-slate-600 dark:text-slate-300">
+                {t.demoSubtitle}
+              </p>
+              <div className="mt-6 rounded-lg border border-cyan-200 bg-cyan-50 p-5 text-sm leading-7 text-cyan-900 dark:border-cyan-300/20 dark:bg-cyan-300/10 dark:text-cyan-100">
+                {t.demoNotice}
+              </div>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
                 <a
                   href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="whitespace-nowrap px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-sm"
+                  className="inline-flex min-h-11 items-center justify-center rounded-lg bg-cyan-700 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-cyan-900/15 transition hover:-translate-y-0.5 hover:bg-cyan-600"
                 >
-                  📱 {t.downloadAppCTA}
+                  {t.downloadAppCTA}
                 </a>
                 <a
                   href="https://github.com/lingyunzheng/offline-ocr/releases/download/v0.1.0/offline-ocr_0.1.0_x64_en-US.msi"
-                  className="whitespace-nowrap px-6 py-2.5 bg-slate-800 dark:bg-slate-700 hover:bg-slate-900 dark:hover:bg-slate-600 text-white font-semibold rounded-xl transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-sm"
+                  className="inline-flex min-h-11 items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-white/30"
                 >
-                  💻 {t.downloadWindowsCTA}
+                  {t.downloadWindowsCTA}
                 </a>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Upload Section */}
-        <section className="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 mb-12">
-          <div
-            ref={dragRef}
-            onDragOver={handleDragOver}
-            onDragLeave={handleDragLeave}
-            onDrop={handleDrop}
-            className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-8 text-center transition-all cursor-pointer hover:border-purple-400 hover:bg-purple-50 dark:hover:bg-slate-600"
-            onClick={() => fileInputRef.current?.click()}
-          >
-            <div className="mb-4 text-4xl">📸</div>
-            <p className="text-gray-700 dark:text-gray-300 mb-2">
-              {t.dragDrop} <span className="text-purple-600 font-medium">{t.browse}</span>
-            </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              PNG, JPG, GIF up to 50MB
-            </p>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              onChange={handleFileChange}
-              className="hidden"
-              aria-label="Upload image"
-            />
-          </div>
-
-          {/* 图片预览 */}
-          {preview && (
-            <div className="mt-6 rounded-xl overflow-hidden border-2 border-purple-300 dark:border-purple-600 bg-gray-100 dark:bg-slate-600">
-              <img
-                src={preview}
-                alt="Preview"
-                className="w-full h-auto object-contain max-h-96"
-              />
-            </div>
-          )}
-
-          {/* File Preview */}
-          {file && (
-            <div className="mt-6 p-4 bg-purple-50 dark:bg-slate-600 rounded-lg flex items-center justify-between">
-              <div className="flex items-center gap-3 flex-1">
-                <span className="text-2xl">✓</span>
-                <div className="flex-1">
-                  <p className="font-medium text-gray-900 dark:text-white">{t.selectedFile}:</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">{file.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    {t.imageSize}: {fileSize}
-                  </p>
+            <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-xl shadow-slate-900/5 dark:border-white/10 dark:bg-white/[0.04]">
+              <div className="mb-5 flex items-center justify-between gap-3">
+                <div>
+                  <h3 className="text-lg font-black text-slate-950 dark:text-white">{t.uploadTitle}</h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">{t.uploadHint}</p>
                 </div>
+                <a
+                  href="#pricing"
+                  className="hidden rounded-lg bg-slate-950 px-4 py-2 text-sm font-bold text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 sm:inline-flex"
+                >
+                  {t.heroPrimaryCTA}
+                </a>
               </div>
-              <button
-                onClick={() => {
-                  setFile(null);
-                  setPreview('');
-                  setResult(null);
-                  setError('');
-                  setFileSize('');
-                }}
-                className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 ml-4 text-xl"
-              >
-                ✕
-              </button>
-            </div>
-          )}
 
-          {/* Recognition Button */}
-          <button
-            onClick={handleUpload}
-            disabled={loading}
-            className={`w-full mt-6 py-3 px-6 rounded-lg font-semibold text-white transition-all transform hover:scale-105 ${
-              loading
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-gradient-to-r from-purple-600 to-purple-800 hover:shadow-lg active:scale-95'
-            }`}
-          >
-            {loading ? `⏳ ${t.recognizing}` : `🚀 ${t.startRecognition}`}
-          </button>
-
-          {/* Error Message */}
-          {error && (
-            <div className="mt-6 p-4 bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-700 rounded-lg">
-              <p className="text-red-700 dark:text-red-200">❌ {error}</p>
-            </div>
-          )}
-        </section>
-
-        {/* Results Section */}
-        {result && (
-          <section className="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 mb-12">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              {t.results}
-            </h3>
-
-            {/* Recognized Text */}
-            <div className="mb-6 p-6 bg-gray-50 dark:bg-slate-600 rounded-lg border border-gray-200 dark:border-slate-500 max-h-64 overflow-y-auto">
-              <p className="text-gray-800 dark:text-gray-200 whitespace-pre-wrap leading-relaxed">
-                {result.text || t.noText}
-              </p>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 mb-6">
-              <button
-                onClick={copyToClipboard}
-                className="flex-1 py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all"
-              >
-                📋 {t.copy}
-              </button>
-              <button
-                onClick={downloadAsText}
-                className="flex-1 py-2 px-4 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-all"
-              >
-                💾 {t.download}
-              </button>
-              <button
-                onClick={() => setShowDetails(!showDetails)}
-                className="flex-1 py-2 px-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-all"
-              >
-                {showDetails ? '▲' : '▼'} {t.viewDetails}
-              </button>
-            </div>
-
-            {/* Line Details */}
-            {showDetails && result.lines.length > 0 && (
-              <div className="border-t border-gray-200 dark:border-slate-500 pt-6">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-4">
-                  Line-by-line Breakdown ({result.lines.length} lines)
-                </h4>
-                <div className="space-y-2 max-h-80 overflow-y-auto">
-                  {result.lines.map((line, idx) => (
-                    <div
-                      key={idx}
-                      className="p-3 bg-gray-50 dark:bg-slate-600 rounded border-l-4 border-purple-600"
-                    >
-                      <span className="text-sm font-medium text-purple-600 dark:text-purple-400">
-                        Line {idx + 1}:
-                      </span>{' '}
-                      <span className="text-gray-700 dark:text-gray-300">{line}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </section>
-        )}
-
-        {/* Features Section */}
-        <section className="mb-12">
-          <h3 className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-8">
-            ⭐ {t.features}
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: t.feature1, desc: t.feature1Desc, icon: '⚡' },
-              { title: t.feature2, desc: t.feature2Desc, icon: '🔒' },
-              { title: t.feature3, desc: t.feature3Desc, icon: '💎' },
-              { title: t.feature4, desc: t.feature4Desc, icon: '🌍' },
-            ].map((feature, idx) => (
               <div
-                key={idx}
-                className="bg-white dark:bg-slate-700 p-6 rounded-xl shadow hover:shadow-lg transition-shadow"
+                ref={dragRef}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+                className="cursor-pointer rounded-lg border-2 border-dashed border-slate-300 p-8 text-center transition hover:border-cyan-500 hover:bg-cyan-50/70 dark:border-white/15 dark:hover:bg-cyan-300/10"
+                onClick={() => fileInputRef.current?.click()}
               >
-                <div className="text-3xl mb-4">{feature.icon}</div>
-                <h4 className="font-bold text-gray-900 dark:text-white mb-2">
-                  {feature.title}
-                </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {feature.desc}
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-slate-100 text-2xl dark:bg-white/10">
+                  OCR
+                </div>
+                <p className="text-slate-700 dark:text-slate-300">
+                  {t.dragDrop} <span className="font-bold text-cyan-700 dark:text-cyan-300">{t.browse}</span>
+                </p>
+                <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+                  {t.uploadHint}
+                </p>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="hidden"
+                  aria-label="Upload image"
+                />
+              </div>
+
+              {preview && (
+                <div className="mt-5 overflow-hidden rounded-lg border border-cyan-200 bg-slate-100 dark:border-cyan-400/30 dark:bg-slate-900">
+                  <img
+                    src={preview}
+                    alt="Preview"
+                    className="max-h-96 w-full object-contain"
+                  />
+                </div>
+              )}
+
+              {file && (
+                <div className="mt-5 flex items-center justify-between gap-4 rounded-lg border border-emerald-200 bg-emerald-50 p-4 dark:border-emerald-300/20 dark:bg-emerald-300/10">
+                  <div className="min-w-0">
+                    <p className="font-bold text-slate-950 dark:text-white">{t.selectedFile}:</p>
+                    <p className="truncate text-sm text-slate-600 dark:text-slate-300">{file.name}</p>
+                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                      {t.imageSize}: {fileSize}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setFile(null);
+                      setPreview('');
+                      setResult(null);
+                      setError('');
+                      setFileSize('');
+                    }}
+                    className="rounded-lg px-3 py-2 text-sm font-black text-slate-500 transition hover:bg-white hover:text-slate-900 dark:hover:bg-white/10 dark:hover:text-white"
+                    aria-label="Clear selected file"
+                  >
+                    X
+                  </button>
+                </div>
+              )}
+
+              <button
+                onClick={handleUpload}
+                disabled={loading}
+                className={`mt-5 w-full rounded-lg px-6 py-3 text-sm font-black text-white shadow-lg transition hover:-translate-y-0.5 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 ${
+                  loading
+                    ? 'bg-slate-400 shadow-none'
+                    : 'bg-slate-950 shadow-slate-900/20 hover:bg-slate-800 dark:bg-cyan-500 dark:text-slate-950 dark:hover:bg-cyan-300'
+                }`}
+              >
+                {loading ? t.recognizing : t.startRecognition}
+              </button>
+
+              {error && (
+                <div className="mt-5 rounded-lg border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-700 dark:border-rose-400/30 dark:bg-rose-400/10 dark:text-rose-100">
+                  {error}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {result && (
+            <div className="mx-auto mt-10 max-w-7xl rounded-lg border border-slate-200 bg-white p-6 shadow-xl shadow-slate-900/5 dark:border-white/10 dark:bg-white/[0.04]">
+              <h3 className="text-2xl font-black text-slate-950 dark:text-white">
+                {t.results}
+              </h3>
+              <div className="mt-5 max-h-72 overflow-y-auto rounded-lg border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-white/5">
+                <p className="whitespace-pre-wrap leading-7 text-slate-700 dark:text-slate-200">
+                  {result.text || t.noText}
                 </p>
               </div>
-            ))}
-          </div>
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                <button
+                  onClick={copyToClipboard}
+                  className="rounded-lg bg-cyan-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-cyan-600"
+                >
+                  {t.copy}
+                </button>
+                <button
+                  onClick={downloadAsText}
+                  className="rounded-lg bg-emerald-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-emerald-600"
+                >
+                  {t.download}
+                </button>
+                <button
+                  onClick={() => setShowDetails(!showDetails)}
+                  className="rounded-lg bg-slate-950 px-4 py-3 text-sm font-bold text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950"
+                >
+                  {showDetails ? 'Hide' : 'Show'} {t.viewDetails}
+                </button>
+              </div>
+
+              {showDetails && result.lines.length > 0 && (
+                <div className="mt-6 border-t border-slate-200 pt-6 dark:border-white/10">
+                  <h4 className="font-black text-slate-950 dark:text-white">
+                    Line-by-line Breakdown ({result.lines.length} lines)
+                  </h4>
+                  <div className="mt-4 max-h-80 space-y-2 overflow-y-auto">
+                    {result.lines.map((line, idx) => (
+                      <div
+                        key={idx}
+                        className="rounded-lg border-l-4 border-cyan-600 bg-slate-50 p-3 text-sm dark:bg-white/5"
+                      >
+                        <span className="font-bold text-cyan-700 dark:text-cyan-300">
+                          Line {idx + 1}:
+                        </span>{' '}
+                        <span className="text-slate-700 dark:text-slate-300">{line}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </section>
 
-        {/* Pricing Section */}
-        <section className="mb-16">
-          <div className="text-center mb-10">
-            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
-              🏷️ {t.pricingTitle}
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
-              {t.pricingSubtitle}
-            </p>
-            <div className="flex items-center justify-center gap-3 mt-6">
-              <button
-                onClick={() => setBillingPeriod('monthly')}
-                className={`px-5 py-2 rounded-full font-medium text-sm transition-all ${
-                  billingPeriod === 'monthly'
-                    ? 'bg-purple-600 text-white shadow-md'
-                    : 'bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-600'
-                }`}
-              >
-                {t.pricingToggleMonthly}
-              </button>
-              <button
-                onClick={() => setBillingPeriod('yearly')}
-                className={`px-5 py-2 rounded-full font-medium text-sm transition-all flex items-center gap-2 ${
-                  billingPeriod === 'yearly'
-                    ? 'bg-purple-600 text-white shadow-md'
-                    : 'bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-600'
-                }`}
-              >
-                {t.pricingToggleYearly}
-                <span className="text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">{t.pricingYearlySave}</span>
-              </button>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
-            {/* Free Tier */}
-            <div className="bg-white dark:bg-slate-700 rounded-2xl border-2 border-slate-100 dark:border-slate-600 p-8 shadow-sm hover:shadow-md transition flex flex-col justify-between">
-              <div>
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t.pricingFreeTitle}</h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">{t.pricingFreeDesc}</p>
-                <div className="flex items-baseline mb-6">
-                  <span className="text-4xl font-extrabold text-gray-900 dark:text-white">{t.pricingFreePrice}</span>
-                  <span className="text-gray-500 dark:text-gray-400 ml-2">/ {t.pricingFreePeriod}</span>
-                </div>
-                
-                <ul className="space-y-4 mb-8">
-                  {[t.pricingFreeFeature1, t.pricingFreeFeature2, t.pricingFreeFeature3, t.pricingFreeFeature4, t.pricingFreeFeature5].map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
-                      <span className="text-green-500 font-bold">✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <button className="w-full py-3 px-6 rounded-xl font-semibold bg-gray-100 dark:bg-slate-600 text-gray-700 dark:text-gray-300 cursor-not-allowed">
-                {language === 'zh' ? '当前已拥有' : 'Included by Default'}
-              </button>
-            </div>
-
-            {/* Plus Tier */}
-            <div className="bg-white dark:bg-slate-700 rounded-2xl border-2 border-slate-200 dark:border-slate-500 p-8 shadow-sm hover:shadow-md transition flex flex-col justify-between relative transform hover:scale-[1.01]">
-              <div>
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t.pricingPlusTitle}</h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">{t.pricingPlusDesc}</p>
-                <div className="flex items-baseline mb-6">
-                  <span className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">{billingPeriod === 'yearly' ? t.pricingPlusYearlyPrice : t.pricingPlusPrice}</span>
-                  <span className="text-gray-500 dark:text-gray-400 ml-2">/ {billingPeriod === 'yearly' ? t.pricingPlusYearlyPeriod : t.pricingPlusPeriod}</span>
-                </div>
-                
-                <ul className="space-y-4 mb-8">
-                  {[t.pricingPlusFeature1, t.pricingPlusFeature2, t.pricingPlusFeature3, t.pricingPlusFeature4, t.pricingPlusFeature5].map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
-                      <span className="text-blue-500 font-bold font-mono">✦</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              <div className="flex flex-col gap-3">
-                <button
-                  onClick={() => handleWebSubscribe(billingPeriod === 'yearly' ? 'plus-yearly' : 'plus-monthly')}
-                  disabled={checkoutLoading}
-                  className={`w-full text-center py-3 px-6 rounded-xl font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg transition-all active:scale-[0.98] ${checkoutLoading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}`}
-                >
-                  {checkoutLoading ? '⏳...' : t.payWebSubscribe}
-                </button>
+        <section id="download" className="bg-slate-950 px-4 py-16 text-white sm:px-6 lg:px-8">
+          <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <p className="text-sm font-bold uppercase text-cyan-300">
+                {t.navDownload}
+              </p>
+              <h2 className="mt-3 text-3xl font-black md:text-4xl">
+                {t.downloadApp}
+              </h2>
+              <p className="mt-4 max-w-xl text-slate-300">
+                {t.appBenefit}
+              </p>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <a
                   href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center py-2 px-6 rounded-xl font-medium border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all active:scale-[0.98] text-sm"
+                  className="inline-flex min-h-12 items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-black text-slate-950 transition hover:-translate-y-0.5 hover:bg-cyan-100"
                 >
-                  {t.payAppGooglePlay}
+                  {t.googlePlay}
                 </a>
-              </div>
-            </div>
-
-            {/* Pro Tier */}
-            <div className="bg-white dark:bg-slate-700 rounded-2xl border-2 border-purple-500 dark:border-purple-400 p-8 shadow-md relative flex flex-col justify-between transform hover:scale-[1.02] transition-all">
-              <div className="absolute top-0 right-6 transform -translate-y-1/2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
-                {language === 'zh' ? '推荐' : 'Popular'}
-              </div>
-              
-              <div>
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t.pricingProTitle}</h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">{t.pricingProDesc}</p>
-                <div className="flex items-baseline mb-6">
-                  <span className="text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400 bg-clip-text text-transparent">{billingPeriod === 'yearly' ? t.pricingProYearlyPrice : t.pricingProPrice}</span>
-                  <span className="text-gray-500 dark:text-gray-400 ml-2">/ {billingPeriod === 'yearly' ? t.pricingProYearlyPeriod : t.pricingProPeriod}</span>
-                </div>
-                
-                <ul className="space-y-4 mb-8">
-                  {[t.pricingProFeature1, t.pricingProFeature2, t.pricingProFeature3, t.pricingProFeature4, t.pricingProFeature5].map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
-                      <span className="text-purple-600 dark:text-purple-400 font-bold font-mono">★</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              <div className="flex flex-col gap-3">
-                <button
-                  onClick={() => handleWebSubscribe(billingPeriod === 'yearly' ? 'pro-yearly' : 'pro-monthly')}
-                  disabled={checkoutLoading}
-                  className={`w-full text-center py-3 px-6 rounded-xl font-semibold bg-gradient-to-r from-purple-600 to-purple-800 text-white hover:shadow-lg transition-all active:scale-[0.98] ${checkoutLoading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}`}
-                >
-                  {checkoutLoading ? '⏳...' : t.payWebSubscribe}
-                </button>
                 <a
-                  href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full text-center py-2 px-6 rounded-xl font-medium border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all active:scale-[0.98] text-sm"
+                  href="https://github.com/lingyunzheng/offline-ocr/releases/download/v0.1.0/offline-ocr_0.1.0_x64_en-US.msi"
+                  className="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/20 px-6 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:border-cyan-300 hover:text-cyan-100"
                 >
-                  {t.payAppGooglePlay}
+                  {t.downloadWindowsCTA}
                 </a>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* App Promotion Section */}
-        <section className="bg-gradient-to-br from-purple-600 to-indigo-800 rounded-3xl shadow-2xl p-10 md:p-14 text-white text-center mb-12 relative overflow-hidden">
-          <div className="relative z-10">
-            <h3 className="text-3xl font-bold mb-4 flex items-center justify-center gap-3">
-              ✨ {t.downloadApp}
-            </h3>
-            <p className="text-lg mb-8 text-purple-100 max-w-xl mx-auto leading-relaxed">
-              {t.appBenefit}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-              <a
-                href="https://play.google.com/store/apps/details?id=io.github.lingyunzheng.ocr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-8 py-4 bg-white text-purple-700 rounded-xl font-bold hover:bg-gray-50 transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              >
-                📱 {t.googlePlay}
-              </a>
-              <a
-                href="https://github.com/lingyunzheng/offline-ocr/releases/download/v0.1.0/offline-ocr_0.1.0_x64_en-US.msi"
-                className="w-full sm:w-auto px-8 py-4 bg-gray-900 text-white border border-gray-700 rounded-xl font-bold hover:bg-black transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              >
-                💻 {t.downloadWindowsCTA}
-              </a>
+            <div className="overflow-hidden rounded-lg border border-white/10 bg-white/5 shadow-2xl shadow-black/30">
+              <Image
+                src="/showcase/tablet-formula.png"
+                alt="Tablet formula recognition showcase"
+                width={1920}
+                height={1080}
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
-          {/* Decorative background blobs */}
-          <div className="absolute top-0 left-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 py-8">
-        <div className="max-w-4xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
+      <footer className="border-t border-slate-200 bg-white py-8 dark:border-white/10 dark:bg-[#0f1115]">
+        <div className="mx-auto max-w-5xl px-4 text-center text-sm text-slate-500 dark:text-slate-400">
           <p>{t.footer}</p>
-          <div className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm items-center">
-            <a href="/privacy" className="hover:text-purple-600 transition">
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+            <a href="/privacy" className="transition hover:text-cyan-700 dark:hover:text-cyan-300">
               Privacy Policy
             </a>
-            <a href="/terms" className="hover:text-purple-600 transition">
+            <a href="/terms" className="transition hover:text-cyan-700 dark:hover:text-cyan-300">
               Terms of Service
             </a>
-            <a href="/refund" className="hover:text-purple-600 transition">
+            <a href="/refund" className="transition hover:text-cyan-700 dark:hover:text-cyan-300">
               Refund Policy
             </a>
-            <a href="/contact" className="hover:text-purple-600 transition">
-                Contact
-              </a>
-              <a href="https://affiliates.creem.io/join/offline-ocr" target="_blank" rel="noopener noreferrer" className="hover:text-purple-700 transition font-bold text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30 px-3 py-1 rounded-full border border-purple-200 dark:border-purple-800">
-                🤝 {t.affiliate}
-              </a>
-            </div>
-          
-          {/* Web Store MoR Disclaimer */}
-          <p className="mt-6 text-xs text-gray-400 dark:text-gray-500 max-w-2xl mx-auto leading-relaxed border-t border-gray-100 dark:border-slate-700/50 pt-4">
+            <a href="/contact" className="transition hover:text-cyan-700 dark:hover:text-cyan-300">
+              Contact
+            </a>
+            <a
+              href="https://affiliates.creem.io/join/offline-ocr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-cyan-200 bg-cyan-50 px-3 py-1 font-bold text-cyan-700 transition hover:border-cyan-400 dark:border-cyan-300/20 dark:bg-cyan-300/10 dark:text-cyan-200"
+            >
+              {t.affiliate}
+            </a>
+          </div>
+
+          <p className="mx-auto mt-6 max-w-2xl border-t border-slate-100 pt-4 text-xs leading-6 text-slate-400 dark:border-white/10 dark:text-slate-500">
             Our order process is conducted by our online reseller{' '}
-            <a href="https://creem.io" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600 dark:hover:text-gray-300">Creem</a>.
-            Creem is the Merchant of Record for all our orders and handles customer service inquiries and returns.
+            <a href="https://creem.io" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-700 dark:hover:text-slate-300">
+              Creem
+            </a>
+            . Creem is the Merchant of Record for all our orders and handles customer service inquiries and returns.
           </p>
         </div>
       </footer>
 
-      {/* Toast Alert for Sandbox/Compliance Testing */}
       {checkoutError && (
-        <div className="fixed top-6 right-6 z-[9999] max-w-md bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-red-200 dark:border-red-800/50 p-5 rounded-2xl shadow-xl animate-fade-in flex items-start gap-4 transition-all duration-300">
-          <div className="text-2xl mt-0.5">⚠️</div>
-          <div>
-            <h5 className="font-bold text-gray-900 dark:text-white text-sm mb-1">
-              {language === 'zh' ? '创建支付链接失败' : 'Checkout Error'}
-            </h5>
-            <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
-              {t.checkoutErrorMsg}
-            </p>
+        <div className="fixed right-4 top-5 z-[9999] max-w-sm rounded-lg border border-rose-200 bg-white p-5 shadow-xl shadow-slate-900/15 animate-reveal-up dark:border-rose-400/30 dark:bg-[#171b22]">
+          <div className="flex items-start gap-3">
+            <div className="mt-1 h-2 w-2 rounded-full bg-rose-500" />
+            <div className="min-w-0">
+              <h5 className="font-black text-slate-950 dark:text-white">
+                {language === 'zh' ? '创建支付链接失败' : 'Checkout Error'}
+              </h5>
+              <p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                {t.checkoutErrorMsg}
+              </p>
+            </div>
+            <button
+              onClick={() => setCheckoutError(false)}
+              className="ml-auto rounded-md px-2 py-1 text-xs font-black text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-white/10 dark:hover:text-white"
+            >
+              X
+            </button>
           </div>
-          <button 
-            onClick={() => setCheckoutError(false)}
-            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-xs font-bold font-mono ml-auto"
-          >
-            ✕
-          </button>
         </div>
       )}
     </div>
   );
 }
-
-
