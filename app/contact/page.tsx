@@ -50,10 +50,10 @@ export default function ContactPage() {
             <div className="text-3xl mb-3">📧</div>
             <h3 className="font-bold text-gray-900 dark:text-white mb-2">Email</h3>
             <a
-              href="mailto:zhenglingyun829@gmail.com"
+              href="mailto:offlineocr.service@outlook.com"
               className="text-purple-600 hover:text-purple-700"
             >
-              zhenglingyun829@gmail.com
+              offlineocr.service@outlook.com
             </a>
           </div>
 
